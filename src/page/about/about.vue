@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <h1>about</h1>
-  </div>
-
+  <h1>关于</h1>
 </template>
 
 <script>

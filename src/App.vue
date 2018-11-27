@@ -43,11 +43,4 @@
   body {
     background: url("assets/little-monster.png");
   }
-
-  @media (max-width: 768px) {
-    body{
-      background-image: none;
-      background: #ffffff!important;
-    }
-  }
 </style>

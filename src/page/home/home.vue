@@ -30,9 +30,9 @@
                 <div class="post-details">
                   <ul class="tags">
                     <li><v-icon name="eye"></v-icon>浏览&nbsp;{{visit}}</li>
-                    <li><v-icon name="comment"></v-icon>评论&nbsp;{{comment}}</li>
-                    <li><v-icon name="bookmark"></v-icon><a href="#">Fashion</a></li>
-                    <li><v-icon name="bookmark"></v-icon><a href="#">Music</a></li>
+                    <li><v-icon name="regular/comment"></v-icon>评论&nbsp;{{comment}}</li>
+                    <li><v-icon name="regular/bookmark"></v-icon><a href="#">Fashion</a></li>
+                    <li><v-icon name="regular/bookmark"></v-icon><a href="#">Music</a></li>
                   </ul>
                   <router-link to="article">
                     <h1>To shewing another demands to. </h1>
@@ -65,9 +65,9 @@
                 <div class="post-details">
                   <ul class="tags">
                     <li><v-icon name="eye"></v-icon>浏览&nbsp;{{visit}}</li>
-                    <li><v-icon name="comment"></v-icon>评论&nbsp;{{comment}}</li>
-                    <li><v-icon name="bookmark"></v-icon><a href="#">美食</a></li>
-                    <li><v-icon name="bookmark"></v-icon><a href="#">音乐</a></li>
+                    <li><v-icon name="regular/comment"></v-icon>评论&nbsp;{{comment}}</li>
+                    <li><v-icon name="regular/bookmark"></v-icon><a href="#">美食</a></li>
+                    <li><v-icon name="regular/bookmark"></v-icon><a href="#">音乐</a></li>
                   </ul>
                   <a href="single-blog.html">
                     <h1>A wonderful serenity has taken possession of my entire soul.</h1>
@@ -100,9 +100,9 @@
                 <div class="post-details">
                   <ul class="tags">
                     <li><v-icon name="eye"></v-icon>浏览&nbsp;{{visit}}</li>
-                    <li><v-icon name="comment"></v-icon>评论&nbsp;{{comment}}</li>
-                    <li><v-icon name="bookmark"></v-icon><a href="#">学习</a></li>
-                    <li><v-icon name="bookmark"></v-icon><a href="#">梦想</a></li>
+                    <li><v-icon name="regular/comment"></v-icon>评论&nbsp;{{comment}}</li>
+                    <li><v-icon name="regular/bookmark"></v-icon><a href="#">学习</a></li>
+                    <li><v-icon name="regular/bookmark"></v-icon><a href="#">梦想</a></li>
                   </ul>
                   <a href="single-blog.html">
                     <h1>Awesome Design His many legs, pitifully thin compared with.</h1>
@@ -136,9 +136,9 @@
                   <ul class="tags">
                     <ul class="tags">
                       <li><v-icon name="eye"></v-icon>浏览&nbsp;{{visit}}</li>
-                      <li><v-icon name="comment"></v-icon>评论&nbsp;{{comment}}</li>
-                      <li><v-icon name="bookmark"></v-icon><a href="#">趋势</a></li>
-                      <li><v-icon name="bookmark"></v-icon><a href="#">技术</a></li>
+                      <li><v-icon name="regular/comment"></v-icon>评论&nbsp;{{comment}}</li>
+                      <li><v-icon name="regular/bookmark"></v-icon><a href="#">趋势</a></li>
+                      <li><v-icon name="regular/bookmark"></v-icon><a href="#">技术</a></li>
                     </ul>
                   </ul>
                   <router-link to="article">
@@ -172,9 +172,9 @@
                 <div class="post-details">
                   <ul class="tags">
                     <li><v-icon name="eye"></v-icon>浏览&nbsp;{{visit}}</li>
-                    <li><v-icon name="comment"></v-icon>评论&nbsp;{{comment}}</li>
-                    <li><v-icon name="bookmark"></v-icon><a href="#">电影</a></li>
-                    <li><v-icon name="bookmark"></v-icon><a href="#">重温</a></li>
+                    <li><v-icon name="regular/comment"></v-icon>评论&nbsp;{{comment}}</li>
+                    <li><v-icon name="regular/bookmark"></v-icon><a href="#">电影</a></li>
+                    <li><v-icon name="regular/bookmark"></v-icon><a href="#">重温</a></li>
                   </ul>
                   <a href="single-blog.html">
                     <h1>To take a trivial example, which of us ever undertakes.</h1>
