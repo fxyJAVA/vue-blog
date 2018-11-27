@@ -149,6 +149,7 @@
   @import '../../style/style.css';
   @import '../../style/responsive.css';
   .container {
+    padding: 0;
     max-width: 900px;
     margin-top: 95px;
     overflow: hidden;
@@ -405,9 +406,6 @@
   }
   /*响应式*/
   @media (max-width: 768px) {
-    .container {
-      padding: 0;
-    }
 
     .poem-wrap > p {
       font-size: 12px;

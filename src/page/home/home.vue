@@ -200,23 +200,24 @@
                 </div>
               </div>
               <nav>
+                <!--TODO-->
                 <ul class="pagination">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">
-                      <i class="ti ti-angle-left"></i>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item active">
-                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">4</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">
-                      <i class="ti ti-angle-right"></i>
-                    </a>
-                  </li>
+                  <!--<li class="page-item disabled">-->
+                    <!--<a class="page-link" href="#" tabindex="-1">-->
+                      <!--<i class="ti ti-angle-left"></i>-->
+                    <!--</a>-->
+                  <!--</li>-->
+                  <!--<li class="page-item"><a class="page-link" href="#">1</a></li>-->
+                  <!--<li class="page-item active">-->
+                    <!--<a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>-->
+                  <!--</li>-->
+                  <!--<li class="page-item"><a class="page-link" href="#">3</a></li>-->
+                  <!--<li class="page-item"><a class="page-link" href="#">4</a></li>-->
+                  <!--<li class="page-item">-->
+                    <!--<a class="page-link" href="#">-->
+                      <!--<i class="ti ti-angle-right"></i>-->
+                    <!--</a>-->
+                  <!--</li>-->
                 </ul>
               </nav>
             </div>
@@ -229,7 +230,7 @@
                   <form action="#" class="relative">
                     <input type="text" placeholder="Search" onfocus="this.placeholder=''" onblur="this.placeholder='Search'">
                     <button type="submit">
-                      <i class="ti-search"></i>
+                      <v-icon name="search" scale="1.7"/>
                     </button>
                   </form>
                 </div>
@@ -291,32 +292,27 @@
                   </li>
                 </ul>
               </div>
-              <div class="single-widget social-widget">
-                <h4 class="widget-title">Social Links</h4>
+              <div class="single-widget social-widget" v-if="!heightFlag">
+                <h4 class="widget-title">互动</h4>
                 <ul>
                   <li>
-                    <a target="_blank" href="#">
-                      <i class="fa fa-facebook"></i>
+                    <a href="https://github.com/fxyJAVA">
+                      <v-icon name="brands/github" scale="2"/>
                     </a>
                   </li>
                   <li>
-                    <a target="_blank" href="#">
-                      <i class="fa fa-twitter"></i>
+                    <a href="#" style="background: #92d027;">
+                      <v-icon name="regular/envelope" scale="2" />
                     </a>
                   </li>
                   <li>
-                    <a target="_blank" href="#">
-                      <i class="fa fa-google-plus"></i>
+                    <a href="#" style="background: #0068bf;">
+                      <v-icon name="brands/playstation" scale="2"/>
                     </a>
                   </li>
                   <li>
-                    <a target="_blank" href="#">
-                      <i class="fa fa-instagram" aria-hidden="true"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="#">
-                      <i class="fa fa-linkedin" aria-hidden="true"></i>
+                    <a href="#" style="background: #e30514;">
+                      <v-icon name="brands/nintendo-switch" aria-hidden="true" scale="2"/>
                     </a>
                   </li>
                 </ul>
@@ -342,9 +338,7 @@
                   </li>
                 </ul>
               </div>
-              <div class="single-widget banner-widget">
-                <img class="img-fluid" src="img/banner.jpg" alt="">
-              </div>
+
               <div class="single-widget tags-widget">
                 <h4 class="widget-title">Tags</h4>
                 <ul>

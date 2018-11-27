@@ -46,8 +46,6 @@
     font-size: 22px;
   }
 
-
-
   .contact-wrap h3 {
     font-size: 20px;
   }
@@ -191,6 +189,9 @@
     padding: 32px 0;
   }
 
+  .blog-lists-section .single-blog-post .post-thumb img,.blog-details .post-thumb img{
+    height: 250px;
+  }
   .banner-section {
     min-height: 680px !important;
   }

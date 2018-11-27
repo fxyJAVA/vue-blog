@@ -6,25 +6,26 @@
           <div class="blog-details">
             <div class="post-thumb relative">
               <div class="overlay overlay-bg"></div>
-              <img class="img-fluid" src="../../assets/test2.jpg" alt="">
+              <img class="img-fluid" src="../../assets/test5.png" alt="">
               <div class="specialTags">
               <h1 style="margin:0;color: #ffffff;">Awesome Design</h1>
                 <ul class="tags" style="padding: 18px 0 0">
                   <li>
-                    <v-icon name="regular/eye"></v-icon>
+                    <v-icon name="regular/eye" scale="1.2"/>
                     浏览&nbsp;{{visit}}
                   </li>
                   <li>
-                    <v-icon name="comment"></v-icon>
+                    <v-icon name="regular/comment" scale="1.2"/>
                     评论&nbsp;{{comment}}
                   </li>
                   <li>
-                    <v-icon name="bookmark"></v-icon>
+                    <v-icon name="regular/bookmark" scale="1.2"/>
                     <a href="#">Fashion</a></li>
                   <li>
-                    <v-icon name="bookmark"></v-icon>
+                    <v-icon name="regular/folder" scale="1.2"/>
                     <a href="#">Music</a></li>
                 </ul>
+                <h4 style="padding-top: 10px;color: #ffffff;display: inline-flex;"><v-icon name="cat" scale="1.2"/>&nbsp;发布于{{publish}}</h4>
               </div>
             </div>
             <div class="post-details">
@@ -63,7 +64,7 @@
                   that they cannot foresee the pain and trouble that are bound to ensue; and equal blame
                   belongs to those who fail in their duty through weakness
                 </p>
-              <center><strong>由<router-link to="/about">黑鸦</router-link>最后编辑于2018-10-10</strong></center>
+              <center><v-icon name="pencil-alt" scale="1.4"/><strong>由<router-link to="/about">黑鸦</router-link>最后编辑于2018-10-10</strong></center>
             </div>
           </div>
           <div class="comment-wrap">
@@ -153,7 +154,8 @@
     data() {
       return {
         visit: 0,
-        comment: 0
+        comment: 0,
+        publish: '2018-10-10'
       }
     }
   }

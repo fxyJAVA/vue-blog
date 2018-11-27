@@ -31,16 +31,21 @@
                   <span class="bottom"></span>
                 </div>
               </div>
-
+              <!--我-->
+              <div class="myinfo" v-if="flag2">
+                <img src="../../assets/myhead.jpg" alt="">
+                <p><img src="../../assets/feather.png">黑鸦</p>
+                <p>“BURST LINK！”</p>
+              </div>
               <!-- Nav Start -->
               <div class="dopenav">
                 <ul id="nav">
                   <li>
-                    <router-link to="/home"><v-icon name="landmark"></v-icon>首页</router-link>
+                    <router-link to="/home"><v-icon name="home" scale="1.2"/>&nbsp;首页</router-link>
                   </li>
                   <li class="cn-dropdown-item has-down" :class="flag31?'active':''">
 
-                    <a href="#" @click="ddtrigger1"><v-icon name="cannabis"/>归档</a>
+                    <a href="#" @click="ddtrigger1"><v-icon name="cannabis" scale="1.2"/>&nbsp;归档</a>
                     <ul class="dropdown" :style="{display: flag31?'none':'block'}">
                       <li><a href="#">技术</a></li>
                       <li><a href="#">日常</a></li>
@@ -49,7 +54,7 @@
                     </ul>
                   </li>
                   <li class="cn-dropdown-item has-down" :class="flag32?'active':''">
-                    <a href="#" @click="ddtrigger2"><v-icon name="list-alt"></v-icon>清单</a>
+                    <a href="#" @click="ddtrigger2"><v-icon name="regular/list-alt" scale="1.2"></v-icon>&nbsp;清单</a>
                     <ul class="dropdown" :style="{display: flag32?'none':'block'}">
                       <li><a href="#">Blog List</a></li>
                       <li><a href="#">Single Blog</a></li>
@@ -58,13 +63,39 @@
 
                   </li>
                   <li>
-                    <router-link to="/board"><v-icon name="edit"></v-icon>留言板</router-link>
+                    <router-link to="/board"><v-icon name="edit" scale="1.2"></v-icon>&nbsp;留言板</router-link>
                   </li>
                   <li>
-                    <router-link to="/friend"><v-icon name="link"></v-icon>友链</router-link>
+                    <router-link to="/friend"><v-icon name="link" scale="1.2"></v-icon>&nbsp;友链</router-link>
                   </li>
                   <li>
-                    <router-link to="about"><v-icon name="regular/sun"></v-icon>关于</router-link>
+                    <router-link to="about"><v-icon name="regular/sun" scale="1.2"></v-icon>&nbsp;关于</router-link>
+                  </li>
+                </ul>
+              </div>
+              <hr v-if="flag2"/>
+              <!--互动-->
+              <div class="interaction" v-if="flag2">
+                <ul>
+                  <li>
+                    <a href="https://github.com/fxyJAVA" style="color: #ffffff;background: #000;">
+                      <v-icon name="brands/github" scale="2"/>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" style="background: #92d027;">
+                      <v-icon name="regular/envelope" scale="2" />
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" style="background: #0068bf;">
+                      <v-icon name="brands/playstation" scale="2"/>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" style="background: #e30514;">
+                      <v-icon name="brands/nintendo-switch" aria-hidden="true" scale="2"/>
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -240,5 +271,53 @@
     background: #ffa500;
     position: fixed;
     z-index: 9999;
+  }
+  .myinfo {
+    padding-top: 40px;
+    background: linear-gradient(to right, #f51dac 0%, #691cff 100%);
+  }
+  .myinfo>img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    display: block;
+    box-sizing: border-box;
+    border: 1px dashed #ffa500;
+  }
+  .myinfo>p {
+    text-align: center;
+    padding: 10px 0;
+  }
+  .myinfo p:nth-child(2) {
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .myinfo p:last-child {
+    font-size: 20px;
+    font-weight: 900;
+    font-style: italic;
+  }
+  .interaction {
+    padding: 10px 10px;
+    widoth: 100%;
+    height: auto;
+    position: relative;
+  }
+
+
+  .interaction ul li a {
+    width: 42px;
+    height: 42px;
+    text-align: center;
+    line-height: 42px;
+    float: left;
+    margin-left: 20px;
+    margin-bottom: 20px;
   }
 </style>
