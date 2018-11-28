@@ -310,7 +310,11 @@
     position: relative;
   }
 
-
+  .dope-nav-container:hover {
+    background-color: #fffffff2;
+    transition: all 0.5s;
+    box-shadow: 0px 9px 40px -13px rgba(0, 0, 0, 0.75);
+  }
   .interaction ul li a {
     width: 42px;
     height: 42px;
@@ -321,5 +325,12 @@
     margin-bottom: 20px;
     color: #ffffff;
     border-radius: 5px;
+  }
+  /*响应式*/
+  @media (max-width: 991px) {
+    .dopenav ul li a{
+      font-size: 15px;
+      line-height: 40px;
+    }
   }
 </style>

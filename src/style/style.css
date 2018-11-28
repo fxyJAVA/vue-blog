@@ -1483,7 +1483,7 @@ td, th {
 }
 
 .banner-section2 {
-  background: url(../assets/thumbnail-4.jpg);
+  background: url(../assets/pp.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -2845,7 +2845,7 @@ td, th {
 /*  Stat Styles
 /* =================================== */
 .stat-section {
-  background: #691cff;
+  background: rgba(105, 28, 255,.3);
 }
 .stat-section h1, .stat-section h4 {
   color: #fff;

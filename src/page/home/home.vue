@@ -28,10 +28,20 @@
                 </div>
                 <div class="post-details">
                   <ul class="tags">
-                    <li><v-icon name="eye"></v-icon>浏览&nbsp;{{visit}}</li>
-                    <li><v-icon name="regular/comment"></v-icon>评论&nbsp;{{comment}}</li>
-                    <li><v-icon name="regular/bookmark"></v-icon><a href="#">Fashion</a></li>
-                    <li><v-icon name="regular/bookmark"></v-icon><a href="#">Music</a></li>
+                    <li>
+                      <v-icon name="eye"></v-icon>
+                      浏览&nbsp;{{visit}}
+                    </li>
+                    <li>
+                      <v-icon name="regular/comment"></v-icon>
+                      评论&nbsp;{{comment}}
+                    </li>
+                    <li>
+                      <v-icon name="regular/bookmark"></v-icon>
+                      <a href="#">Fashion</a></li>
+                    <li>
+                      <v-icon name="regular/bookmark"></v-icon>
+                      <a href="#">Music</a></li>
                   </ul>
                   <router-link to="article">
                     <h1>To shewing another demands to. </h1>
@@ -63,10 +73,20 @@
                 </div>
                 <div class="post-details">
                   <ul class="tags">
-                    <li><v-icon name="eye"></v-icon>浏览&nbsp;{{visit}}</li>
-                    <li><v-icon name="regular/comment"></v-icon>评论&nbsp;{{comment}}</li>
-                    <li><v-icon name="regular/bookmark"></v-icon><a href="#">美食</a></li>
-                    <li><v-icon name="regular/bookmark"></v-icon><a href="#">音乐</a></li>
+                    <li>
+                      <v-icon name="eye"></v-icon>
+                      浏览&nbsp;{{visit}}
+                    </li>
+                    <li>
+                      <v-icon name="regular/comment"></v-icon>
+                      评论&nbsp;{{comment}}
+                    </li>
+                    <li>
+                      <v-icon name="regular/bookmark"></v-icon>
+                      <a href="#">美食</a></li>
+                    <li>
+                      <v-icon name="regular/bookmark"></v-icon>
+                      <a href="#">音乐</a></li>
                   </ul>
                   <a href="single-blog.html">
                     <h1>A wonderful serenity has taken possession of my entire soul.</h1>
@@ -98,10 +118,20 @@
                 </div>
                 <div class="post-details">
                   <ul class="tags">
-                    <li><v-icon name="eye"></v-icon>浏览&nbsp;{{visit}}</li>
-                    <li><v-icon name="regular/comment"></v-icon>评论&nbsp;{{comment}}</li>
-                    <li><v-icon name="regular/bookmark"></v-icon><a href="#">学习</a></li>
-                    <li><v-icon name="regular/bookmark"></v-icon><a href="#">梦想</a></li>
+                    <li>
+                      <v-icon name="eye"></v-icon>
+                      浏览&nbsp;{{visit}}
+                    </li>
+                    <li>
+                      <v-icon name="regular/comment"></v-icon>
+                      评论&nbsp;{{comment}}
+                    </li>
+                    <li>
+                      <v-icon name="regular/bookmark"></v-icon>
+                      <a href="#">学习</a></li>
+                    <li>
+                      <v-icon name="regular/bookmark"></v-icon>
+                      <a href="#">梦想</a></li>
                   </ul>
                   <a href="single-blog.html">
                     <h1>Awesome Design His many legs, pitifully thin compared with.</h1>
@@ -134,10 +164,20 @@
                 <div class="post-details">
                   <ul class="tags">
                     <ul class="tags">
-                      <li><v-icon name="eye"></v-icon>浏览&nbsp;{{visit}}</li>
-                      <li><v-icon name="regular/comment"></v-icon>评论&nbsp;{{comment}}</li>
-                      <li><v-icon name="regular/bookmark"></v-icon><a href="#">趋势</a></li>
-                      <li><v-icon name="regular/bookmark"></v-icon><a href="#">技术</a></li>
+                      <li>
+                        <v-icon name="eye"></v-icon>
+                        浏览&nbsp;{{visit}}
+                      </li>
+                      <li>
+                        <v-icon name="regular/comment"></v-icon>
+                        评论&nbsp;{{comment}}
+                      </li>
+                      <li>
+                        <v-icon name="regular/bookmark"></v-icon>
+                        <a href="#">趋势</a></li>
+                      <li>
+                        <v-icon name="regular/bookmark"></v-icon>
+                        <a href="#">技术</a></li>
                     </ul>
                   </ul>
                   <router-link to="article">
@@ -170,10 +210,20 @@
                 </div>
                 <div class="post-details">
                   <ul class="tags">
-                    <li><v-icon name="eye"></v-icon>浏览&nbsp;{{visit}}</li>
-                    <li><v-icon name="regular/comment"></v-icon>评论&nbsp;{{comment}}</li>
-                    <li><v-icon name="regular/bookmark"></v-icon><a href="#">电影</a></li>
-                    <li><v-icon name="regular/bookmark"></v-icon><a href="#">重温</a></li>
+                    <li>
+                      <v-icon name="eye"></v-icon>
+                      浏览&nbsp;{{visit}}
+                    </li>
+                    <li>
+                      <v-icon name="regular/comment"></v-icon>
+                      评论&nbsp;{{comment}}
+                    </li>
+                    <li>
+                      <v-icon name="regular/bookmark"></v-icon>
+                      <a href="#">电影</a></li>
+                    <li>
+                      <v-icon name="regular/bookmark"></v-icon>
+                      <a href="#">重温</a></li>
                   </ul>
                   <a href="single-blog.html">
                     <h1>To take a trivial example, which of us ever undertakes.</h1>
@@ -202,20 +252,20 @@
                 <!--TODO-->
                 <ul class="pagination">
                   <!--<li class="page-item disabled">-->
-                    <!--<a class="page-link" href="#" tabindex="-1">-->
-                      <!--<i class="ti ti-angle-left"></i>-->
-                    <!--</a>-->
+                  <!--<a class="page-link" href="#" tabindex="-1">-->
+                  <!--<i class="ti ti-angle-left"></i>-->
+                  <!--</a>-->
                   <!--</li>-->
                   <!--<li class="page-item"><a class="page-link" href="#">1</a></li>-->
                   <!--<li class="page-item active">-->
-                    <!--<a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>-->
+                  <!--<a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>-->
                   <!--</li>-->
                   <!--<li class="page-item"><a class="page-link" href="#">3</a></li>-->
                   <!--<li class="page-item"><a class="page-link" href="#">4</a></li>-->
                   <!--<li class="page-item">-->
-                    <!--<a class="page-link" href="#">-->
-                      <!--<i class="ti ti-angle-right"></i>-->
-                    <!--</a>-->
+                  <!--<a class="page-link" href="#">-->
+                  <!--<i class="ti ti-angle-right"></i>-->
+                  <!--</a>-->
                   <!--</li>-->
                 </ul>
               </nav>
@@ -227,7 +277,8 @@
                 <h4 class="widget-title">Search Here</h4>
                 <div class="sidebar-form">
                   <form action="#" class="relative">
-                    <input type="text" placeholder="Search" onfocus="this.placeholder=''" onblur="this.placeholder='Search'">
+                    <input type="text" placeholder="Search" onfocus="this.placeholder=''"
+                           onblur="this.placeholder='Search'">
                     <button type="submit">
                       <v-icon name="search" scale="1.7"/>
                     </button>
@@ -301,7 +352,7 @@
                   </li>
                   <li>
                     <a href="#" style="background: #92d027;">
-                      <v-icon name="regular/envelope" scale="2" />
+                      <v-icon name="regular/envelope" scale="2"/>
                     </a>
                   </li>
                   <li>
@@ -358,10 +409,13 @@
         </div>
       </div>
     </section>
+
+
   </div>
 </template>
 
 <script>
+
   export default {
     name: "home",
     props: ['screenWidth'],
@@ -370,10 +424,11 @@
         heightFlag: false,
         visit: 100,
         comment: 100,
+        fullHeight: document.documentElement.clientHeight
       }
     },
     created() {
-      if(this.screenWidth<991) {
+      if (this.screenWidth < 991) {
         this.heightFlag = true
       }
     },
@@ -386,10 +441,12 @@
         }
       }
     }
+
   }
 </script>
 
 <style scoped>
+
   @import '../../style/style.css';
   @import '../../style/responsive.css';
 
