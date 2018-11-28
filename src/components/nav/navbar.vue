@@ -5,7 +5,7 @@
       <div class="container">
         <div class="row">
           <!-- dope Menu -->
-          <nav class="dope-navbar justify-content-between" id="dopeNav">
+          <nav class="animated 1 bounce dope-navbar justify-content-between" id="dopeNav">
 
             <!-- Logo -->
             <a class="nav-brand" href="#">
@@ -69,7 +69,7 @@
                     <router-link to="/friend"><v-icon name="link" scale="1.2"></v-icon>&nbsp;友链</router-link>
                   </li>
                   <li>
-                    <router-link to="about"><v-icon name="regular/sun" scale="1.2"></v-icon>&nbsp;关于</router-link>
+                    <router-link to="/about"><v-icon name="regular/sun" scale="1.2"></v-icon>&nbsp;关于</router-link>
                   </li>
                 </ul>
               </div>

@@ -380,7 +380,7 @@ td, th {
   background-size: cover;
 }
 .page-top-banner .overlay-bg {
-  opacity: .8;
+  opacity: 1;
 }
 .page-top-banner h1 {
   color: #000;
@@ -2358,9 +2358,9 @@ td, th {
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
 }
-.blog-lists-section .social-widget li a:hover {
-  background: #691cff;
-}
+/*.blog-lists-section .social-widget li a:hover {*/
+  /*background: #691cff;*/
+/*}*/
 .blog-lists-section .archive-widget ul li {
   margin-bottom: 10px;
   border-bottom: 1px solid #eee;

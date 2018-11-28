@@ -346,22 +346,22 @@
                 <h4 class="widget-title">互动</h4>
                 <ul>
                   <li>
-                    <a href="https://github.com/fxyJAVA">
+                    <a href="https://github.com/fxyJAVA" @mouseenter="addClass($event)" @mouseleave="removeClass($event)">
                       <v-icon name="brands/github" scale="2"/>
                     </a>
                   </li>
                   <li>
-                    <a href="#" style="background: #92d027;">
+                    <a href="#" style="background: #92d027;" @mouseenter="addClass($event)" @mouseleave="removeClass($event)">
                       <v-icon name="regular/envelope" scale="2"/>
                     </a>
                   </li>
                   <li>
-                    <a href="#" style="background: #0068bf;">
+                    <a href="#" style="background: #0068bf;" @mouseenter="addClass($event)" @mouseleave="removeClass($event)">
                       <v-icon name="brands/playstation" scale="2"/>
                     </a>
                   </li>
                   <li>
-                    <a href="#" style="background: #e30514;">
+                    <a href="#" style="background: #e30514;" @mouseenter="addClass($event)" @mouseleave="removeClass($event)">
                       <v-icon name="brands/nintendo-switch" aria-hidden="true" scale="2"/>
                     </a>
                   </li>
@@ -440,8 +440,17 @@
           this.heightFlag = false
         }
       }
+    },
+    methods: {
+      addClass(e) {
+        var tar = e.currentTarget
+        $(tar).addClass('animated tada')
+      },
+      removeClass(e) {
+        var tar = e.currentTarget
+        $(tar).removeClass('animated tada')
+      }
     }
-
   }
 </script>
 
