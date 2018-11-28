@@ -3044,18 +3044,6 @@ td, th {
   color: #691cff;
 }
 
-/*白布遮挡*/
-.pattern-center::after {
-  content: '';
-  width: 150%;
-  height: 4.375rem;
-  background: #fff;
-  left: -25%;
-  bottom: -20px;
-  border-radius:100%;
-  position: absolute;
-}
-
 /*评论数,阅读数*/
 .about {
 

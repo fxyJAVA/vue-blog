@@ -12,7 +12,6 @@
             <a class="video-btn primary-btn" href="#">About More</a>
           </div>
         </div>
-        <span class="pattern-center" v-if="heightFlag"></span>
       </div>
     </section>
 

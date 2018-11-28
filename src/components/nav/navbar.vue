@@ -78,7 +78,7 @@
               <div class="interaction" v-if="flag2">
                 <ul>
                   <li>
-                    <a href="https://github.com/fxyJAVA" style="color: #ffffff;background: #000;">
+                    <a href="https://github.com/fxyJAVA" style="background: #000;">
                       <v-icon name="brands/github" scale="2"/>
                     </a>
                   </li>
@@ -319,5 +319,7 @@
     float: left;
     margin-left: 20px;
     margin-bottom: 20px;
+    color: #ffffff;
+    border-radius: 5px;
   }
 </style>

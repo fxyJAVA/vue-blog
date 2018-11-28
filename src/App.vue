@@ -2,6 +2,7 @@
   <div id="app">
     <navbar :screenWidth="width"/>
     <router-view :screenWidth="width"/>
+    <live2d/>
     <last/>
   </div>
 </template>
@@ -9,13 +10,15 @@
 <script>
   import navbar from '@/components/nav/navbar'
   import last from './page/footer/footer'
+  import live2d from '@/components/live2d/live2d'
   import POWERMODE from 'html-activate-power-mode'
   document.body.addEventListener('input', POWERMODE);
   export default {
     name: 'App',
     components: {
       navbar,
-      last
+      last,
+      live2d
     },
     data() {
       return {
