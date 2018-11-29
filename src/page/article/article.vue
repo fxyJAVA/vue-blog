@@ -8,7 +8,7 @@
               <div class="overlay overlay-bg"></div>
               <img class="img-fluid" src="../../assets/test5.png" alt="">
               <div class="specialTags">
-              <h1 style="margin:0;color: #ffffff;">Awesome Design</h1>
+                <h1 style="margin:0;color: #ffffff;">Awesome Design</h1>
                 <ul class="tags" style="padding: 18px 0 0">
                   <li>
                     <v-icon name="regular/eye" scale="1.2"/>
@@ -25,46 +25,52 @@
                     <v-icon name="regular/folder" scale="1.2"/>
                     <a href="#">Music</a></li>
                 </ul>
-                <h4 style="padding-top: 10px;color: #ffffff;display: inline-flex;"><v-icon name="cat" scale="1.2"/>&nbsp;发布于{{publish}}</h4>
+                <h4 style="padding-top: 10px;color: #ffffff;display: inline-flex;">
+                  <v-icon name="cat" scale="1.2"/>&nbsp;发布于{{publish}}
+                </h4>
               </div>
             </div>
             <div class="post-details">
-                <center><strong>- I -</strong></center>
-                <p>
-                  Received shutters expenses ye he pleasant. Drift as blind above at up. No up simple
-                  county stairs do should praise as. Drawings sir gay together landlord had law
-                  smallest. Formerly welcomed attended declared met say unlocked. Jennings outlived
-                  no dwelling denoting in peculiar as he believed. Behaviour excellent middleton be
-                  as it curiosity departure ourselves.
-                </p>
-               <center><strong>- II -</strong></center>
-                <p>
-                  At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                  voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                  occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt
-                  mollitia animi, id est laborum et dolorum fuga.
-                </p>
-                <blockquote class="blockquote">
-                  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                    eiusmod teminc ididunt ut labore et dolore.Lorem ipsum
-                    dolor sit amet.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                    eiusmod temporSed ut perspiciatis unde omnis natus error sit voluptatem accusantium
-                    doloremque laudantium.</p>
-                </blockquote>
+              <center><strong>- I -</strong></center>
+              <p>
+                Received shutters expenses ye he pleasant. Drift as blind above at up. No up simple
+                county stairs do should praise as. Drawings sir gay together landlord had law
+                smallest. Formerly welcomed attended declared met say unlocked. Jennings outlived
+                no dwelling denoting in peculiar as he believed. Behaviour excellent middleton be
+                as it curiosity departure ourselves.
+              </p>
+              <center><strong>- II -</strong></center>
+              <p>
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
+                occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt
+                mollitia animi, id est laborum et dolorum fuga.
+              </p>
+              <blockquote class="blockquote">
+                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                  eiusmod teminc ididunt ut labore et dolore.Lorem ipsum
+                  dolor sit amet.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                  eiusmod temporSed ut perspiciatis unde omnis natus error sit voluptatem accusantium
+                  doloremque laudantium.</p>
+              </blockquote>
               <center><strong>- III -</strong></center>
-                <p>
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                  laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                  architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-                  sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-                  voluptatem sequi nesciunt.
+              <p>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
+                sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+                voluptatem sequi nesciunt.
 
-                  On the other hand, we denounce with righteous indignation and dislike men who are so
-                  beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire,
-                  that they cannot foresee the pain and trouble that are bound to ensue; and equal blame
-                  belongs to those who fail in their duty through weakness
-                </p>
-              <center><v-icon name="pencil-alt" scale="1.4"/><strong>由<router-link to="/about">黑鸦</router-link>最后编辑于2018-10-10</strong></center>
+                On the other hand, we denounce with righteous indignation and dislike men who are so
+                beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire,
+                that they cannot foresee the pain and trouble that are bound to ensue; and equal blame
+                belongs to those who fail in their duty through weakness
+              </p>
+              <center>
+                <v-icon name="pencil-alt" scale="1.4"/>
+                <strong>由
+                  <router-link to="/about">黑鸦</router-link>
+                  最后编辑于2018-10-10</strong></center>
             </div>
           </div>
           <div class="comment-wrap">
@@ -72,30 +78,76 @@
             <div class="media comments">
               <img class="mr-3" src="../../assets/2.jpg" alt="Generic placeholder image">
               <div class="media-body">
-                <h5 class="mt-0">Alen Doe</h5>
+                <h5 class="mt-0"><a href="#">黑雪姬</a></h5>
+                <div class="info">
+                  <time datetime="2018-11-22">2018-9-9</time>
+                  <span data-v-49843f54="" class="useragent-info">
+                        ( <img data-v-49843f54=""
+                               src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/img/Sakura/images/ua/svg/chrome.svg">&nbsp;Google Chrome 127.0.0.1&nbsp;&nbsp;
+                        <img data-v-49843f54=""
+                             src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/img/Sakura/images/ua/svg/windows_win10.svg">&nbsp;Windows 10 )
+                      </span>
+                  &nbsp;广东省广州市 联通
+                </div>
                 <p>
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-                  sollicitudin. Cras purus odio, vestibulum in
-                  vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
-                  fringilla.
-                  Donec lacinia congue felis in faucibus.
+                  你好呀
                 </p>
                 <div class="comment-buttons">
-                  <a href="#" class="primary-btn black-btn">Replay</a>
+                  <a href="#" class="btn-sm">Replay</a>
                 </div>
                 <div class="media mt-3 replay-comment">
-                  <a class="pr-3" href="#">
-                    <img src="../../assets/5.jpg" alt="Generic placeholder image">
-                  </a>
+                  <img src="../../assets/5.jpg" alt="Generic placeholder image">
                   <div class="media-body">
-                    <h5 class="mt-0">Justin Doe</h5>
+                    <h5 class="mt-0"><a href="#">有田春雪</a></h5>
+                    <div class="info">
+                      <time datetime="2018-11-22">2018-9-9</time>
+                      <span data-v-49843f54="" class="useragent-info">
+                        ( <img data-v-49843f54=""
+                               src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/img/Sakura/images/ua/svg/chrome.svg">&nbsp;Google Chrome 127.0.0.1&nbsp;&nbsp;
+                        <img data-v-49843f54=""
+                             src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/img/Sakura/images/ua/svg/windows_win10.svg">&nbsp;Windows 10 )
+                      </span>
+                      &nbsp;广东省广州市 联通
+                    </div>
                     <p>
-                      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
+                      <a href="#">@黑雪姬</a>&nbsp;你好呀
+                      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
+                      sollicitudin. Cras purus odio, vestibulum in
+                      vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
+                      fringilla.
+                      Donec lacinia congue felis in faucibus.
+                      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
+                      sollicitudin. Cras purus odio, vestibulum in
+                      vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
+                      fringilla.
+                      Donec lacinia congue felis in faucibus.
+                    </p>
+                    <div class="comment-buttons">
+                      <a href="#" class="btn-sm">Replay</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="media mt-3 replay-comment">
+                    <img src="../../assets/5.jpg" alt="Generic placeholder image">
+                  <div class="media-body">
+                    <h5 class="mt-0"><a href="#">Justin Doe</a></h5>
+                    <div class="info">
+                      <time datetime="2018-11-22">2018-9-9</time>
+                      <span data-v-49843f54="" class="useragent-info">
+                        ( <img data-v-49843f54=""
+                               src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/img/Sakura/images/ua/svg/chrome.svg">&nbsp;Google Chrome 127.0.0.1&nbsp;&nbsp;
+                        <img data-v-49843f54=""
+                             src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/img/Sakura/images/ua/svg/windows_win10.svg">&nbsp;Windows 10 )
+                      </span>
+                      &nbsp;广东省广州市 联通
+                    </div>
+                    <p>
+                      <a href="#">@黑雪姬</a>&nbsp;Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
                       ante sollicitudin. Cras purus odio, vestibulum in
                       vulputate at, tempus viverra turpis.
                     </p>
                     <div class="comment-buttons">
-                      <a href="#" class="primary-btn black-btn">Replay</a>
+                      <a href="#" class="btn-sm">Replay</a>
                     </div>
                   </div>
                 </div>
@@ -104,7 +156,17 @@
             <div class="media comments">
               <img class="mr-3" src="../../assets/7.png" alt="Generic placeholder image">
               <div class="media-body">
-                <h5 class="mt-0">Jon Doe</h5>
+                <h5 class="mt-0"><a href="#">Jon Doe</a></h5>
+                <div class="info">
+                  <time datetime="2018-11-22">2018-9-9</time>
+                  <span data-v-49843f54="" class="useragent-info">
+                        ( <img data-v-49843f54=""
+                               src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/img/Sakura/images/ua/svg/chrome.svg">&nbsp;Google Chrome 127.0.0.1&nbsp;&nbsp;
+                        <img data-v-49843f54=""
+                             src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/img/Sakura/images/ua/svg/windows_win10.svg">&nbsp;Windows 10 )
+                      </span>
+                  &nbsp;广东省广州市 联通
+                </div>
                 <p>
                   Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
                   sollicitudin. Cras purus odio, vestibulum in
@@ -113,7 +175,7 @@
                   Donec lacinia congue felis in faucibus.
                 </p>
                 <div class="comment-buttons">
-                  <a href="#" class="primary-btn black-btn">Replay</a>
+                  <a href="#" class="btn-sm">Replay</a>
                 </div>
               </div>
             </div>
@@ -173,11 +235,13 @@
     overflow: hidden;
     max-width: 900px;
   }
+
   .post-thumb img {
     -webkit-transform: scale(1.0);
     -ms-transform: scale(1.0);
     transform: scale(1.0);
   }
+
   .blog-details:hover .post-thumb img {
     -webkit-transform: scale(1.0);
     -ms-transform: scale(1.0);
@@ -187,25 +251,18 @@
   .blog-details .post-thumb .overlay-bg {
     background: transparent;
   }
- .specialTags {
+
+  .specialTags {
     max-width: 900px;
-   font-size: 16px;
-   padding: 0 10px;
-   margin-left: auto;
-   margin-right: auto;
-   text-align: left;
-   top: auto;
-   bottom: 20px;
-   color: #ffffff;
-   position: absolute;
- }
-  @media (max-width: 768px) {
-    .specialTags h1 {
-      font-size: 26px;
-    }
+    font-size: 16px;
+    padding: 0 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    top: auto;
+    bottom: 20px;
+    color: #ffffff;
+    position: absolute;
   }
-  .post-details p {
-    margin-top: 15px;
-    margin-bottom: 22px;
-  }
+
 </style>

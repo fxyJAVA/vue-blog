@@ -1,7 +1,13 @@
 <template>
   <div class="container">
-    <div></div>
-    <h1>友情链接</h1>
+    <div class="top clearfix">
+      <img src="../../assets/king.jpg" alt="">
+      <header class="">
+        <h1>友情链接</h1>
+        <h2>俺は、お前と 出会いて 良いかった</h2>
+      </header>
+    </div>
+    <h1>xxxxxxxxxxxxxxx</h1>
     <ul class="clearfix row friends">
       <li class="col-md-4 col-sm-6">
         <div class="friend">
@@ -94,6 +100,9 @@
         </div>
       </li>
     </ul>
+    <div>
+      <h1>申请友链</h1>
+    </div>
   </div>
 </template>
 
@@ -105,16 +114,19 @@
 
 <style scoped>
   .container {
-    padding: 0;
-    padding-top: 70px;
+    padding: 95px 0;
     max-width: 900px;
-    height: 2000px;
+    background: rgba(255,255,255,.5);
   }
 
   ul.friends {
     background: rgba(255,255,255,1);
-    padding: 0;
-    padding-top: 20px;
+    min-height: 285px;
+    padding: 20px 0 0;
+
+    margin: 40px 10px 0;
+    border: 2px solid #0c5460;
+    border-radius: 10px;
   }
 
   ul.friends li {
@@ -165,16 +177,67 @@
     width: 10rem;
   }
 
+  /*图片部分样式*/
+  .top {
+    position: relative;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  .top img {
+    margin: 0;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .top header {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 10px #000;
+    z-index: 1;
+  }
+
+  .top > header > h1 {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 500;
+    width: 80%;
+    margin: auto;
+    padding: 0;
+    border: 0;
+  }
+
+  .top h2 {
+    opacity: 0;
+    transition: all 1s ease-out;
+  }
+  .top h2:hover {
+    opacity: 1;
+  }
+
   @media (max-width: 576px) {
     ul.friends li {
       padding: 20px 0;
+    }
+    .top > header > h1 {
+      font-size: 28px;
+      margin-bottom: 2px;
+    }
+    .top > header > h2 {
+      font-size: 18px;
     }
     .friend a {
       width: 60%;
     }
     .friend a img {
-      width: 75px;
-      height: 75px;
+      width: 65px;
+      height: 65px;
     }
   }
 </style>

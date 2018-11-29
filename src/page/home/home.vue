@@ -19,6 +19,8 @@
     <section class="blog-lists-section section-gap-full">
       <div class="container">
         <div class="row">
+
+
           <div class="col-lg-8">
             <div class="blog-lists">
               <div class="single-blog-post">
@@ -27,6 +29,9 @@
                   <img class="img-fluid" src="../../assets/blog.jpg" alt="">
                 </div>
                 <div class="post-details">
+                  <router-link to="article">
+                    <h1>To shewing another demands to. </h1>
+                  </router-link>
                   <ul class="tags">
                     <li>
                       <v-icon name="eye"></v-icon>
@@ -43,9 +48,7 @@
                       <v-icon name="regular/bookmark"></v-icon>
                       <a href="#">Music</a></li>
                   </ul>
-                  <router-link to="article">
-                    <h1>To shewing another demands to. </h1>
-                  </router-link>
+
                   <p>
                     Received shutters expenses ye he pleasant. Drift as blind above at up. No up simple
                     county stairs do should praise as. Drawings sir gay together landlord had law
@@ -72,6 +75,9 @@
                   <img class="img-fluid" src="../../assets/test2.jpg" alt="">
                 </div>
                 <div class="post-details">
+                  <a href="single-blog.html">
+                    <h1>A wonderful serenity has taken possession of my entire soul.</h1>
+                  </a>
                   <ul class="tags">
                     <li>
                       <v-icon name="eye"></v-icon>
@@ -88,9 +94,6 @@
                       <v-icon name="regular/bookmark"></v-icon>
                       <a href="#">音乐</a></li>
                   </ul>
-                  <a href="single-blog.html">
-                    <h1>A wonderful serenity has taken possession of my entire soul.</h1>
-                  </a>
                   <p>
                     Received shutters expenses ye he pleasant. Drift as blind above at up. No up simple
                     county stairs do should praise as. Drawings sir gay together landlord had law
@@ -117,6 +120,9 @@
                   <img class="img-fluid" src="../../assets/test5.png" alt="">
                 </div>
                 <div class="post-details">
+                  <a href="single-blog.html">
+                    <h1>Awesome Design His many legs</h1>
+                  </a>
                   <ul class="tags">
                     <li>
                       <v-icon name="eye"></v-icon>
@@ -133,9 +139,6 @@
                       <v-icon name="regular/bookmark"></v-icon>
                       <a href="#">梦想</a></li>
                   </ul>
-                  <a href="single-blog.html">
-                    <h1>Awesome Design His many legs, pitifully thin compared with.</h1>
-                  </a>
                   <p>
                     Received shutters expenses ye he pleasant. Drift as blind above at up. No up simple
                     county stairs do should praise as. Drawings sir gay together landlord had law
@@ -203,53 +206,8 @@
                   </div>
                 </div>
               </div>
-              <div class="single-blog-post">
-                <div class="post-thumb relative">
-                  <div class="overlay overlay-bg"></div>
-                  <img class="img-fluid" src="../../assets/test2.jpg" alt="">
-                </div>
-                <div class="post-details">
-                  <ul class="tags">
-                    <li>
-                      <v-icon name="eye"></v-icon>
-                      浏览&nbsp;{{visit}}
-                    </li>
-                    <li>
-                      <v-icon name="regular/comment"></v-icon>
-                      评论&nbsp;{{comment}}
-                    </li>
-                    <li>
-                      <v-icon name="regular/bookmark"></v-icon>
-                      <a href="#">电影</a></li>
-                    <li>
-                      <v-icon name="regular/bookmark"></v-icon>
-                      <a href="#">重温</a></li>
-                  </ul>
-                  <a href="single-blog.html">
-                    <h1>To take a trivial example, which of us ever undertakes.</h1>
-                  </a>
-                  <p>
-                    Received shutters expenses ye he pleasant. Drift as blind above at up. No up simple
-                    county stairs do should praise as. Drawings sir gay together landlord had law
-                    smallest. Formerly welcomed attended declared met say unlocked. Jennings outlived
-                    no dwelling denoting in peculiar as he believed. Behaviour excellent middleton be
-                    as it curiosity departure ourselves.
-                  </p>
-                  <div class="user-details d-flex align-items-center">
-                    <div class="user-img">
-                      <img src="../../assets/blog.jpg" alt="">
-                    </div>
-                    <div class="details">
-                      <a href="#">
-                        <h4>Phil Martinez</h4>
-                      </a>
-                      <p>April 15,2018</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <nav>
-                <!--TODO-->
+                <!--TODO 分页-->
                 <ul class="pagination">
                   <!--<li class="page-item disabled">-->
                   <!--<a class="page-link" href="#" tabindex="-1">-->
@@ -271,6 +229,9 @@
               </nav>
             </div>
           </div>
+
+
+
           <div class="col-lg-4">
             <div class="sidebar-wrap">
               <div class="single-widget search-widget">
@@ -457,9 +418,21 @@
 <style scoped>
 
   @import '../../style/style.css';
-  @import '../../style/responsive.css';
 
   .banner-section2 {
     color: #ffffff !important;
+  }
+
+  .blog-lists{
+    width: 75%;
+    margin: 0 auto 10px;
+  }
+  .post-thumb img {
+  }
+
+  @media (max-width: 768px) {
+    .blog-lists {
+      width: 100%;
+    }
   }
 </style>

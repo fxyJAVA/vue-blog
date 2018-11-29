@@ -7,6 +7,8 @@ import board from '@/page/board/board'
 import article from '@/page/article/article'
 import about from '@/page/about/about'
 import friend from '@/page/friend/friend'
+import archive from '@/page/archive/archive'
+import group from '@/page/group/group'
 
 Vue.use(Router)
 
@@ -51,6 +53,16 @@ export default new Router({
       path: '/friend',
       name: 'friend',
       component: friend
+    },
+    {
+      path: '/archive',
+      name: 'archive',
+      component: archive
+    },
+    {
+      path: '/group',
+      name: 'group',
+      component: group
     }
   ],
   scrollBehavior (to, from, savedPosition) {

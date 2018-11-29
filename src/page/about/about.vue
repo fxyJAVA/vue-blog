@@ -5,9 +5,9 @@
       <div class="overlay overlay-bg"></div>
       <div class="container">
         <div class="row section-gap-half">
-          <div class="col-lg-12 text-center">
+          <div class="col-lg-12 text-center" style="background: rgba(255,255,255,.7);border-radius: 20px">
             <h1>关于我</h1>
-            <h4>一个有着前端心做着后端的程序员</h4>
+            <h3 style="font-size: 20px;padding-bottom: 20px">お前は奴隷だ。解放を望むか？</h3>
           </div>
         </div>
       </div>
@@ -18,11 +18,8 @@
     <section class="product-detials-section section-gap-full">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 details-left aboutinfo">
-              <h1>时间轴</h1>
-          </div>
-          <div class="col-lg-4 details-right aboutme">
-            <img src="../../assets/myhead.jpg" alt="">
+          <div class="col-lg-4 details-left aboutme">
+            <img src="../../assets/myhead.jpg" alt="学姐"  whisper="“你不用刻意的去改变，因为无论你变成什么样子，我都会一直喜欢你，也会一直陪在你的身边的。”">
             <ul>
               <li><span>昵称:</span> xxx</li>
               <li><span>学校:</span> xxxxxxxxxxxxxx</li>
@@ -37,6 +34,9 @@
               should praise as. Drawings sir gay together landlord had law smallest. Formerly welcomed attended declared
               met say unlocked. Jennings outlived no dwelling denoting in peculiar.
             </p>
+          </div>
+          <div class="col-lg-8 details-right aboutinfo">
+              <h1>时间轴</h1>
           </div>
         </div>
       </div>
@@ -102,7 +102,7 @@
   @import '../../style/responsive.css';
 
   .page-top-banner .overlay-bg {
-    background: url('../../assets/p5.jpg');
+    background: url('../../assets/p5.jpg') center top;
     background-size: cover;
   }
 

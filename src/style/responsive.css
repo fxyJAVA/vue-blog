@@ -186,7 +186,7 @@
 }
 @media (max-width: 768px) {
   .section-gap-full {
-    padding: 32px 0;
+    padding: 95px 0 40px;
   }
 
   .blog-lists-section .single-blog-post .post-thumb img,.blog-details .post-thumb img{
@@ -258,6 +258,19 @@
   .contact-form-wrap textarea {
     height: 125px;
   }
+
+  .specialTags h1 {
+    font-size: 26px;
+  }
+
+  .comment-wrap .media>img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .media-body .info {
+    font-size: 12px;
+  }
 }
 @media (max-width: 736px) {
   .banner-section2 {
@@ -299,6 +312,15 @@
 
   .footer-cols, .copyright-text, #social {
     text-align: center !important;
+  }
+
+  .comment-wrap {
+    padding: 30px 0 30px 10px;
+  }
+
+  .comment-wrap .replay-comment {
+    padding-left: 40px;
+    padding-right: 5px;
   }
 }
 @media (max-width: 480px) {

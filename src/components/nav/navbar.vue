@@ -1,11 +1,10 @@
 <template>
   <header class="header-area" id="header-area">
-    <div class="scroll-line"></div>
     <div :class="[menu,flag4]" class="dope-nav-container">
       <div class="container">
         <div class="row">
           <!-- dope Menu -->
-          <nav class="animated 1 bounce dope-navbar justify-content-between" id="dopeNav">
+          <nav class="dope-navbar justify-content-between" id="dopeNav">
 
             <!-- Logo -->
             <a class="nav-brand" href="#">
@@ -33,7 +32,7 @@
               </div>
               <!--我-->
               <div class="myinfo" v-if="flag2">
-                <img src="../../assets/myhead.jpg" alt="">
+                <img src="../../assets/myhead.jpg" alt="学姐" title="“蕴藏着如此强大可能性的你，现实中却是如此的脆弱卑微得让人心痛，我的胸口就感到像被撕裂了一样。想要臣服于未来的王。但同时，又想要保护你，包容你。这样截然相反的感情不断地膨胀，等注意到的时候，眼中就只有你了。陷入了恋爱之中。”">
                 <p><img src="../../assets/feather.png">黑鸦</p>
                 <p>“BURST LINK！”</p>
               </div>
@@ -47,7 +46,7 @@
 
                     <a href="#" @click="ddtrigger1"><v-icon name="cannabis" scale="1.2"/>&nbsp;归档</a>
                     <ul class="dropdown" :style="{display: flag31?'none':'block'}">
-                      <li><a href="#">技术</a></li>
+                      <li><router-link to="/archive" a href="#">技术</router-link></li>
                       <li><a href="#">日常</a></li>
                       <li><a href="#">杂谈</a></li>
                       <span class="dd-trigger"></span>
@@ -56,7 +55,7 @@
                   <li class="cn-dropdown-item has-down" :class="flag32?'active':''">
                     <a href="#" @click="ddtrigger2"><v-icon name="regular/list-alt" scale="1.2"></v-icon>&nbsp;清单</a>
                     <ul class="dropdown" :style="{display: flag32?'none':'block'}">
-                      <li><a href="#">Blog List</a></li>
+                      <li><router-link to="/group" href="#">Blog List</router-link></li>
                       <li><a href="#">Single Blog</a></li>
                       <span class="dd-trigger"></span>
                     </ul>
@@ -111,12 +110,16 @@
 <script>
   import jQuery from 'jquery'
   let $ = jQuery
+
+
   $(window).scroll(function(){
     var wintop = $(window).scrollTop(),docheight = $(document).height(), winheight = $(window).height();
     var scrolled = (wintop/(docheight-winheight))*100;
 
     $('.scroll-line').css('width', (scrolled + '%'));
   });
+
+
   $(window).scroll(function(){
     var wintop = $(window).scrollTop(), docheight = $(document).height(), winheight = $(window).height();
     var scrolled = (wintop/(docheight-winheight))*100;
@@ -162,12 +165,6 @@
         if (defaultOpt.dropdownRtl === true) {
           navContainer.addClass('dropdown-rtl');
         }
-
-
-        //给含有子目录的标签添加cn-dropdown-item
-
-
-        // 给含有子目录的标签添加has-down
 
 
 
@@ -305,16 +302,20 @@
   }
   .interaction {
     padding: 10px 10px;
-    widoth: 100%;
+    width: 100%;
     height: auto;
     position: relative;
   }
 
+  .dope-nav-container {
+    background: transparent;
+  }
   .dope-nav-container:hover {
-    background-color: #fffffff2;
+    background-color: #ffffff;
     transition: all 0.5s;
     box-shadow: 0px 9px 40px -13px rgba(0, 0, 0, 0.75);
   }
+
   .interaction ul li a {
     width: 42px;
     height: 42px;
