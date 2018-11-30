@@ -31,7 +31,7 @@
                 </div>
               </div>
               <!--我-->
-              <div class="myinfo" v-if="flag2">
+              <div class="myinfo" v-if="menu === 'breakpoint-on'">
                 <img src="../../assets/myhead.jpg" alt="学姐" title="“蕴藏着如此强大可能性的你，现实中却是如此的脆弱卑微得让人心痛，我的胸口就感到像被撕裂了一样。想要臣服于未来的王。但同时，又想要保护你，包容你。这样截然相反的感情不断地膨胀，等注意到的时候，眼中就只有你了。陷入了恋爱之中。”">
                 <p><img src="../../assets/feather.png">黑鸦</p>
                 <p>“BURST LINK！”</p>
@@ -40,11 +40,11 @@
               <div class="dopenav">
                 <ul id="nav">
                   <li>
-                    <router-link to="/home"><v-icon name="home" scale="1.2"/>&nbsp;首页</router-link>
+                    <router-link to="/home" @click.native="navbarToggler()"><v-icon name="home" scale="1.2" />&nbsp;首页</router-link>
                   </li>
                   <li class="cn-dropdown-item has-down" :class="flag31?'active':''">
 
-                    <a href="#" @click="ddtrigger1"><v-icon name="cannabis" scale="1.2"/>&nbsp;归档</a>
+                    <a href="#"><v-icon name="cannabis" scale="1.2"/>&nbsp;归档</a>
                     <ul class="dropdown" :style="{display: flag31?'none':'block'}">
                       <li><router-link to="/archive" a href="#">技术</router-link></li>
                       <li><a href="#">日常</a></li>
@@ -53,7 +53,7 @@
                     </ul>
                   </li>
                   <li class="cn-dropdown-item has-down" :class="flag32?'active':''">
-                    <a href="#" @click="ddtrigger2"><v-icon name="regular/list-alt" scale="1.2"></v-icon>&nbsp;清单</a>
+                    <a href="#"><v-icon name="regular/list-alt" scale="1.2"></v-icon>&nbsp;清单</a>
                     <ul class="dropdown" :style="{display: flag32?'none':'block'}">
                       <li><router-link to="/group" href="#">Blog List</router-link></li>
                       <li><a href="#">Single Blog</a></li>
@@ -62,17 +62,18 @@
 
                   </li>
                   <li>
-                    <router-link to="/board"><v-icon name="edit" scale="1.2"></v-icon>&nbsp;留言板</router-link>
+                    <router-link to="/board" @click.native="navbarToggler()"><v-icon name="edit" scale="1.2"></v-icon>&nbsp;留言板</router-link>
                   </li>
                   <li>
-                    <router-link to="/friend"><v-icon name="link" scale="1.2"></v-icon>&nbsp;友链</router-link>
+                    <router-link to="/friend" @click.native="navbarToggler()"><v-icon name="link" scale="1.2"></v-icon>&nbsp;友链</router-link>
                   </li>
                   <li>
-                    <router-link to="/about"><v-icon name="regular/sun" scale="1.2"></v-icon>&nbsp;关于</router-link>
+                    <router-link to="/about" @click.native="navbarToggler()"><v-icon name="regular/sun" scale="1.2"></v-icon>&nbsp;关于</router-link>
                   </li>
                 </ul>
               </div>
               <hr v-if="flag2"/>
+
               <!--互动-->
               <div class="interaction" v-if="flag2">
                 <ul>
@@ -229,20 +230,12 @@
     },
     methods: {
       navbarToggler() {
-        this.flag2 = !this.flag2
+        if(this.menu === 'breakpoint-on') {
+          this.flag2 = !this.flag2
+        }
       },
       dopecloseIcon() {
         this.flag2 = false
-      },
-      ddtrigger1() {
-        if(this.menu === 'breakpoint-on') {
-          this.flag31 = !this.flag31
-        }
-      },
-      ddtrigger2() {
-        if(this.menu === 'breakpoint-on') {
-          this.flag32 = !this.flag32
-        }
       },
       handleScroll() {
         var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
@@ -287,6 +280,7 @@
   .myinfo>p {
     text-align: center;
     padding: 10px 0;
+    color: #000;
   }
   .myinfo p:nth-child(2) {
     margin-top: 10px;
@@ -309,11 +303,6 @@
 
   .dope-nav-container {
     background: transparent;
-  }
-  .dope-nav-container:hover {
-    background-color: #ffffff;
-    transition: all 0.5s;
-    box-shadow: 0px 9px 40px -13px rgba(0, 0, 0, 0.75);
   }
 
   .interaction ul li a {

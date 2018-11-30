@@ -3,16 +3,15 @@
     <!-- 顶部 -->
     <header id="topheader">
       <div class="background">
-        <div class="text">
-          <h1>关于我</h1>
-          <h3 style="font-size: 20px;padding-bottom: 20px">お前は奴隷だ。解放を望むか？</h3>
-        </div>
       </div>
     </header>
 
     <!--描述-->
-    <section class="product-detials-section section-gap-full">
+    <section class="product-detials-section">
       <div class="container">
+        <div class="nothome">
+          <h1 class="h1-title animated fadeIn delay-1s">お前は奴隷だ。解放を望むか？</h1>
+        </div>
         <div class="row">
           <div class="col-lg-4 details-left aboutme">
             <img src="../../assets/myhead.jpg" alt="学姐"  whisper="“你不用刻意的去改变，因为无论你变成什么样子，我都会一直喜欢你，也会一直陪在你的身边的。”">
@@ -96,7 +95,9 @@
 <style scoped>
   @import '../../style/style.css';
   @import '../../style/responsive.css';
-
+  .container {
+    padding: 70px 0;
+  }
   .page-top-banner .overlay-bg {
     background: url('../../assets/p5.jpg') center top;
     background-size: cover;
@@ -117,26 +118,12 @@
     text-align: center;
   }
 
-
-  #topheader {
-    height: 70vh;
-    position: relative;
-  }
-
   #topheader .background {
     width: 100%;
     height: 100%;
     position: relative;
-    background: url("../../assets/p5.jpg") center;
+    background: url("https://i.loli.net/2018/11/30/5c013820a9e78.jpg") center;
     background-size: cover;
 
-  }
-  .background .text{
-    position: absolute;
-    color: rgba(51, 51, 51,1);
-    top: 50%;
-    left: 50%;
-    text-align: center;
-    transform: translate(-50%,-50%);
   }
 </style>

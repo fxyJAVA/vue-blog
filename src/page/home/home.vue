@@ -3,9 +3,9 @@
     <!--顶部图片-->
     <header id="topheader">
       <div class="background" :style="{backgroundImage: 'url('+bg+')'}">
-        <div>
-          <h1>黑暗星云</h1>
-          <p></p>
+        <div class="text">
+          <h1 id="hometitle">Nega Nebulus</h1>
+          <p id="homep">前进吧，星星在你的头上闪耀哦！</p>
         </div>
       </div>
     </header>
@@ -37,7 +37,7 @@
                         <v-icon name="regular/bookmark"></v-icon>
                         <a href="#">Music</a></li>
                     </ul>
-                    <p>他说风雨中这点痛算什么，擦干泪不要哭，至少我们还有梦</p>
+                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
                     <div class="post-thumb relative">
                       <img src="../../assets/blog.jpg">
                     </div>
@@ -71,7 +71,7 @@
                         <v-icon name="regular/bookmark"></v-icon>
                         <a href="#">Music</a></li>
                     </ul>
-                    <p>他说风雨中这点痛算什么，擦干泪不要哭，至少我们还有梦</p>
+                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
                     <div class="post-thumb relative">
                       <img src="../../assets/133.jpg">
                     </div>
@@ -104,7 +104,7 @@
                         <v-icon name="regular/bookmark"></v-icon>
                         <a href="#">Music</a></li>
                     </ul>
-                    <p>他说风雨中这点痛算什么，擦干泪不要哭，至少我们还有梦</p>
+                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
                     <div class="post-thumb relative">
                       <img src="../../assets/111.jpg">
                     </div>
@@ -137,7 +137,7 @@
                         <v-icon name="regular/bookmark"></v-icon>
                         <a href="#">Music</a></li>
                     </ul>
-                    <p>他说风雨中这点痛算什么，擦干泪不要哭，至少我们还有梦</p>
+                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
                     <div class="post-thumb relative">
                       <img src="../../assets/test2.jpg">
                     </div>
@@ -326,7 +326,6 @@
 
 <style scoped>
 
-  @import '../../style/style.css';
 
   #topheader {
     color: #ffffff !important;
@@ -342,10 +341,24 @@
     box-shadow: 0 5px 10px 5px rgba(110,110,110,.4);
   }
 
-
   @media (max-width: 768px) {
     .blog-lists {
       width: 100%;
     }
+  }
+
+  #hometitle {
+    font-size: 5rem;
+    width: 100%;
+    font-weight: 300;
+    color: rgba(255,255,255,.8);
+    text-shadow: 0 0 5px #c3c3c3;
+  }
+  #homep {
+    font-size: 1.5rem;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    color: rgba(255,255,255,.8);
+    text-shadow: 0 0 5px #c3c3c3;
   }
 </style>

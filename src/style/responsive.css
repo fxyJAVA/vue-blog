@@ -271,6 +271,9 @@
   .media-body .info {
     font-size: 12px;
   }
+  .nothome .h1-title {
+    font-size: 20px;
+  }
 }
 @media (max-width: 736px) {
   .banner-section2 {
@@ -322,6 +325,12 @@
     padding-left: 40px;
     padding-right: 5px;
   }
+  #hometitle {
+    font-size: 35px!important;
+  }
+  #homep {
+    font-size: 18px!important;
+  }
 }
 @media (max-width: 480px) {
   .single-counter h2 {
@@ -345,6 +354,18 @@
   .dload-btn .primary-btn:last-child {
     margin-left: 0px !important;
     margin-top: 20px;
+  }
+  .nothome .h1-title {
+    font-size: 16px;
+  }
+  .poem-wrap {
+    max-width: 100%!important;
+  }
+  .poem-wrap #info {
+    font-size: 20px!important;
+  }
+  .poem-wrap p {
+    font-size: 14px!important;
   }
 }
 @media (max-width: 417px) {

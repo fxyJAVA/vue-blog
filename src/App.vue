@@ -2,7 +2,7 @@
   <div id="app">
     <navbar :screenWidth="width"/>
     <transition mode="out-in" enter-active-class="bounceInLeft" leave-active-class="bounceOutLeft">
-      <router-view :screenWidth="width" class="animated"/>
+      <router-view :screenWidth="width" class="animated fast"/>
     </transition>
     <live2d/>
     <last/>
@@ -43,6 +43,9 @@
 </script>
 
 <style>
+  @import './font/yahei.css';
+  @import './style/style.css';
+  @import './style/responsive.css';
   #app {
     /*height: 2000px;*/
   }
@@ -69,5 +72,6 @@
   /*}*/
   body {
     background: rgba(242, 242, 242,1)!important;
+    font-family: 微软雅黑;
   }
 </style>

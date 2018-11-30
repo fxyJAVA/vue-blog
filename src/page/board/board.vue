@@ -3,29 +3,34 @@
     <!--顶部图片-->
     <header id="topheader">
       <div class="background">
-        <h1>留言</h1>
       </div>
     </header>
 
 
     <div class="container">
       <!--诗歌-->
-      <div class="relative">
+      <div class="nothome">
+        <h1 class="h1-title animated fadeIn delay-1s">正因为有了词汇，最重要的东西才能留在我们心中。</h1>
+      </div>
+      <div class="relative poem">
+        <h1 style="padding: 20px 10px 10px 25px;font-size: 20px;"><v-icon name="book-open" scale="1.6"/>今日诗词</h1>
         <div class="poem-wrap">
-          <div class="poem-border poem-left"></div>
-          <div class="poem-border poem-right"></div>
-          <h1>一首好诗</h1>
-          <p id="info">【宋代】范仲淹《苏幕遮·怀旧》</p>
+          <p id="info">苏幕遮·怀旧</p>
+          <p><em>【宋代】范仲淹</em></p>
+          <div class="main">
           <p>碧云天，黄叶地，秋色连波，波上寒烟翠。</p>
           <p>山映斜阳天接水，芳草无情，更在斜阳外。</p>
           <p>黯乡魂，追旅思。夜夜除非，好梦留人睡。</p>
           <p>明月楼高休独倚，酒入愁肠，化作相思泪。</p>
+          </div>
         </div>
       </div>
 
+
       <!--留言-->
       <div class="comment-wrap">
-        <h3><v-icon name="regular/comments" scale="1.6"/>&nbsp;100条评论</h3>
+        <h1 style="font-size: 20px;margin-bottom: 34px;"><v-icon name="regular/comments" scale="1.6"/>&nbsp;留言斐语</h1>
+        <hr>
         <div class="media comments">
           <img class="mr-3" src="../../assets/2.jpg" alt="Generic placeholder image">
           <div class="media-body">
@@ -167,15 +172,14 @@
 </script>
 
 <style scoped>
-  @import '../../style/style.css';
-  @import '../../style/responsive.css';
 
   .container {
     padding: 0;
     max-width: 900px;
+    height: 2000px;
     margin-top: 95px;
     overflow: hidden;
-    background: rgba(255, 255, 255, 0.7);
+    background: none;
   }
 
   /*图片部分样式*/
@@ -215,14 +219,21 @@
   }
 
   /*诗歌部分样式*/
+  .poem {
+    border-radius: 20px;
+    background: url(../../assets/huawen1.jpg);
+    -webkit-background-size: cover;
+    background-size: cover;
+    margin-bottom: 120px;
+  }
   .poem-wrap {
     position: relative;
     width: 730px;
     max-width: 80%;
-    border: 3px solid #797979;
     border-top: 0;
     text-align: center;
-    margin: 80px auto;
+    margin: 0 auto;
+    padding: 20px 0;
   }
 
   .poem-border {
@@ -244,6 +255,13 @@
     font-size: 20px;
     color: #111111;
   }
+  .poem-wrap #info {
+    font-weight: 700;
+    font-size: 30px;
+  }
+  .poem-wrap .main {
+    font-weight: 600;
+  }
 
   .poem-right {
     right: 0;
@@ -253,25 +271,21 @@
     background: none;
   }
 
-  #topheader {
-    height: 70vh;
-    position: relative;
-  }
-
   #topheader .background {
     width: 100%;
     height: 100%;
     position: relative;
-    background: url("../../assets/board.jpg") center;
+    background: url("https://i.loli.net/2018/11/30/5c01202809fe7.jpg") center;
     background-size: cover;
-
   }
   .background h1 {
     position: absolute;
-    color: rgba(51, 51, 51,1);
     top: 50%;
     left: 50%;
     text-align: center;
     transform: translate(-50%,-50%);
+  }
+  .comment-wrap {
+    background: url(../../assets/huawen5.jpg);
   }
 </style>
