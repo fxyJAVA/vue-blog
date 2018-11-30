@@ -1,107 +1,109 @@
 <template>
-  <div class="container">
-    <div class="top clearfix">
-      <img src="../../assets/king.jpg" alt="">
-      <header class="">
-        <h1>友情链接</h1>
-        <h2>俺は、お前と 出会いて 良いかった</h2>
-      </header>
-    </div>
-    <h1>xxxxxxxxxxxxxxx</h1>
-    <ul class="clearfix row friends">
-      <li class="col-md-4 col-sm-6">
-        <div class="friend">
-          <a href="#">
-            <div class="float-left">
-              <img src="../../assets/test1.png" alt="">
-            </div>
-            <div class="float-left">
-              <h1>樱花庄的白猫</h1>
-              <p>
-                缘于p站，让我知道博客原来可以写的这么漂亮。
-              </p>
-            </div>
-          </a>
-        </div>
-      </li>
-      <li class="col-md-4 col-sm-6">
-        <div class="friend">
-          <a href="#">
-            <div class="float-left">
-              <img src="../../assets/test1.png" alt="">
-            </div>
-            <div class="float-left">
-              <h1>樱花庄的白猫</h1>
-              <p>
-                缘于p站，让我知道博客原来可以写的这么漂亮。
-              </p>
-            </div>
-          </a>
-        </div>
-      </li>
-      <li class="col-md-4 col-sm-6">
-        <div class="friend">
-          <a href="#">
-            <div class="float-left">
-              <img src="../../assets/test1.png" alt="">
-            </div>
-            <div class="float-left">
-              <h1>樱花庄的白猫</h1>
-              <p>
-                缘于p站，让我知道博客原来可以写的这么漂亮。
-              </p>
-            </div>
-          </a>
-        </div>
-      </li>
-      <li class="col-md-4 col-sm-6">
-        <div class="friend">
-          <a href="#">
-            <div class="float-left">
-              <img src="../../assets/test1.png" alt="">
-            </div>
-            <div class="float-left">
-              <h1>樱花庄的白猫</h1>
-              <p>
-                缘于p站，让我知道博客原来可以写的这么漂亮。
-              </p>
-            </div>
-          </a>
-        </div>
-      </li>
-      <li class="col-md-4 col-sm-6">
-        <div class="friend">
-          <a href="#">
-            <div class="float-left">
-              <img src="../../assets/test1.png" alt="">
-            </div>
-            <div class="float-left">
-              <h1>樱花庄的白猫</h1>
-              <p>
-                缘于p站，让我知道博客原来可以写的这么漂亮。
-              </p>
-            </div>
-          </a>
-        </div>
-      </li>
-      <li class="col-md-4 col-sm-6">
-        <div class="friend">
-          <a href="#" title="缘于p站，让我知道博客原来可以写的这么漂亮。">
-            <div class="float-left">
-              <img src="../../assets/test1.png" alt="">
-            </div>
-            <div class="float-left">
-              <h1>樱花庄的白猫</h1>
-              <p>
-                缘于p站，让我知道博客原来可以写的这么漂亮。
-              </p>
-            </div>
-          </a>
-        </div>
-      </li>
-    </ul>
-    <div>
-      <h1>申请友链</h1>
+  <div>
+    <!--顶部图片-->
+    <header id="topheader">
+      <div class="background">
+        <h1>刚好遇见你</h1>
+      </div>
+    </header>
+
+    <div class="container">
+      <h1>xxxxxxxxxxxxxxx</h1>
+      <ul class="clearfix row friends">
+        <li class="col-md-4 col-sm-6">
+          <div class="friend">
+            <a href="#">
+              <div class="float-left">
+                <img src="../../assets/test1.png" alt="">
+              </div>
+              <div class="float-left">
+                <h1>樱花庄的白猫</h1>
+                <p>
+                  缘于p站，让我知道博客原来可以写的这么漂亮。
+                </p>
+              </div>
+            </a>
+          </div>
+        </li>
+        <li class="col-md-4 col-sm-6">
+          <div class="friend">
+            <a href="#">
+              <div class="float-left">
+                <img src="../../assets/test1.png" alt="">
+              </div>
+              <div class="float-left">
+                <h1>樱花庄的白猫</h1>
+                <p>
+                  缘于p站，让我知道博客原来可以写的这么漂亮。
+                </p>
+              </div>
+            </a>
+          </div>
+        </li>
+        <li class="col-md-4 col-sm-6">
+          <div class="friend">
+            <a href="#">
+              <div class="float-left">
+                <img src="../../assets/test1.png" alt="">
+              </div>
+              <div class="float-left">
+                <h1>樱花庄的白猫</h1>
+                <p>
+                  缘于p站，让我知道博客原来可以写的这么漂亮。
+                </p>
+              </div>
+            </a>
+          </div>
+        </li>
+        <li class="col-md-4 col-sm-6">
+          <div class="friend">
+            <a href="#">
+              <div class="float-left">
+                <img src="../../assets/test1.png" alt="">
+              </div>
+              <div class="float-left">
+                <h1>樱花庄的白猫</h1>
+                <p>
+                  缘于p站，让我知道博客原来可以写的这么漂亮。
+                </p>
+              </div>
+            </a>
+          </div>
+        </li>
+        <li class="col-md-4 col-sm-6">
+          <div class="friend">
+            <a href="#">
+              <div class="float-left">
+                <img src="../../assets/test1.png" alt="">
+              </div>
+              <div class="float-left">
+                <h1>樱花庄的白猫</h1>
+                <p>
+                  缘于p站，让我知道博客原来可以写的这么漂亮。
+                </p>
+              </div>
+            </a>
+          </div>
+        </li>
+        <li class="col-md-4 col-sm-6">
+          <div class="friend">
+            <a href="#" title="缘于p站，让我知道博客原来可以写的这么漂亮。">
+              <div class="float-left">
+                <img src="../../assets/test1.png" alt="">
+              </div>
+              <div class="float-left">
+                <h1>樱花庄的白猫</h1>
+                <p>
+                  缘于p站，让我知道博客原来可以写的这么漂亮。
+                </p>
+              </div>
+            </a>
+          </div>
+        </li>
+      </ul>
+      <div>
+        <h1>申请友链</h1>
+      </div>
     </div>
   </div>
 </template>
@@ -116,11 +118,11 @@
   .container {
     padding: 95px 0;
     max-width: 900px;
-    background: rgba(255,255,255,.5);
+    background: rgba(255, 255, 255, .5);
   }
 
   ul.friends {
-    background: rgba(255,255,255,1);
+    background: rgba(255, 255, 255, 1);
     min-height: 285px;
     padding: 20px 0 0;
 
@@ -144,7 +146,7 @@
   }
 
   .friend a:hover {
-    background: rgba(200,201,200,.1);
+    background: rgba(200, 201, 200, .1);
   }
 
   .friend a img {
@@ -217,6 +219,7 @@
     opacity: 0;
     transition: all 1s ease-out;
   }
+
   .top h2:hover {
     opacity: 1;
   }
@@ -225,19 +228,45 @@
     ul.friends li {
       padding: 20px 0;
     }
+
     .top > header > h1 {
       font-size: 28px;
       margin-bottom: 2px;
     }
+
     .top > header > h2 {
       font-size: 18px;
     }
+
     .friend a {
       width: 60%;
     }
+
     .friend a img {
       width: 65px;
       height: 65px;
     }
+  }
+
+  #topheader {
+    height: 70vh;
+    position: relative;
+  }
+
+  #topheader .background {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: url("../../assets/king.jpg") center;
+    background-size: cover;
+
+  }
+  .background h1 {
+    position: absolute;
+    color: rgba(51, 51, 51,1);
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%,-50%);
   }
 </style>

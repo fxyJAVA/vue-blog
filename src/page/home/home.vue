@@ -1,206 +1,150 @@
 <template>
   <div>
-    <section class="banner-section2" :class="heightFlag?'relative':''" style="overflow: hidden">
-      <div class="overlay overlay-bg"></div>
-      <div class="container">
-        <div class="row align-items-center fullscreen" style="height: 763px;">
-          <div class="col-md-6 banner-left">
-            <h1>Hi, We Are <br> <span>Dope Agency.</span></h1>
-            <p>Ultimate solution to make stunning mobile app landing around the world. Lorem ipsum dolor, sit
-              amet consectetur
-              adipisicing. </p>
-            <a class="video-btn primary-btn" href="#">About More</a>
-          </div>
+    <!--顶部图片-->
+    <header id="topheader">
+      <div class="background" :style="{backgroundImage: 'url('+bg+')'}">
+        <div>
+          <h1>黑暗星云</h1>
+          <p></p>
         </div>
       </div>
-    </section>
+    </header>
 
     <!--文章-->
     <section class="blog-lists-section section-gap-full">
       <div class="container">
         <div class="row">
 
-
           <div class="col-lg-8">
             <div class="blog-lists">
               <div class="single-blog-post">
-                <div class="post-thumb relative">
-                  <div class="overlay overlay-bg"></div>
-                  <img class="img-fluid" src="../../assets/blog.jpg" alt="">
-                </div>
                 <div class="post-details">
-                  <router-link to="article">
-                    <h1>To shewing another demands to. </h1>
-                  </router-link>
-                  <ul class="tags">
-                    <li>
-                      <v-icon name="eye"></v-icon>
-                      浏览&nbsp;{{visit}}
-                    </li>
-                    <li>
-                      <v-icon name="regular/comment"></v-icon>
-                      评论&nbsp;{{comment}}
-                    </li>
-                    <li>
-                      <v-icon name="regular/bookmark"></v-icon>
-                      <a href="#">Fashion</a></li>
-                    <li>
-                      <v-icon name="regular/bookmark"></v-icon>
-                      <a href="#">Music</a></li>
-                  </ul>
-
-                  <p>
-                    Received shutters expenses ye he pleasant. Drift as blind above at up. No up simple
-                    county stairs do should praise as. Drawings sir gay together landlord had law
-                    smallest. Formerly welcomed attended declared met say unlocked. Jennings outlived
-                    no dwelling denoting in peculiar as he believed. Behaviour excellent middleton be
-                    as it curiosity departure ourselves.
-                  </p>
-                  <div class="user-details d-flex align-items-center">
-                    <div class="user-img">
-                      <img src="img/avatar1.jpg" alt="">
-                    </div>
-                    <div class="details">
-                      <a href="#">
-                        <h4>Phil Martinez</h4>
-                      </a>
-                      <p>April 15,2018</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="single-blog-post">
-                <div class="post-thumb relative">
-                  <div class="overlay overlay-bg"></div>
-                  <img class="img-fluid" src="../../assets/test2.jpg" alt="">
-                </div>
-                <div class="post-details">
-                  <a href="single-blog.html">
-                    <h1>A wonderful serenity has taken possession of my entire soul.</h1>
-                  </a>
-                  <ul class="tags">
-                    <li>
-                      <v-icon name="eye"></v-icon>
-                      浏览&nbsp;{{visit}}
-                    </li>
-                    <li>
-                      <v-icon name="regular/comment"></v-icon>
-                      评论&nbsp;{{comment}}
-                    </li>
-                    <li>
-                      <v-icon name="regular/bookmark"></v-icon>
-                      <a href="#">美食</a></li>
-                    <li>
-                      <v-icon name="regular/bookmark"></v-icon>
-                      <a href="#">音乐</a></li>
-                  </ul>
-                  <p>
-                    Received shutters expenses ye he pleasant. Drift as blind above at up. No up simple
-                    county stairs do should praise as. Drawings sir gay together landlord had law
-                    smallest. Formerly welcomed attended declared met say unlocked. Jennings outlived
-                    no dwelling denoting in peculiar as he believed. Behaviour excellent middleton be
-                    as it curiosity departure ourselves.
-                  </p>
-                  <div class="user-details d-flex align-items-center">
-                    <div class="user-img">
-                      <img src="../../assets/blog.jpg" alt="">
-                    </div>
-                    <div class="details">
-                      <a href="#">
-                        <h4>Phil Martinez</h4>
-                      </a>
-                      <p>April 15,2018</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="single-blog-post">
-                <div class="post-thumb relative">
-                  <div class="overlay overlay-bg"></div>
-                  <img class="img-fluid" src="../../assets/test5.png" alt="">
-                </div>
-                <div class="post-details">
-                  <a href="single-blog.html">
-                    <h1>Awesome Design His many legs</h1>
-                  </a>
-                  <ul class="tags">
-                    <li>
-                      <v-icon name="eye"></v-icon>
-                      浏览&nbsp;{{visit}}
-                    </li>
-                    <li>
-                      <v-icon name="regular/comment"></v-icon>
-                      评论&nbsp;{{comment}}
-                    </li>
-                    <li>
-                      <v-icon name="regular/bookmark"></v-icon>
-                      <a href="#">学习</a></li>
-                    <li>
-                      <v-icon name="regular/bookmark"></v-icon>
-                      <a href="#">梦想</a></li>
-                  </ul>
-                  <p>
-                    Received shutters expenses ye he pleasant. Drift as blind above at up. No up simple
-                    county stairs do should praise as. Drawings sir gay together landlord had law
-                    smallest. Formerly welcomed attended declared met say unlocked. Jennings outlived
-                    no dwelling denoting in peculiar as he believed. Behaviour excellent middleton be
-                    as it curiosity departure ourselves.
-                  </p>
-                  <div class="user-details d-flex align-items-center">
-                    <div class="user-img">
-                      <img src="../../assets/blog.jpg" alt="">
-                    </div>
-                    <div class="details">
-                      <a href="#">
-                        <h4>Phil Martinez</h4>
-                      </a>
-                      <p>April 15,2018</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="single-blog-post">
-                <div class="post-thumb relative">
-                  <div class="overlay overlay-bg"></div>
-                  <img class="img-fluid" src="../../assets/blog.jpg" alt="">
-                </div>
-                <div class="post-details">
-                  <ul class="tags">
+                  <router-link to="#">
+                    <h1>梦想还是要有的 </h1>
                     <ul class="tags">
                       <li>
                         <v-icon name="eye"></v-icon>
-                        浏览&nbsp;{{visit}}
+                        &nbsp{{visit}}
                       </li>
                       <li>
                         <v-icon name="regular/comment"></v-icon>
-                        评论&nbsp;{{comment}}
+                        {{comment}}
                       </li>
                       <li>
                         <v-icon name="regular/bookmark"></v-icon>
-                        <a href="#">趋势</a></li>
+                        <a href="#">Fashion</a></li>
                       <li>
                         <v-icon name="regular/bookmark"></v-icon>
-                        <a href="#">技术</a></li>
+                        <a href="#">Music</a></li>
                     </ul>
-                  </ul>
-                  <router-link to="article">
-                    <h1>Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.</h1>
-                  </router-link>
-                  <p>
-                    Received shutters expenses ye he pleasant. Drift as blind above at up. No up simple
-                    county stairs do should praise as. Drawings sir gay together landlord had law
-                    smallest. Formerly welcomed attended declared met say unlocked. Jennings outlived
-                    no dwelling denoting in peculiar as he believed. Behaviour excellent middleton be
-                    as it curiosity departure ourselves.
-                  </p>
-                  <div class="user-details d-flex align-items-center">
-                    <div class="user-img">
-                      <img src="../../assets/blog.jpg" alt="">
+                    <p>他说风雨中这点痛算什么，擦干泪不要哭，至少我们还有梦</p>
+                    <div class="post-thumb relative">
+                      <img src="../../assets/blog.jpg">
                     </div>
-                    <div class="details">
-                      <a href="#">
+                  </router-link>
+                    <div class="user-details d-flex align-items-center">
+                      <div class="details">
                         <h4>Phil Martinez</h4>
-                      </a>
+                        <p>April 15,2018</p>
+                      </div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="single-blog-post">
+                <div class="post-details">
+                  <router-link to="#">
+                    <h1>梦想还是要有的 </h1>
+                    <ul class="tags">
+                      <li>
+                        <v-icon name="eye"></v-icon>
+                        &nbsp{{visit}}
+                      </li>
+                      <li>
+                        <v-icon name="regular/comment"></v-icon>
+                        {{comment}}
+                      </li>
+                      <li>
+                        <v-icon name="regular/bookmark"></v-icon>
+                        <a href="#">Fashion</a></li>
+                      <li>
+                        <v-icon name="regular/bookmark"></v-icon>
+                        <a href="#">Music</a></li>
+                    </ul>
+                    <p>他说风雨中这点痛算什么，擦干泪不要哭，至少我们还有梦</p>
+                    <div class="post-thumb relative">
+                      <img src="../../assets/133.jpg">
+                    </div>
+                  </router-link>
+                  <div class="user-details d-flex align-items-center">
+                    <div class="details">
+                      <h4>Phil Martinez</h4>
+                      <p>April 15,2018</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="single-blog-post">
+                <div class="post-details">
+                  <router-link to="#">
+                    <h1>梦想还是要有的 </h1>
+                    <ul class="tags">
+                      <li>
+                        <v-icon name="eye"></v-icon>
+                        &nbsp{{visit}}
+                      </li>
+                      <li>
+                        <v-icon name="regular/comment"></v-icon>
+                        {{comment}}
+                      </li>
+                      <li>
+                        <v-icon name="regular/bookmark"></v-icon>
+                        <a href="#">Fashion</a></li>
+                      <li>
+                        <v-icon name="regular/bookmark"></v-icon>
+                        <a href="#">Music</a></li>
+                    </ul>
+                    <p>他说风雨中这点痛算什么，擦干泪不要哭，至少我们还有梦</p>
+                    <div class="post-thumb relative">
+                      <img src="../../assets/111.jpg">
+                    </div>
+                  </router-link>
+                  <div class="user-details d-flex align-items-center">
+                    <div class="details">
+                      <h4>Phil Martinez</h4>
+                      <p>April 15,2018</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="single-blog-post">
+                <div class="post-details">
+                  <router-link to="#">
+                    <h1>梦想还是要有的 </h1>
+                    <ul class="tags">
+                      <li>
+                        <v-icon name="eye"></v-icon>
+                        &nbsp{{visit}}
+                      </li>
+                      <li>
+                        <v-icon name="regular/comment"></v-icon>
+                        {{comment}}
+                      </li>
+                      <li>
+                        <v-icon name="regular/bookmark"></v-icon>
+                        <a href="#">Fashion</a></li>
+                      <li>
+                        <v-icon name="regular/bookmark"></v-icon>
+                        <a href="#">Music</a></li>
+                    </ul>
+                    <p>他说风雨中这点痛算什么，擦干泪不要哭，至少我们还有梦</p>
+                    <div class="post-thumb relative">
+                      <img src="../../assets/test2.jpg">
+                    </div>
+                  </router-link>
+                  <div class="user-details d-flex align-items-center">
+                    <div class="details">
+                      <h4>Phil Martinez</h4>
                       <p>April 15,2018</p>
                     </div>
                   </div>
@@ -208,28 +152,10 @@
               </div>
               <nav>
                 <!--TODO 分页-->
-                <ul class="pagination">
-                  <!--<li class="page-item disabled">-->
-                  <!--<a class="page-link" href="#" tabindex="-1">-->
-                  <!--<i class="ti ti-angle-left"></i>-->
-                  <!--</a>-->
-                  <!--</li>-->
-                  <!--<li class="page-item"><a class="page-link" href="#">1</a></li>-->
-                  <!--<li class="page-item active">-->
-                  <!--<a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>-->
-                  <!--</li>-->
-                  <!--<li class="page-item"><a class="page-link" href="#">3</a></li>-->
-                  <!--<li class="page-item"><a class="page-link" href="#">4</a></li>-->
-                  <!--<li class="page-item">-->
-                  <!--<a class="page-link" href="#">-->
-                  <!--<i class="ti ti-angle-right"></i>-->
-                  <!--</a>-->
-                  <!--</li>-->
-                </ul>
+                <ul class="pagination"></ul>
               </nav>
             </div>
           </div>
-
 
 
           <div class="col-lg-4">
@@ -247,7 +173,7 @@
                 </div>
               </div>
               <div class="single-widget recent-post-widget">
-                <h4 class="widget-title">Recent Posts</h4>
+                <h4 class="widget-title">近期</h4>
                 <ul>
                   <li class="d-flex flex-row align-items-center">
                     <div class="thumbs">
@@ -307,45 +233,28 @@
                 <h4 class="widget-title">互动</h4>
                 <ul>
                   <li>
-                    <a href="https://github.com/fxyJAVA" @mouseenter="addClass($event)" @mouseleave="removeClass($event)">
+                    <a href="https://github.com/fxyJAVA" @mouseenter="addClass($event)"
+                       @mouseleave="removeClass($event)">
                       <v-icon name="brands/github" scale="2"/>
                     </a>
                   </li>
                   <li>
-                    <a href="#" style="background: #92d027;" @mouseenter="addClass($event)" @mouseleave="removeClass($event)">
+                    <a href="#" style="background: #92d027;" @mouseenter="addClass($event)"
+                       @mouseleave="removeClass($event)">
                       <v-icon name="regular/envelope" scale="2"/>
                     </a>
                   </li>
                   <li>
-                    <a href="#" style="background: #0068bf;" @mouseenter="addClass($event)" @mouseleave="removeClass($event)">
+                    <a href="#" style="background: #0068bf;" @mouseenter="addClass($event)"
+                       @mouseleave="removeClass($event)">
                       <v-icon name="brands/playstation" scale="2"/>
                     </a>
                   </li>
                   <li>
-                    <a href="#" style="background: #e30514;" @mouseenter="addClass($event)" @mouseleave="removeClass($event)">
+                    <a href="#" style="background: #e30514;" @mouseenter="addClass($event)"
+                       @mouseleave="removeClass($event)">
                       <v-icon name="brands/nintendo-switch" aria-hidden="true" scale="2"/>
                     </a>
-                  </li>
-                </ul>
-              </div>
-              <div class="single-widget archive-widget">
-                <h4 class="widget-title">Archive</h4>
-                <ul>
-                  <li class="d-flex justify-content-between">
-                    <a href="#">January 2018</a>
-                    <span>(29)</span>
-                  </li>
-                  <li class="d-flex justify-content-between">
-                    <a href="#">February 2018</a>
-                    <span>(23)</span>
-                  </li>
-                  <li class="d-flex justify-content-between">
-                    <a href="#">March 2018</a>
-                    <span>(43)</span>
-                  </li>
-                  <li class="d-flex justify-content-between">
-                    <a href="#">April 2018</a>
-                    <span>(12)</span>
                   </li>
                 </ul>
               </div>
@@ -382,10 +291,10 @@
     props: ['screenWidth'],
     data() {
       return {
-        heightFlag: false,
         visit: 100,
         comment: 100,
-        fullHeight: document.documentElement.clientHeight
+        bg: 'https://s1.ax1x.com/2018/11/30/FmEqTe.png',
+        heightFlag: document.body.clientHeight
       }
     },
     created() {
@@ -419,16 +328,20 @@
 
   @import '../../style/style.css';
 
-  .banner-section2 {
+  #topheader {
     color: #ffffff !important;
+    height: 100vh;
+  }
+  .background {
+  }
+  .post-details>a {
+    color: #000;
   }
 
-  .blog-lists{
-    width: 75%;
-    margin: 0 auto 10px;
+  .single-blog-post .post-details:hover {
+    box-shadow: 0 5px 10px 5px rgba(110,110,110,.4);
   }
-  .post-thumb img {
-  }
+
 
   @media (max-width: 768px) {
     .blog-lists {

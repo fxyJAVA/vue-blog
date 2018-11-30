@@ -1,18 +1,14 @@
 <template>
   <div>
     <!-- 顶部 -->
-    <section class="page-top-banner section-gap-full relative" data-stellar-background-ratio="0.5">
-      <div class="overlay overlay-bg"></div>
-      <div class="container">
-        <div class="row section-gap-half">
-          <div class="col-lg-12 text-center" style="background: rgba(255,255,255,.7);border-radius: 20px">
-            <h1>关于我</h1>
-            <h3 style="font-size: 20px;padding-bottom: 20px">お前は奴隷だ。解放を望むか？</h3>
-          </div>
+    <header id="topheader">
+      <div class="background">
+        <div class="text">
+          <h1>关于我</h1>
+          <h3 style="font-size: 20px;padding-bottom: 20px">お前は奴隷だ。解放を望むか？</h3>
         </div>
       </div>
-    </section>
-
+    </header>
 
     <!--描述-->
     <section class="product-detials-section section-gap-full">
@@ -119,5 +115,28 @@
 
   .single-stat {
     text-align: center;
+  }
+
+
+  #topheader {
+    height: 70vh;
+    position: relative;
+  }
+
+  #topheader .background {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: url("../../assets/p5.jpg") center;
+    background-size: cover;
+
+  }
+  .background .text{
+    position: absolute;
+    color: rgba(51, 51, 51,1);
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%,-50%);
   }
 </style>

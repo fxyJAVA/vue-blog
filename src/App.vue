@@ -64,7 +64,10 @@
     opacity: 0;
   }
 
+  /*body {*/
+    /*background: url("assets/little-monster.png");*/
+  /*}*/
   body {
-    background: url("assets/little-monster.png");
+    background: rgba(242, 242, 242,1)!important;
   }
 </style>
