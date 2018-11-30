@@ -302,7 +302,7 @@
   }
 
   .dope-nav-container {
-    background: transparent;
+    opacity: 0.2;
   }
 
   .interaction ul li a {

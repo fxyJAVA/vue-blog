@@ -4,7 +4,6 @@
     <transition mode="out-in" enter-active-class="bounceInLeft" leave-active-class="bounceOutLeft">
       <router-view :screenWidth="width" class="animated fast"/>
     </transition>
-    <live2d/>
     <last/>
   </div>
 </template>
@@ -12,7 +11,6 @@
 <script>
   import navbar from '@/components/nav/navbar'
   import last from './page/footer/footer'
-  import live2d from '@/components/live2d/live2d'
   import POWERMODE from 'html-activate-power-mode'
 
   document.body.addEventListener('input', POWERMODE);
@@ -21,7 +19,6 @@
     components: {
       navbar,
       last,
-      live2d
     },
     data() {
       return {
@@ -73,5 +70,8 @@
   body {
     background: rgba(242, 242, 242,1)!important;
     font-family: 微软雅黑;
+  }
+  a {
+    text-decoration: none!important;
   }
 </style>

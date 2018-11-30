@@ -252,22 +252,10 @@
   }
 
   #topheader .background {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    background: url("https://i.loli.net/2018/11/30/5c0137e164c03.jpg") center;
-    background-size: cover;
-
+    background-image: url("https://i.loli.net/2018/11/30/5c0137e164c03.jpg");
+    background-position: center;
   }
 
-  .background h1 {
-    position: absolute;
-    color: rgba(51, 51, 51, 1);
-    top: 50%;
-    left: 50%;
-    text-align: center;
-    transform: translate(-50%, -50%);
-  }
 
   .friends {
     padding: 20px;

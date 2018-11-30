@@ -19,7 +19,7 @@
             <div class="blog-lists">
               <div class="single-blog-post">
                 <div class="post-details">
-                  <router-link to="#">
+                  <router-link to="/article">
                     <h1>梦想还是要有的 </h1>
                     <ul class="tags">
                       <li>
@@ -161,7 +161,6 @@
           <div class="col-lg-4">
             <div class="sidebar-wrap">
               <div class="single-widget search-widget">
-                <h4 class="widget-title">Search Here</h4>
                 <div class="sidebar-form">
                   <form action="#" class="relative">
                     <input type="text" placeholder="Search" onfocus="this.placeholder=''"
