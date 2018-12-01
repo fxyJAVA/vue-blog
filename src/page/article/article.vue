@@ -10,18 +10,18 @@
           <h1 style="">Awesome Design</h1>
           <ul class="tags">
             <li>
-              <v-icon name="regular/eye" scale="1.2"/>
+              <v-icon name="regular/eye" scale="1.1"/>
               浏览&nbsp;{{visit}}
             </li>
             <li>
-              <v-icon name="regular/comment" scale="1.2"/>
+              <v-icon name="regular/comment" scale="1.1"/>
               评论&nbsp;{{comment}}
             </li>
             <li>
-              <v-icon name="regular/bookmark" scale="1.2"/>
+              <v-icon name="regular/bookmark" scale="1.1"/>
               <a href="#">Fashion</a></li>
             <li>
-              <v-icon name="regular/folder" scale="1.2"/>
+              <v-icon name="regular/folder" scale="1.1"/>
               <a href="#">Music</a></li>
           </ul>
           <h2>

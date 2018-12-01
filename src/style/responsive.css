@@ -326,6 +326,12 @@
   #homep {
     font-size: 18px!important;
   }
+  .blog-details h1 {
+    font-size: 30px!important;
+  }
+  .blog-info h2 {
+    font-size: 14px!important;
+  }
 }
 @media (max-width: 480px) {
   .single-counter h2 {
@@ -363,7 +369,12 @@
     font-size: 14px!important;
   }
 
-
+  .blog-details h1 {
+    font-size: 30px!important;
+  }
+  .blog-info h2 {
+    font-size: 14px!important;
+  }
 }
 @media (max-width: 417px) {
   .page-top-banner h1 {

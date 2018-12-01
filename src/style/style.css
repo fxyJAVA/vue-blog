@@ -1241,7 +1241,7 @@ td, th {
 }
 
 .breakpoint-on .dopenav {
-  padding-top: 35px;
+  padding-top: 5px;
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -2232,6 +2232,7 @@ td, th {
   -o-transition: all 0.2s ease 0s;
   transition: all 0.2s ease 0s;
   width: 100%;
+  border-radius: 8px;
   height: 30px;
 }
 .blog-lists-section .search-widget .sidebar-form form input:focus {
@@ -2250,6 +2251,7 @@ td, th {
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
   width: 50px;
+  border-radius: 0 8px 8px 0;
 }
 .blog-lists-section .search-widget .sidebar-form form button:hover {
   cursor: pointer;

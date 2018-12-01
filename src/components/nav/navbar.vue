@@ -1,6 +1,6 @@
 <template>
   <header class="header-area" id="header-area">
-    <div :class="[menu,flag4]" class="dope-nav-container">
+    <div :class="[menu,flag4]" class="dope-nav-container" :style="{opacity:flag2?1:''}">
       <div class="container">
         <div class="row">
           <!-- dope Menu -->
@@ -45,7 +45,7 @@
                   <li class="cn-dropdown-item has-down" :class="flag31?'active':''">
 
                     <a href="#"><v-icon name="cannabis" scale="1.2"/>&nbsp;归档</a>
-                    <ul class="dropdown" :style="{display: flag31?'none':'block'}">
+                    <ul class="dropdown" style="display: block;">
                       <li><router-link to="/archive" a href="#">技术</router-link></li>
                       <li><a href="#">日常</a></li>
                       <li><a href="#">杂谈</a></li>
@@ -54,7 +54,7 @@
                   </li>
                   <li class="cn-dropdown-item has-down" :class="flag32?'active':''">
                     <a href="#"><v-icon name="regular/list-alt" scale="1.2"></v-icon>&nbsp;清单</a>
-                    <ul class="dropdown" :style="{display: flag32?'none':'block'}">
+                    <ul class="dropdown" style="display: block;">
                       <li><router-link to="/group" href="#">Blog List</router-link></li>
                       <li><a href="#">Single Blog</a></li>
                       <span class="dd-trigger"></span>
@@ -223,6 +223,7 @@
           this.flag32 = true
         } else {
           this.menu = 'breakpoint-off'
+          this.flag2 = false
           this.flag31 = false
           this.flag32 = false
         }
@@ -263,12 +264,12 @@
     z-index: 9999;
   }
   .myinfo {
-    padding-top: 40px;
+    padding-top: 20px;
     background: linear-gradient(to right, #f51dac 0%, #691cff 100%);
   }
   .myinfo>img{
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     object-fit: cover;
     border-radius: 50%;
     overflow: hidden;
@@ -279,18 +280,18 @@
   }
   .myinfo>p {
     text-align: center;
-    padding: 10px 0;
+    padding: 3px 0;
     color: #000;
   }
   .myinfo p:nth-child(2) {
     margin-top: 10px;
     margin-bottom: 0;
     padding: 0;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
   }
   .myinfo p:last-child {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 900;
     font-style: italic;
   }
