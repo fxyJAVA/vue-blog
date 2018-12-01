@@ -2422,8 +2422,8 @@ td, th {
   padding-bottom: 0px;
 }
 .comment-wrap .media img {
-  width: 75px;
-  height: 75px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
   border-radius: 50px;
 }
@@ -2442,9 +2442,8 @@ td, th {
 .comment-wrap .black-btn {
   min-width: 80px !important;
 }
-.comment-wrap .media-body h5 {
-  margin-bottom: 10px;
-}
+
+
 .comment-wrap .comment-form h3 {
   margin-bottom: 30px;
 }
@@ -2919,17 +2918,14 @@ td, th {
 }
 
 .comment-wrap .media img {
-  transition: all 0.7s linear;
-}
-.comment-wrap .media>img:hover {
-  transform: rotate(360deg);
+  transition: all 0.4s linear;
 }
 .replay-comment img {
   margin-right: 5px;
 }
 
 .post-details p {
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .media-body .info {
@@ -2977,4 +2973,18 @@ td, th {
   text-align: center;
   font-size: 30px;
   text-shadow: 0 0 5px #c3c3c3;
+}
+
+/*评论*/
+.head-info {
+  min-height: 40px;
+  margin-bottom: 10px
+}
+
+.head-info div > img {
+  margin-right: 5px;
+}
+
+.head-info h5 {
+  margin-top: 10px;
 }

@@ -29,21 +29,25 @@
 
       <!--留言-->
       <div class="comment-wrap">
-        <h1 style="font-size: 20px;margin-bottom: 34px;"><v-icon name="regular/comments" scale="1.6"/>&nbsp;留言斐语</h1>
-        <hr>
+        <h3>Recent Comments</h3>
         <div class="media comments">
-          <img class="mr-3" src="../../assets/2.jpg" alt="Generic placeholder image">
+
           <div class="media-body">
-            <h5 class="mt-0"><a href="#">黑雪姬</a></h5>
-            <div class="info">
-              <time datetime="2018-11-22">2018-9-9</time>
-              <span data-v-49843f54="" class="useragent-info">
+            <div class="head-info">
+              <div class="float-left clearfix">
+                <img src="../../assets/2.jpg">
+              </div>
+              <h5><a href="#">黑雪姬</a></h5>
+              <div class="info">
+                <time datetime="2018-11-22">2018-9-9</time>
+                <span data-v-49843f54="" class="useragent-info">
                         ( <img data-v-49843f54=""
                                src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/img/Sakura/images/ua/svg/chrome.svg">&nbsp;Google Chrome 127.0.0.1&nbsp;&nbsp;
                         <img data-v-49843f54=""
                              src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/img/Sakura/images/ua/svg/windows_win10.svg">&nbsp;Windows 10 )
                       </span>
-              &nbsp;广东省广州市 联通
+                &nbsp;广东省广州市 联通
+              </div>
             </div>
             <p>
               你好呀
@@ -52,18 +56,23 @@
               <a href="#" class="btn-sm">Replay</a>
             </div>
             <div class="media mt-3 replay-comment">
-              <img src="../../assets/5.jpg" alt="Generic placeholder image">
+
               <div class="media-body">
-                <h5 class="mt-0"><a href="#">有田春雪</a></h5>
-                <div class="info">
-                  <time datetime="2018-11-22">2018-9-9</time>
-                  <span data-v-49843f54="" class="useragent-info">
+                <div class="head-info">
+                  <div class="float-left clearfix">
+                    <img src="../../assets/5.jpg">
+                  </div>
+                  <h5><a href="#">有田春雪</a></h5>
+                  <div class="info">
+                    <time datetime="2018-11-22">2018-9-9</time>
+                    <span data-v-49843f54="" class="useragent-info">
                         ( <img data-v-49843f54=""
                                src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/img/Sakura/images/ua/svg/chrome.svg">&nbsp;Google Chrome 127.0.0.1&nbsp;&nbsp;
                         <img data-v-49843f54=""
                              src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/img/Sakura/images/ua/svg/windows_win10.svg">&nbsp;Windows 10 )
                       </span>
-                  &nbsp;广东省广州市 联通
+                    &nbsp;广东省广州市 联通
+                  </div>
                 </div>
                 <p>
                   <a href="#">@黑雪姬</a>&nbsp;你好呀
@@ -83,19 +92,23 @@
                 </div>
               </div>
             </div>
-            <div class="media mt-3 replay-comment">
-              <img src="../../assets/5.jpg" alt="Generic placeholder image">
+            <div class="media replay-comment">
               <div class="media-body">
-                <h5 class="mt-0"><a href="#">Justin Doe</a></h5>
-                <div class="info">
-                  <time datetime="2018-11-22">2018-9-9</time>
-                  <span data-v-49843f54="" class="useragent-info">
+                <div class="head-info">
+                  <div class="float-left clearfix">
+                    <img src="../../assets/5.jpg">
+                  </div>
+                  <h5><a href="#">Justin Doe</a></h5>
+                  <div class="info">
+                    <time datetime="2018-11-22">2018-9-9</time>
+                    <span data-v-49843f54="" class="useragent-info">
                         ( <img data-v-49843f54=""
                                src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/img/Sakura/images/ua/svg/chrome.svg">&nbsp;Google Chrome 127.0.0.1&nbsp;&nbsp;
                         <img data-v-49843f54=""
                              src="https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/img/Sakura/images/ua/svg/windows_win10.svg">&nbsp;Windows 10 )
                       </span>
-                  &nbsp;广东省广州市 联通
+                    &nbsp;广东省广州市 联通
+                  </div>
                 </div>
                 <p>
                   <a href="#">@黑雪姬</a>&nbsp;Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
@@ -110,9 +123,13 @@
           </div>
         </div>
         <div class="media comments">
-          <img class="mr-3" src="../../assets/7.png" alt="Generic placeholder image">
           <div class="media-body">
-            <h5 class="mt-0"><a href="#">Jon Doe</a></h5>
+            <div>
+              <div class="float-left clearfix">
+                <img src="../../assets/7.png" alt="Generic placeholder image">
+              </div>
+            </div>
+            <h5><a href="#">Jon Doe</a></h5>
             <div class="info">
               <time datetime="2018-11-22">2018-9-9</time>
               <span data-v-49843f54="" class="useragent-info">

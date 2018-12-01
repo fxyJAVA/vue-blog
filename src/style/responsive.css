@@ -263,11 +263,6 @@
     font-size: 26px;
   }
 
-  .comment-wrap .media>img {
-    width: 45px;
-    height: 45px;
-  }
-
   .media-body .info {
     font-size: 12px;
   }
@@ -322,7 +317,7 @@
   }
 
   .comment-wrap .replay-comment {
-    padding-left: 40px;
+    padding-left: 100px;
     padding-right: 5px;
   }
   #hometitle {
@@ -367,6 +362,8 @@
   .poem-wrap p {
     font-size: 14px!important;
   }
+
+
 }
 @media (max-width: 417px) {
   .page-top-banner h1 {
@@ -379,6 +376,12 @@
 
   .social-widget ul li a {
     margin-bottom: 10px;
+  }
+}
+
+@media (min-width: 576px) {
+  .head-info div > img:hover {
+    transform: rotate(360deg);
   }
 }
 

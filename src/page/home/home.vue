@@ -325,7 +325,10 @@
 
 <style scoped>
 
-
+  .container {
+    padding-right: 7px;
+    padding-left: 7px;
+  }
   #topheader {
     color: #ffffff !important;
     height: 100vh;
