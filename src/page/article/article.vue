@@ -72,6 +72,42 @@
               最后编辑于2018-10-10</strong></center>
         </div>
       </div>
+
+      <!--前一篇，后一篇-->
+      <div class="row">
+        <div class="col-md-6">
+          <a href="#" class="readmore">
+            <div class="read-cover"></div>
+            <div class="read-imgContainer">
+              <div class="read-imgContainer-img"><img src="../../assets/test2.jpg" alt=""></div>
+            </div>
+            <div class="read-cover read-second"></div>
+            <div class="read-inner">
+              <div class="read-text">
+                <p>previous</p>
+                <h2 class="read-title">可能是最接近宫崎骏的人：细田守</h2>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="readmore">
+            <div class="read-cover"></div>
+            <div class="read-imgContainer">
+              <div class="read-imgContainer-img"><img src="../../assets/p5.jpg" alt=""></div>
+            </div>
+            <div class="read-cover read-second"></div>
+            <div class="read-inner">
+              <div class="read-text">
+                <p>previous</p>
+                <h2 class="read-title">可能是最接近宫崎骏的人：细田守</h2>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!--评论-->
       <div class="comment-wrap">
         <h3>Recent Comments</h3>
         <div class="media comments">
@@ -287,5 +323,64 @@
     }
   }
 
-
+  /*前一篇，后一篇*/
+  .readmore {
+    display: block;
+    height: 200px !important;
+    font-size: 14px;
+    text-align: left;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background: #999 50% 50% repeat;
+  }
+  .readmore .read-cover {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background: #000;
+    opacity: 0.55;
+  }
+  .readmore .read-imgContainer {
+    height: 100%;
+    overflow: hidden;
+  }
+  .readmore .read-imgContainer .read-imgContainer-img {
+    position: relative;
+    height: 100%;
+  }
+  .readmore .read-imgContainer img {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    object-fit: cover;
+  }
+  .readmore .read-second {
+    z-index: 0;
+    opacity: 0.3;
+  }
+  .readmore .read-inner {
+    position: absolute;
+    display: table;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    table-layout: fixed;
+  }
+  .read-inner .read-text {
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    text-shadow: 0px 1px 2px #333;
+  }
+  .read-inner .read-text p {
+    max-width: 800px;
+  }
 </style>

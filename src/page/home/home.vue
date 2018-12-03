@@ -349,18 +349,18 @@
     }
   }
 
+  #hometitle,#homep {
+    color: rgba(255,255,255,.8);
+    text-shadow: 0 0 5px #c3c3c3;
+  }
   #hometitle {
     font-size: 5rem;
     width: 100%;
     font-weight: 300;
-    color: rgba(255,255,255,.8);
-    text-shadow: 0 0 5px #c3c3c3;
   }
   #homep {
     font-size: 1.5rem;
     margin-block-start: 0.83em;
     margin-block-end: 0.83em;
-    color: rgba(255,255,255,.8);
-    text-shadow: 0 0 5px #c3c3c3;
   }
 </style>
