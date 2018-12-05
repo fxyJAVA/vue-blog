@@ -1,0 +1,125 @@
+.onlyarticle .post-details p {
+  font-size: 20px;
+}
+
+.onlyarticle.container {
+  overflow: hidden;
+  padding: 0;
+  max-width: 900px;
+  margin-top: 120px;
+}
+
+#topheader .background {
+  background-image: url("../assets/test5.png");
+  background-position: center;
+}
+
+.onlyarticle .post-thumb img {
+  -webkit-transform: scale(1.0);
+  -ms-transform: scale(1.0);
+  transform: scale(1.0);
+}
+
+.onlyarticle .blog-details:hover .post-thumb img {
+  -webkit-transform: scale(1.0);
+  -ms-transform: scale(1.0);
+  transform: scale(1.0);
+}
+
+.onlyarticle .blog-details .post-thumb .overlay-bg {
+  background: transparent;
+}
+
+.onlyarticle .blog-info h1, .blog-info h2, .blog-info ul {
+  text-align: center;
+}
+
+.onlyarticle .blog-info h2 {
+  padding: 10px 0;
+  font-size: 16px;
+}
+.onlyarticle .prev-next {
+  padding: 0!important;
+}
+
+@media (max-width: 768px) {
+  .onlyarticle .post-details p {
+    font-size: 16px;
+  }
+}
+
+/*前一篇，后一篇*/
+.onlyarticle .readmore {
+  display: block;
+  height: 200px !important;
+  font-size: 14px;
+  text-align: left;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background: #999 50% 50% repeat;
+}
+.onlyarticle .readmore:hover .read-cover{
+  background: none!important;
+}
+.onlyarticle .readmore .read-cover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  background: #000;
+  opacity: 0.55;
+}
+.onlyarticle .readmore .read-imgContainer {
+  height: 100%;
+  overflow: hidden;
+}
+.onlyarticle .readmore .read-imgContainer .read-imgContainer-img {
+  position: relative;
+  height: 100%;
+}
+.onlyarticle .readmore .read-imgContainer img {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  object-fit: cover;
+}
+.onlyarticle .readmore .read-second {
+  z-index: 0;
+  opacity: 0.3;
+}
+.onlyarticle .readmore .read-inner {
+  position: absolute;
+  display: table;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  table-layout: fixed;
+}
+.onlyarticle .read-inner .read-text {
+  display: table-cell;
+  width: 100%;
+  height: 100%;
+  color: #ffffff!important;
+  vertical-align: middle;
+  text-shadow: 0px 1px 2px #333;
+}
+
+.onlyarticle .read-inner .read-text h2 {
+  color: #f0f0f0;
+  font-size: 22px;
+}
+
+.onlyarticle .read-inner .read-text p {
+  font-size: 17px;
+  max-width: 800px;
+}
+.onlyarticle div img[src*="#width-right"] {
+  width: 100%;
+  width: 130px;float: right;margin-right: 20px;border: 3px solid #ddd;border-radius: 3px;
+}

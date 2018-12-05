@@ -43,6 +43,7 @@
   @import './font/yahei.css';
   @import './style/style.css';
   @import './style/responsive.css';
+  @import "./style/article.css";
   #app {
     /*height: 2000px;*/
   }

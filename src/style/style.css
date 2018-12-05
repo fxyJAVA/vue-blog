@@ -2432,7 +2432,7 @@ td, th {
 .comment-wrap .replay-comment {
   border-bottom: none;
   border-top: 1px solid #eee;
-  padding: 20px;
+  padding: 20px 20px 15px 20px;
   margin-bottom: 0px !important;
 }
 .comment-wrap .comments {
@@ -2906,16 +2906,20 @@ td, th {
 /*评论部分*/
 .comment-buttons {
   text-align: right;
+  padding-bottom: 10px;
 }
 
-.comment-buttons a {
+.comment-buttons button {
   transition: all 0.5s ease-out;
   background: #FF9999;
   color: #ffffff;
   opacity: 0.6;
+  outline: none!important;
+  cursor: pointer;
+  border: none;
 }
 
-.comment-buttons a:hover {
+.comment-buttons button:hover {
   opacity: 1;
 }
 

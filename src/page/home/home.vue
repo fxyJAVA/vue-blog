@@ -17,139 +17,44 @@
 
           <div class="col-lg-8">
             <div class="blog-lists">
-              <div class="single-blog-post">
+              <div class="single-blog-post" v-for="article in articleList">
                 <div class="post-details">
-                  <router-link to="/article">
-                    <h1>梦想还是要有的 </h1>
+                  <router-link :to="{path:'/article',query:{articleid:article.articleid}}">
+                    <h1>{{article.title}} </h1>
                     <ul class="tags">
                       <li>
                         <v-icon name="eye"></v-icon>
-                        &nbsp{{visit}}
+                        &nbsp{{article.view}}
                       </li>
                       <li>
                         <v-icon name="regular/comment"></v-icon>
-                        {{comment}}
+                        {{article.comments}}
                       </li>
+
+                      <li v-for="tag in article.tagList">
+                        <v-icon name="regular/bookmark"></v-icon>
+                        <a href="#">{{tag.tagName}}</a>
+                      </li>
+
                       <li>
                         <v-icon name="regular/bookmark"></v-icon>
-                        <a href="#">Fashion</a></li>
-                      <li>
-                        <v-icon name="regular/bookmark"></v-icon>
-                        <a href="#">Music</a></li>
+                        <a href="#">{{article.category.cateName}}</a>
+                      </li>
                     </ul>
-                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+                    <p>{{article.summary}}</p>
                     <div class="post-thumb relative">
-                      <img src="../../assets/blog.jpg">
+                      <img :src="article.thumbnail">
                     </div>
                   </router-link>
                     <div class="user-details d-flex align-items-center">
                       <div class="details">
-                        <h4>Phil Martinez</h4>
-                        <p>April 15,2018</p>
+                        <h4>黑鸦</h4>
+                        <p>{{article.postDate|formatDate}}</p>
                       </div>
                     </div>
                 </div>
               </div>
 
-              <div class="single-blog-post">
-                <div class="post-details">
-                  <router-link to="#">
-                    <h1>梦想还是要有的 </h1>
-                    <ul class="tags">
-                      <li>
-                        <v-icon name="eye"></v-icon>
-                        &nbsp{{visit}}
-                      </li>
-                      <li>
-                        <v-icon name="regular/comment"></v-icon>
-                        {{comment}}
-                      </li>
-                      <li>
-                        <v-icon name="regular/bookmark"></v-icon>
-                        <a href="#">Fashion</a></li>
-                      <li>
-                        <v-icon name="regular/bookmark"></v-icon>
-                        <a href="#">Music</a></li>
-                    </ul>
-                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                    <div class="post-thumb relative">
-                      <img src="../../assets/133.jpg">
-                    </div>
-                  </router-link>
-                  <div class="user-details d-flex align-items-center">
-                    <div class="details">
-                      <h4>Phil Martinez</h4>
-                      <p>April 15,2018</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="single-blog-post">
-                <div class="post-details">
-                  <router-link to="#">
-                    <h1>梦想还是要有的 </h1>
-                    <ul class="tags">
-                      <li>
-                        <v-icon name="eye"></v-icon>
-                        &nbsp{{visit}}
-                      </li>
-                      <li>
-                        <v-icon name="regular/comment"></v-icon>
-                        {{comment}}
-                      </li>
-                      <li>
-                        <v-icon name="regular/bookmark"></v-icon>
-                        <a href="#">Fashion</a></li>
-                      <li>
-                        <v-icon name="regular/bookmark"></v-icon>
-                        <a href="#">Music</a></li>
-                    </ul>
-                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                    <div class="post-thumb relative">
-                      <img src="../../assets/111.jpg">
-                    </div>
-                  </router-link>
-                  <div class="user-details d-flex align-items-center">
-                    <div class="details">
-                      <h4>Phil Martinez</h4>
-                      <p>April 15,2018</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="single-blog-post">
-                <div class="post-details">
-                  <router-link to="#">
-                    <h1>梦想还是要有的 </h1>
-                    <ul class="tags">
-                      <li>
-                        <v-icon name="eye"></v-icon>
-                        &nbsp{{visit}}
-                      </li>
-                      <li>
-                        <v-icon name="regular/comment"></v-icon>
-                        {{comment}}
-                      </li>
-                      <li>
-                        <v-icon name="regular/bookmark"></v-icon>
-                        <a href="#">Fashion</a></li>
-                      <li>
-                        <v-icon name="regular/bookmark"></v-icon>
-                        <a href="#">Music</a></li>
-                    </ul>
-                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                    <div class="post-thumb relative">
-                      <img src="../../assets/test2.jpg">
-                    </div>
-                  </router-link>
-                  <div class="user-details d-flex align-items-center">
-                    <div class="details">
-                      <h4>Phil Martinez</h4>
-                      <p>April 15,2018</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <nav>
                 <!--TODO 分页-->
                 <ul class="pagination"></ul>
@@ -292,14 +197,20 @@
       return {
         visit: 100,
         comment: 100,
-        bg: 'https://s1.ax1x.com/2018/11/30/FmEqTe.png',
-        heightFlag: document.body.clientHeight
+        bg: 'https://i.loli.net/2018/12/05/5c072c8e6b8d5.png',
+        heightFlag: document.body.clientHeight,
+        articleList: [],
       }
     },
     created() {
       if (this.screenWidth < 991) {
         this.heightFlag = true
       }
+      this.$axios('/api/crow/articles?pageNum=1').then(res=>{
+        this.articleList = res.data.data
+      }).catch(error=>{
+        console.log(error)
+      })
     },
     watch: {
       screenWidth: function () {
@@ -318,6 +229,23 @@
       removeClass(e) {
         var tar = e.currentTarget
         $(tar).removeClass('animated tada')
+      }
+    },
+    filters: {
+      formatDate: function(time) {
+        let date = new Date(time);
+        let y = date.getFullYear();
+        let MM = date.getMonth() + 1;
+        MM = MM < 10 ? ('0' + MM) : MM;
+        let d = date.getDate();
+        d = d < 10 ? ('0' + d) : d;
+        let h = date.getHours();
+        h = h < 10 ? ('0' + h) : h;
+        let m = date.getMinutes();
+        m = m < 10 ? ('0' + m) : m;
+        let s = date.getSeconds();
+        s = s < 10 ? ('0' + s) : s;
+        return y + '-' + MM + '-' + d + ' ' + h + ':' + m + ':' + s;
       }
     }
   }

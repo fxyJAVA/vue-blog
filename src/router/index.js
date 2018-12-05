@@ -26,7 +26,7 @@ export default new Router({
     },
     {
       path: '/article',
-      name: 'articles',
+      name: 'article',
       component: article
     },
     {
