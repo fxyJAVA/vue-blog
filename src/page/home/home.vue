@@ -19,7 +19,7 @@
             <div class="blog-lists">
               <div class="single-blog-post" v-for="article in articleList">
                 <div class="post-details">
-                  <router-link :to="{path:'/article',query:{articleid:article.articleid}}">
+                  <router-link :to="{name:'article',params:{articleid:article.articleid}}">
                     <h1>{{article.title}} </h1>
                     <ul class="tags">
                       <li>

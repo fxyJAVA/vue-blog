@@ -13,6 +13,7 @@ import group from '@/page/group/group'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -25,7 +26,7 @@ export default new Router({
       component: home,
     },
     {
-      path: '/article',
+      path: '/article/:articleid',
       name: 'article',
       component: article
     },
@@ -65,7 +66,12 @@ export default new Router({
       component: group
     }
   ],
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        selector: to.hash,
+      }
+    }
     if (savedPosition) {
       return savedPosition
     } else {

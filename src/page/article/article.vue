@@ -76,7 +76,7 @@
           <v-icon name="regular/comment" scale="1.1"/>
           评论&nbsp;{{article.comments}}
         </h3>
-        <div class="media comments" v-for="(comment,index) in article.commentList" :key="comment.commentid">
+        <div class="media comments" v-for="(comment,index) in article.commentList" :key="comment.commentid" :id="'comment-'+comment.commentid">
 
           <div class="media-body">
             <div class="head-info">
@@ -92,14 +92,14 @@
                 &nbsp;广东省广州市 联通{{comment.commentIp}}
               </div>
             </div>
-            <p>
-              {{comment.commentContent}}
+            <p v-html="comment.commentContent">
+
             </p>
             <div class="comment-buttons">
               <button href="#" class="btn-sm" @click="reply(index)">Replay</button>
             </div>
 
-            <div class="media replay-comment" v-for="(reply,childIndex) in comment.childComment" :key="childIndex">
+            <div class="media replay-comment" v-for="(reply,childIndex) in comment.childComment" :key="childIndex" :id="'reply-'+reply.commentid">
 
               <div class="media-body">
                 <div class="head-info">
@@ -145,10 +145,12 @@
         </div>
         <div class="row">
           <div class="col-lg-12">
-                <textarea @blur="focusState = false" v-focus="focusState" name="comment" class="form-control" placeholder="Comment" cols="30" rows="10"
+                <textarea @blur="focusState = false" v-focus="focusState" name="comment" class="form-control"
+                          placeholder="Comment" cols="30" rows="10"
                           v-model="longText"
-                          onfocus="this.placeholder=''" onblur="this.placeholder='Comment*'"></textarea>
-            <button class="primary-btn" style="outline: none!important;border: none" @click="submitComment">Submit</button>
+                          onfocus="this.placeholder=''" onblur="this.placeholder='Comment*'" id="longText"></textarea>
+            <button class="primary-btn" style="outline: none!important;border: none" @click="submitComment">Submit
+            </button>
           </div>
         </div>
       </div>
@@ -171,10 +173,10 @@
       }
     },
     created() {
-      this.$axios('/api/crow/articles/'+this.$route.query.articleid).then(res=>{
+      this.$axios('/api/crow/articles/' + this.$route.params.articleid).then(res => {
         this.article = res.data.data
         console.log(this.article)
-      }).catch(error=>{
+      }).catch(error => {
         console.log(error)
       })
     },
@@ -182,17 +184,24 @@
       reply(key) {
         this.focusState = true
         console.log(this.article.commentList[key])
-        this.prefix = '<a href="'+ this.article.commentList[key].commentUrl+'">'+'@'+this.article.commentList[key].commentName+'</a>&nbsp;'
+        this.prefix = '<a href="' + this.article.commentList[key].commentUrl + '">' + '@' + this.article.commentList[key].commentName + '</a>&nbsp;'
       },
-      replyIn(parent,child) {
+      replyIn(parent, child) {
         this.focusState = true
         //前缀，回复内容之前一定要包含这个内容
-        this.prefix = '<a href="'+ this.article.commentList[parent].childComment[child].commentUrl+'">'+'@'+this.article.commentList[parent].childComment[child].commentName+'</a>&nbsp;'
+        this.prefix = '<a href="' + this.article.commentList[parent].childComment[child].commentUrl + '">' + '@' + this.article.commentList[parent].childComment[child].commentName + '</a>&nbsp;'
         alert(this.prefix)
       },
       submitComment() {
+        this.longText = this.htmlEncodeJQ(this.longText)
         this.longText = this.prefix + this.longText
         console.log(this.longText)
+      },
+      htmlEncodeJQ(str) {
+        return $('<span/>').text(str).html();
+      },
+      htmlDecodeJQ(str) {
+        return $('<span/>').html(str).text();
       }
     },
     directives: {
