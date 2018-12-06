@@ -2,7 +2,7 @@
   <div id="app">
     <navbar :screenWidth="width"/>
     <transition mode="out-in" enter-active-class="bounceInLeft" leave-active-class="bounceOutLeft">
-      <router-view :screenWidth="width" class="animated fast"/>
+      <router-view :screenWidth="width" class="animated fast" :key="new Date()"/>
     </transition>
     <last/>
   </div>

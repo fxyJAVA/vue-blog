@@ -1,7 +1,7 @@
 <template>
   <section class="blog-lists-section">
     <header id="topheader">
-      <div class="background"></div>
+      <div class="background" :style="{backgroundImage: 'url('+bg+')'}"></div>
     </header>
     <div class="onlyarticle container">
 
@@ -36,40 +36,39 @@
         </div>
       </div>
 
-      <!--前一篇，后一篇-->
-      <div class="row" style="margin:20px auto 120px auto;">
-        <div class="col-md-6 prev-next">
-          <a href="#" class="readmore">
+      <!--前一篇，后一篇,v-if="this.article.previd !== 0 && this.article.nextid !== 0"-->
+      <div class="row" style="margin:20px auto 120px auto;" >
+        <div class="col-md-6 prev-next" v-if="this.article.previd !== 0" :class="this.article.nextid===0?'col-md-12':'col-md-6'">
+          <router-link :to="{name:'article',params:{articleid:article.prev.articleid,pageNum:1}}" class="readmore">
             <div class="read-cover"></div>
             <div class="read-imgContainer">
-              <div class="read-imgContainer-img"><img src="../../assets/test2.jpg" alt=""></div>
+              <div class="read-imgContainer-img"><img :src="article.prev.thumbnail" alt=""></div>
             </div>
             <div class="read-cover read-second"></div>
             <div class="read-inner">
-              <div class="read-text">
+              <div class="read-text" :style="{textAlign: this.article.nextid ===0 ?'center' :'left'}">
                 <p>previous</p>
-                <h2 class="read-title">可能是最接近宫崎骏的人：细田守</h2>
+                <h2 class="read-title">{{article.prev.title}}</h2>
               </div>
             </div>
-          </a>
+          </router-link>
         </div>
-        <div class="col-md-6 prev-next">
-          <a href="#" class="readmore">
+        <div class="prev-next" v-if="this.article.nextid !== 0" :class="this.article.previd ===0?'col-md-12':'col-md-6'">
+          <router-link :to="{name:'article',params: {articleid:article.next.articleid,pageNum:1}}" class="readmore">
             <div class="read-cover"></div>
             <div class="read-imgContainer">
-              <div class="read-imgContainer-img"><img src="../../assets/p5.jpg" alt=""></div>
+              <div class="read-imgContainer-img"><img :src="article.next.thumbnail" alt=""></div>
             </div>
             <div class="read-cover read-second"></div>
             <div class="read-inner">
-              <div class="read-text" style="text-align: right">
+              <div class="read-text" :style="{textAlign: this.article.previd ===0 ?'center' :'right'}">
                 <p>next</p>
-                <h2 class="read-title">可能是最接近宫崎骏的人：细田守</h2>
+                <h2 class="read-title">{{article.next.title}}</h2>
               </div>
             </div>
-          </a>
+          </router-link>
         </div>
       </div>
-
       <!--评论-->
       <div class="comment-wrap">
         <h3>
@@ -169,12 +168,14 @@
         article: '',
         focusState: false,
         longText: '',
-        prefix: ''
+        prefix: '',
+        bg: ''
       }
     },
     created() {
-      this.$axios('/api/crow/articles/' + this.$route.params.articleid).then(res => {
+      this.$axios('/api/crow/articles/' + this.$route.params.articleid+'/'+this.$route.params.pageNum).then(res => {
         this.article = res.data.data
+        this.bg = this.article.thumbnail
         console.log(this.article)
       }).catch(error => {
         console.log(error)
