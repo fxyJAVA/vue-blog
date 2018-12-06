@@ -2,7 +2,9 @@
   <div id="app">
     <navbar :screenWidth="width"/>
     <transition mode="out-in" enter-active-class="bounceInLeft" leave-active-class="bounceOutLeft">
-      <router-view :screenWidth="width" class="animated fast" :key="new Date()"/>
+      <keep-alive>
+        <router-view :screenWidth="width" class="animated fast"/>
+      </keep-alive>
     </transition>
     <last/>
   </div>
@@ -44,35 +46,42 @@
   @import './style/style.css';
   @import './style/responsive.css';
   @import "./style/article.css";
+
   #app {
     /*height: 2000px;*/
   }
 
-  .slide-fade{
-    position: absolute;left:0;right: 0;
+  .slide-fade {
+    position: absolute;
+    left: 0;
+    right: 0;
   }
+
   .slide-fade-enter-active {
     transition: all 1.2s ease;
   }
+
   .slide-fade-leave-active {
 
     transition: all .1s cubic-bezier(2.0, 0.5, 0.8, 1.0);
   }
-  .slide-fade-enter, .slide-fade-leave-to
-  {
-    left:0;right: 0;
+
+  .slide-fade-enter, .slide-fade-leave-to {
+    left: 0;
+    right: 0;
     transform: translateX(50px);
     opacity: 0;
   }
 
   /*body {*/
-    /*background: url("assets/little-monster.png");*/
+  /*background: url("assets/little-monster.png");*/
   /*}*/
   body {
-    background: rgba(242, 242, 242,1)!important;
+    background: rgba(242, 242, 242, 1) !important;
     font-family: 微软雅黑;
   }
+
   a {
-    text-decoration: none!important;
+    text-decoration: none !important;
   }
 </style>

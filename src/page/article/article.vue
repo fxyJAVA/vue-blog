@@ -70,6 +70,9 @@
         </div>
       </div>
       <!--评论-->
+      <div>
+        <pagination :total="total" :current-page="current" :display="display" @pagechange="pagechange"></pagination>
+      </div>
       <div class="comment-wrap">
         <h3>
           <v-icon name="regular/comment" scale="1.1"/>
@@ -124,7 +127,6 @@
           </div>
         </div>
       </div>
-
       <!--表单-->
       <div class="comment-form">
         <h3>Your Comment</h3>
@@ -144,7 +146,7 @@
         </div>
         <div class="row">
           <div class="col-lg-12">
-                <textarea @blur="focusState = false" v-focus="focusState" name="comment" class="form-control"
+                <textarea @blur="focusState = false" name="comment" class="form-control"
                           placeholder="Comment" cols="30" rows="10"
                           v-model="longText"
                           onfocus="this.placeholder=''" onblur="this.placeholder='Comment*'" id="longText"></textarea>
@@ -158,8 +160,10 @@
 </template>
 
 <script>
+  import pagination from '../../components/pagination/pagination'
   export default {
     name: "articles",
+    components: {pagination},
     data() {
       return {
         visit: 0,
@@ -169,49 +173,60 @@
         focusState: false,
         longText: '',
         prefix: '',
-        bg: ''
+        bg: '',
+        total: 29,
+        display: 3,
+        current: 1
       }
     },
     created() {
-      this.$axios('/api/crow/articles/' + this.$route.params.articleid+'/'+this.$route.params.pageNum).then(res => {
-        this.article = res.data.data
-        this.bg = this.article.thumbnail
-        console.log(this.article)
+      this.pageNum = this.$route.params.pageNum
+      this.$axios('/api/crow/articles/' + this.$route.params.articleid+'/'+this.pageNum).then(res => {
+      this.article = res.data.data,
+      this.bg = this.article.thumbnail
       }).catch(error => {
         console.log(error)
       })
+      var arr = window.location.href.split('#')
+      setTimeout(function () {
+        if(arr.length === 2) {
+          $('html, body').animate({scrollTop: $('#'+arr[1]).offset().top},1000)
+        }
+      },500)
     },
     methods: {
       reply(key) {
         this.focusState = true
-        console.log(this.article.commentList[key])
         this.prefix = '<a href="' + this.article.commentList[key].commentUrl + '">' + '@' + this.article.commentList[key].commentName + '</a>&nbsp;'
       },
       replyIn(parent, child) {
         this.focusState = true
         //前缀，回复内容之前一定要包含这个内容
         this.prefix = '<a href="' + this.article.commentList[parent].childComment[child].commentUrl + '">' + '@' + this.article.commentList[parent].childComment[child].commentName + '</a>&nbsp;'
-        alert(this.prefix)
       },
       submitComment() {
         this.longText = this.htmlEncodeJQ(this.longText)
         this.longText = this.prefix + this.longText
-        console.log(this.longText)
       },
       htmlEncodeJQ(str) {
         return $('<span/>').text(str).html();
       },
       htmlDecodeJQ(str) {
         return $('<span/>').html(str).text();
+      },
+      pagechange(currentPage) {
+        this.$axios.get('/api/crow/comments',{params:{articleid:this.article.articleid,pageNum:currentPage}})
+          .then(res=> {
+            this.article.commentList = res.data.data
+          }).catch(err=>{
+            console.log('error:'+err)
+        })
       }
     },
-    directives: {
-      focus: {
-        //根据focusState的状态改变是否聚焦focus
-        update: function (el, value) {    //第二个参数传进来的是个json
-          if (value) {
-            el.focus()
-          }
+    watch: {
+      focusState: function f() {
+        if(this.focusState) {
+          $("#longText").focus()
         }
       }
     }
