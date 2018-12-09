@@ -143,7 +143,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="#" style="background: #92d027;" @mouseenter="addClass($event)"
+                    <a href="mailto:2974187202@qq.com" style="background: #92d027;" @mouseenter="addClass($event)"
                        @mouseleave="removeClass($event)">
                       <v-icon name="regular/envelope" scale="2"/>
                     </a>

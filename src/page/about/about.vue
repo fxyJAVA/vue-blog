@@ -10,28 +10,27 @@
     <section class="product-detials-section">
       <div class="container">
         <div class="nothome">
-          <h1 class="h1-title animated fadeIn delay-1s">お前は奴隷だ。解放を望むか？</h1>
+          <h1 class="h1-title animated fadeIn delay-1s">天空既在我们的头上又在我们的脚下</h1>
         </div>
         <div class="row">
           <div class="col-lg-4 details-left aboutme">
             <img src="../../assets/myhead.jpg" alt="学姐"  whisper="“你不用刻意的去改变，因为无论你变成什么样子，我都会一直喜欢你，也会一直陪在你的身边的。”">
             <ul>
-              <li><span>昵称:</span> xxx</li>
-              <li><span>学校:</span> xxxxxxxxxxxxxx</li>
-              <li><span>兴趣:</span>xxxxxxxxxxxxxxxxxxxxxxxxx</li>
-              <li><span>近期:xxxxxxxx</span></li>
+              <li style="text-align: center;font-size: 20px;">关于我</li>
+              <li><p><span>学校:</span> GDUT(宇宙工大)</p></li>
+              <li><p><span>兴趣:</span> ACG相关，对JRPG游戏情有独钟<s>(好吧，画师要是不给力我还是没法玩下去的)</s>，深度剧情控</p></li>
+              <li><p><span>概述:</span>一个看着前端做着后端的瘦宅</p></li>
             </ul>
-            <p>
-              To shewing another demands to. Marianne property cheerful informed at striking at.
-            </p>
-            <p>
-              Received shutters expenses ye he pleasant. Drift as blind above at up. No up simple county stairs do
-              should praise as. Drawings sir gay together landlord had law smallest. Formerly welcomed attended declared
-              met say unlocked. Jennings outlived no dwelling denoting in peculiar.
-            </p>
           </div>
           <div class="col-lg-8 details-right aboutinfo">
-              <h1>时间轴</h1>
+            <h2><em>时间轴</em></h2>
+            <p>2016年9月入学GDUT</p>
+            <p>2017年学习java后台开发</p>
+            <p>2017年11月有了自己的服务器</p>
+            <p>2018年5，6月看了两个月的前端</p>
+            <p>2018年11月底开始写博客</p>
+            <p>2018年12月博客上线</p>
+            <p>...</p>
           </div>
         </div>
       </div>
@@ -124,6 +123,9 @@
     position: relative;
     background: url("https://i.loli.net/2018/11/30/5c013820a9e78.jpg") center;
     background-size: cover;
-
+  }
+  .aboutme ul li p{
+    font-size: 16px;
+    font-weight: 600;
   }
 </style>

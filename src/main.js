@@ -10,13 +10,14 @@ import Icon from 'vue-awesome/components/Icon'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min'
 import Axios from 'axios'
+import toast from './components/toast'
+Vue.use(toast)
 
 Vue.prototype.$axios = Axios
 Vue.component('v-icon', Icon)
 Vue.prototype.HOST = '/api'
 
-Axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
-
+Axios.defaults.headers.post['Content-Type'] = 'multipart/form-data'
 // 添加请求拦截器
 Axios.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么

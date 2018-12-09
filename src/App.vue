@@ -3,7 +3,7 @@
     <navbar :screenWidth="width"/>
     <transition mode="out-in" enter-active-class="bounceInLeft" leave-active-class="bounceOutLeft">
       <keep-alive>
-        <router-view :screenWidth="width" class="animated fast"/>
+        <router-view :screenWidth="width" class="animated fast" :key="new Date()"/>
       </keep-alive>
     </transition>
     <last/>

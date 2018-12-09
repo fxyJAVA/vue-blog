@@ -13,8 +13,7 @@ import group from '@/page/group/group'
 Vue.use(Router)
 
 export default new Router({
-  // mode: 'history',
-
+  mode: 'history',
   scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
       return {
@@ -51,7 +50,7 @@ export default new Router({
       component: ceshi
     },
     {
-      path: '/board',
+      path: '/board/:pageNum',
       name: 'board',
       component: board
     },

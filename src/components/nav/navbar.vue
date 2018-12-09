@@ -62,7 +62,7 @@
 
                   </li>
                   <li>
-                    <router-link to="/board" @click.native="navbarToggler()"><v-icon name="edit" scale="1.2"></v-icon>&nbsp;留言板</router-link>
+                    <router-link :to="{name:'board',params:{pageNum:1}}" @click.native="navbarToggler()"><v-icon name="edit" scale="1.2"></v-icon>&nbsp;留言板</router-link>
                   </li>
                   <li>
                     <router-link to="/friend" @click.native="navbarToggler()"><v-icon name="link" scale="1.2"></v-icon>&nbsp;友链</router-link>
@@ -121,23 +121,6 @@
   });
 
 
-  $(window).scroll(function(){
-    var wintop = $(window).scrollTop(), docheight = $(document).height(), winheight = $(window).height();
-    var scrolled = (wintop/(docheight-winheight))*100;
-
-    $('.goTOP').each(function () {
-      var gotop = scrolled.toFixed(0)
-      $(this).html(gotop + '%');
-    });
-    $('.goTOP').click(function () {
-      if ($('html').scrollTop()) {
-        $('html').animate({ scrollTop: 0 }, 1500);
-        return false;
-      }
-      $('body').animate({ scrollTop: 0 }, 1000);
-      return false;
-    })
-  });
   (function ($) {
     $.fn.dopeNav = function (options) {
       // Variables
@@ -238,14 +221,20 @@
       dopecloseIcon() {
         this.flag2 = false
       },
-      handleScroll() {
-        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-        if (scrollTop > 0) {
+      handleScroll(){
+        // 页面滚动距顶部距离
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop ||
+          document.body.scrollTop
+        var scroll = scrollTop - this.i;
+        this.i = scrollTop;
+        if(scroll<0 && scrollTop !== 0){
           this.flag4 = 'dope-sticky'
+        }else if(scrollTop === 0) {
+          this.flag4 = 'top-sticky'
         } else {
           this.flag4 = ''
         }
-      }
+      },
     }
   }
 </script>
@@ -301,11 +290,6 @@
     height: auto;
     position: relative;
   }
-
-  .dope-nav-container {
-    opacity: 0.2;
-  }
-
   .interaction ul li a {
     width: 42px;
     height: 42px;
