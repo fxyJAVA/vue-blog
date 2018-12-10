@@ -5,7 +5,7 @@
       <div class="background" :style="{backgroundImage: 'url('+bg+')'}">
         <div class="text">
           <h1 id="hometitle">Nega Nebulus</h1>
-          <p id="homep">前进吧，星星在你的头上闪耀哦！</p>
+          <p id="homep">{{hitokoto}}</p>
         </div>
       </div>
     </header>
@@ -46,10 +46,10 @@
                       <img :src="article.thumbnail">
                     </div>
                   </router-link>
+                  <hr>
                     <div class="user-details d-flex align-items-center">
                       <div class="details">
-                        <h4>黑鸦</h4>
-                        <p>{{article.postDate|formatDate}}</p>
+                        <h4 style="text-align: right">黑鸦 {{article.postDate|formatDate}}</h4>
                       </div>
                     </div>
                 </div>
@@ -200,9 +200,15 @@
         bg: 'https://i.loli.net/2018/12/05/5c072c8e6b8d5.png',
         heightFlag: document.body.clientHeight,
         articleList: [],
+        hitokoto: ''
       }
     },
     created() {
+      this.$axios.get('https://v1.hitokoto.cn/').then(res=>{
+        this.hitokoto =  res.data.hitokoto
+      }).catch(err=>{
+        console.log(err)
+      })
       if (this.screenWidth < 991) {
         this.heightFlag = true
       }
@@ -245,7 +251,8 @@
         m = m < 10 ? ('0' + m) : m;
         let s = date.getSeconds();
         s = s < 10 ? ('0' + s) : s;
-        return y + '-' + MM + '-' + d + ' ' + h + ':' + m + ':' + s;
+        return y + '-' + MM + '-' + d
+        // return y + '-' + MM + '-' + d + ' ' + h + ':' + m + ':' + s;
       }
     }
   }

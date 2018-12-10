@@ -2176,6 +2176,7 @@ td, th {
   margin-bottom: 0px;
 }
 .blog-lists-section .single-blog-post .user-details .details {
+  width: 100%;
   margin-left: 8px;
 }
 .blog-lists-section .single-blog-post .user-details .details h4,
@@ -2926,8 +2927,14 @@ td, th {
   margin-right: 5px;
 }
 
-.post-details p {
-  margin-bottom: 15px;
+ .post-details p {
+  margin-bottom: 5px;
+}
+
+.blog-lists .post-details p {
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 
 .media-body .info {

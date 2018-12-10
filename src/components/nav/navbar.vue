@@ -46,7 +46,7 @@
 
                     <a href="#"><v-icon name="cannabis" scale="1.2"/>&nbsp;归档</a>
                     <ul class="dropdown" style="display: block;">
-                      <li><router-link to="/archive" a href="#">技术</router-link></li>
+                        <li><router-link :to="{name:'archive',params:{cateid: 211}}">技术</router-link></li>
                       <li><a href="#">日常</a></li>
                       <li><a href="#">杂谈</a></li>
                       <span class="dd-trigger"></span>

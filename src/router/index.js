@@ -65,7 +65,7 @@ export default new Router({
       component: friend
     },
     {
-      path: '/archive',
+      path: '/archive/:cateid',
       name: 'archive',
       component: archive
     },

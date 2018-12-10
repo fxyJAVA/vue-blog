@@ -1,13 +1,121 @@
 <template>
-    <h1 style="margin-top: 180px;">归档</h1>
+  <div>
+    <header id="topheader">
+      <div class="background">
+      </div>
+    </header>
+
+    <!--文章列表-->
+    <section class="blog-lists-section section-gap-full">
+      <div class="container">
+        <h1 style="font-size: 1.5rem;text-align: center">技术类文章归档</h1>
+        <p style="text-align: center;">笔记,思考,总结</p>
+        <div class="blog-lists">
+          <div class="single-blog-post" v-for="article in articleList">
+            <div class="post-details">
+              <router-link :to="{name:'article',params:{articleid: article.articleid,pageNum:1}}">
+                <h1 style="margin-bottom: 8px;">{{article.title}} </h1>
+                <ul class="tags">
+                  <li v-for="tag in article.tagList">
+                    <v-icon name="regular/bookmark"></v-icon>
+                    <a href="#">{{tag.tagName}}</a>
+                  </li>
+
+                  <li>
+                    <v-icon name="regular/bookmark"></v-icon>
+                    <a href="#">{{article.category.cateName}}</a>
+                  </li>
+                </ul>
+                <div class="post-thumb relative">
+                  <img :src="article.thumbnail">
+                </div>
+                <p style="margin-top: 5px;margin-bottom: 0;">{{article.summary}}</p>
+              </router-link>
+              <hr>
+              <div class="user-details d-flex align-items-center">
+                <div class="details">
+                  <ul class="tags">
+                    <li>
+                      <v-icon name="eye"></v-icon>
+                      &nbsp{{article.view}}
+                    </li>
+                    <li>
+                      <v-icon name="regular/comment"></v-icon>
+                      {{article.comments}}
+                    </li>
+                    <li>
+                      <h4 style="text-align: right">{{article.postDate|formatDate}}</h4>
+                    </li>
+                  </ul>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <nav>
+            <!--TODO 分页-->
+            <ul class="pagination"></ul>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "archive"
+  export default {
+    name: "archive",
+    created() {
+      this.$axios('/api/crow/categories/'+this.$route.params.cateid).then(res => {
+        this.articleList = res.data.data
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+    data() {
+      return {
+        articleList: []
+      }
+    },
+    filters: {
+      formatDate: function(time) {
+        let date = new Date(time);
+        let y = date.getFullYear();
+        let MM = date.getMonth() + 1;
+        MM = MM < 10 ? ('0' + MM) : MM;
+        let d = date.getDate();
+        d = d < 10 ? ('0' + d) : d;
+        let h = date.getHours();
+        h = h < 10 ? ('0' + h) : h;
+        let m = date.getMinutes();
+        m = m < 10 ? ('0' + m) : m;
+        let s = date.getSeconds();
+        s = s < 10 ? ('0' + s) : s;
+        return y + '-' + MM + '-' + d
+        // return y + '-' + MM + '-' + d + ' ' + h + ':' + m + ':' + s;
+      }
     }
+  }
 </script>
 
 <style scoped>
+  .container {
+    max-width: 800px;
+    padding: 25px;
+  }
+  #topheader .background {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: url("https://i.loli.net/2018/12/10/5c0e626a0b345.jpeg") top;
+    background-size: cover;
+  }
 
+  /*文章列表*/
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+}
 </style>

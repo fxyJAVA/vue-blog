@@ -332,6 +332,10 @@
   .blog-info h2 {
     font-size: 14px!important;
   }
+
+  .blog-lists-section .single-blog-post .post-thumb img,.blog-details .post-thumb img{
+    height: 200px;
+  }
 }
 @media (max-width: 480px) {
   .single-counter h2 {
