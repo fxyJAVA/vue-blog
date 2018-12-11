@@ -2,7 +2,7 @@
   <div>
     <!--顶部图片-->
     <header id="topheader">
-      <div class="background" :style="{backgroundImage: 'url('+bg+')'}">
+      <div class="background" :style="{backgroundImage: 'url('+randomBg[Math.floor(Math.random()*randomBg.length)]+')'}">
         <div class="text">
           <h1 id="hometitle">Nega Nebulus</h1>
           <p id="homep">{{hitokoto}}</p>
@@ -197,7 +197,14 @@
       return {
         visit: 100,
         comment: 100,
-        bg: 'https://i.loli.net/2018/12/05/5c072c8e6b8d5.png',
+        randomBg: ['https://i.loli.net/2018/12/05/5c072c8e6b8d5.png',
+        'https://i.loli.net/2018/12/11/5c0fd7d200ea7.jpg',
+        'https://i.loli.net/2018/12/11/5c0fd7d4c9ec4.jpg',
+        'https://i.loli.net/2018/12/11/5c0fd7e9ef7d2.jpg',
+        'https://i.loli.net/2018/12/11/5c0fd7fa1d4db.png',
+        'https://i.loli.net/2018/12/11/5c0fd822a20fe.png',
+        'https://i.loli.net/2018/12/11/5c0fd82a2885e.jpg',
+        'https://i.loli.net/2018/12/05/5c072c8e6b8d5.png'],
         heightFlag: document.body.clientHeight,
         articleList: [],
         hitokoto: ''

@@ -104,6 +104,7 @@
 
   .aboutme,.aboutinfo {
     background: rgba(255, 255, 255, 0.5);
+    border: 2px solid #cce5ff;
   }
 
   .aboutme img {

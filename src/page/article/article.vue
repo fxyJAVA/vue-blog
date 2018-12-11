@@ -190,7 +190,8 @@
         commentUrl: '',
         commentContent: '',
         parentCommentId: 0,
-        pageNum: ''
+        pageNum: '',
+        father: 0
       }
     },
     created() {
@@ -203,7 +204,8 @@
 
       this.$axios('/api/crow/articles/' + this.$route.params.articleid + '/' + this.pageNum).then(res => {
         this.article = res.data.data,
-          this.bg = this.article.thumbnail
+        console.log(res.data.data)
+        this.bg = this.article.thumbnail
         this.total = this.article.comments
       }).catch(error => {
         console.log(error)
@@ -220,12 +222,14 @@
         this.focusState = true
         this.prefix = '<a href="' + this.article.commentList[key].commentUrl + '">' + '@' + this.article.commentList[key].commentName + '</a>&nbsp;'
         this.parentCommentId = this.article.commentList[key].commentid
+        this.father = this.article.commentList[key].commentid
       },
       replyIn(parent, child) {
         this.focusState = true
         //前缀，回复内容之前一定要包含这个内容
         this.prefix = '<a href="' + this.article.commentList[parent].childComment[child].commentUrl + '">' + '@' + this.article.commentList[parent].childComment[child].commentName + '</a>&nbsp;'
         this.parentCommentId = this.article.commentList[parent].childComment[child].commentid
+        this.father = this.article.commentList[parent].commentid
       },
       submitComment() {
         const rexEmail = new RegExp('\\w[-\\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\\.)+[A-Za-z]{2,14}')
@@ -267,11 +271,17 @@
         formData.append('pageNum', this.pageNum)
         formData.append('articleid', this.article.articleid)
         this.$axios.post('/api/crow/comments', formData).then(res => {
-          $('html, body').animate({scrollTop: $('#div-comments').offset().top-100}, 1000)
+          if(this.parentCommentId !== 0) {
+            $('html, body').animate({scrollTop: $('#comment-'+this.father).offset().top-100}, 1000)
+          }else {
+            $('html, body').animate({scrollTop: $('#div-comments').offset().top-100}, 1000)
+          }
           window.localStorage.Name = this.commentName
           window.localStorage.Email = this.commentEmail
           window.localStorage.Url = this.commentUrl
           this.longText = ''
+          this.parentCommentId = 0
+          this.prefix = ''
           this.current = 1
           this.pagechange(1)
         }).catch(err => {

@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import test from '@/components/test'
-import ceshi from '@/components/ceshi'
 import home from '@/page/home/home'
 import board from '@/page/board/board'
 import article from '@/page/article/article'
@@ -38,16 +36,6 @@ export default new Router({
       path: '/article/:articleid/:pageNum',
       name: 'article',
       component: article
-    },
-    {
-      path: '/test',
-      name: 'test',
-      component: test
-    },
-    {
-      path: '/ceshi',
-      name: 'ceshi',
-      component: ceshi
     },
     {
       path: '/board/:pageNum',

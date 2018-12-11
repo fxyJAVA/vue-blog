@@ -191,8 +191,9 @@
         messageEmail: '',
         messageUrl: '',
         messageContent: '',
-        parentBoard: '',
-        poem: null
+        parentBoard: 0,
+        poem: null,
+        father: 0
       }
     },
     methods: {
@@ -200,14 +201,14 @@
         this.focusState = true
         this.prefix = '<a href="' + this.boards[key].messageUrl + '">' + '@' + this.boards[key].messageName + '</a>&nbsp;'
         this.parentBoard = this.boards[key].messageid
-        console.log(this.parentBoard)
+        this.father = this.boards[key].messageid
       },
       replyIn(parent, child) {
         this.focusState = true
         //前缀，回复内容之前一定要包含这个内容,上同
         this.prefix = '<a href="' + this.boards[parent].childList[child].messageUrl + '">' + '@' + this.boards[parent].childList[child].messageName + '</a>&nbsp;'
-        this.parentBoard = this.boards[parent].childList[child].messageParent
-        console.log(this.parentBoard)
+        this.parentBoard = this.boards[parent].childList[child].messageid
+        this.father = this.boards[parent].messageid
       },
       htmlEncodeJQ(str) {
         return $('<span/>').text(str).html();
@@ -272,7 +273,12 @@
         formData.append('parentBoard', this.parentBoard)
         formData.append('pageNum', this.pageNum)
         this.$axios.post('/api/crow/boards', formData).then(res => {
-          $('html, body').animate({scrollTop: $('#div-board').offset().top - 100}, 1000)
+          if(this.parentBoard !== 0) {
+            $('html, body').animate({scrollTop: $('#board-'+this.father).offset().top - 100}, 1000)
+          }else {
+            $('html, body').animate({scrollTop: $('#div-board').offset().top - 100}, 1000)
+          }
+
           window.localStorage.Name = this.messageName
           window.localStorage.Email = this.messageEmail
           window.localStorage.Url = this.messageUrl
@@ -280,6 +286,7 @@
           this.current = 1
           this.pagechange(1)
           this.parentBoard = 0
+          this.prefix = ''
         }).catch(err => {
           console.log(err)
         })

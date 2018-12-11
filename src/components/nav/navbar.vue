@@ -308,4 +308,10 @@
       line-height: 40px;
     }
   }
+
+  @media (min-width: 768px) {
+    .header-area .dope-nav-container:hover {
+      opacity: 1;
+    }
+  }
 </style>

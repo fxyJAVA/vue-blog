@@ -1,7 +1,10 @@
 <template>
+  <div>
   <span class="scroll-top" @click="toTop">
     <v-icon name="angle-up" scale="2"></v-icon>
   </span>
+    <div style="text-align: center;">© 2018&nbsp;<a href="http://www.miibeian.gov.cn">粤ICP备17149317号</a></div>
+  </div>
 </template>
 
 <script>

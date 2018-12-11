@@ -2738,7 +2738,6 @@ td, th {
 }
 .download-section .primary-btn {
   margin-left: 20px;
-  display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
   -webkit-box-align: center;
