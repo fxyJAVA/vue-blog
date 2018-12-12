@@ -2,7 +2,7 @@
   <div>
     <!--顶部图片-->
     <header id="topheader">
-      <div class="background" :style="{backgroundImage: 'url('+randomBg[Math.floor(Math.random()*randomBg.length)]+')'}">
+      <div  v-lazy:background-image="randomBg[Math.floor(Math.random()*randomBg.length)]" class="background">
         <div class="text">
           <h1 id="hometitle">Nega Nebulus</h1>
           <p id="homep">{{hitokoto}}</p>
@@ -17,7 +17,7 @@
 
           <div class="col-lg-8">
             <div class="blog-lists">
-              <div class="single-blog-post" v-for="article in articleList">
+              <div class="single-blog-post" v-for="(article,index) in articleList" :key="index">
                 <div class="post-details">
                   <router-link :to="{name:'article',params:{articleid: article.articleid,pageNum:1}}">
                     <h1>{{article.title}} </h1>
@@ -43,7 +43,7 @@
                     </ul>
                     <p>{{article.summary}}</p>
                     <div class="post-thumb relative">
-                      <img :src="article.thumbnail">
+                      <img v-lazy="article.thumbnail">
                     </div>
                   </router-link>
                   <hr>
@@ -94,7 +94,7 @@
                   </li>
                   <li class="d-flex flex-row align-items-center">
                     <div class="thumbs">
-                      <img class="img-fluid" src="img/blog/small-t2.jpg" alt="">
+                      <img class="img-fluid" srcsrc="img/blog/small-t2.jpg" alt="">
                     </div>
                     <div class="details">
                       <a href="single-blog.html">
@@ -198,9 +198,9 @@
         visit: 100,
         comment: 100,
         randomBg: ['https://i.loli.net/2018/12/05/5c072c8e6b8d5.png',
-        'https://i.loli.net/2018/12/11/5c0fd7d200ea7.jpg',
+        'https://i.loli.net/2018/12/12/5c1094c86de85.jpg',
         'https://i.loli.net/2018/12/11/5c0fd7d4c9ec4.jpg',
-        'https://i.loli.net/2018/12/11/5c0fd7e9ef7d2.jpg',
+        'https://i.loli.net/2018/12/12/5c1094ccc65a6.jpg',
         'https://i.loli.net/2018/12/11/5c0fd7fa1d4db.png',
         'https://i.loli.net/2018/12/11/5c0fd822a20fe.png',
         'https://i.loli.net/2018/12/11/5c0fd82a2885e.jpg',

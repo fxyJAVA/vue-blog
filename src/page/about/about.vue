@@ -2,7 +2,7 @@
   <div>
     <!-- 顶部 -->
     <header id="topheader">
-      <div class="background">
+      <div v-lazy:background-image="'https://i.loli.net/2018/11/30/5c013820a9e78.jpg'" class="background">
       </div>
     </header>
 
@@ -14,7 +14,7 @@
         </div>
         <div class="row">
           <div class="col-lg-4 details-left aboutme">
-            <img src="../../assets/myhead.jpg" alt="学姐"  whisper="“你不用刻意的去改变，因为无论你变成什么样子，我都会一直喜欢你，也会一直陪在你的身边的。”">
+            <img v-lazy="'https://i.loli.net/2018/12/12/5c10cd6859af9.jpg'" alt="学姐"  whisper="“你不用刻意的去改变，因为无论你变成什么样子，我都会一直喜欢你，也会一直陪在你的身边的。”">
             <ul>
               <li style="text-align: center;font-size: 20px;">关于我</li>
               <li><p><span>学校:</span> GDUT(宇宙工大)</p></li>
@@ -122,7 +122,7 @@
     width: 100%;
     height: 100%;
     position: relative;
-    background: url("https://i.loli.net/2018/11/30/5c013820a9e78.jpg") center;
+    background-position: center;
     background-size: cover;
   }
   .aboutme ul li p{

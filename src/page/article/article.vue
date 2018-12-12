@@ -1,7 +1,7 @@
 <template>
   <section class="blog-lists-section">
     <header id="topheader">
-      <div class="background" :style="{backgroundImage: 'url('+bg+')'}"></div>
+      <div v-lazy:background-image="bg" class="background"></div>
     </header>
     <div class="onlyarticle container">
 
@@ -43,7 +43,7 @@
           <router-link :to="{name:'article',params:{articleid:article.prev.articleid,pageNum:1}}" class="readmore">
             <div class="read-cover"></div>
             <div class="read-imgContainer">
-              <div class="read-imgContainer-img"><img :src="article.prev.thumbnail" alt=""></div>
+              <div class="read-imgContainer-img"><img v-lazy="article.prev.thumbnail" alt=""></div>
             </div>
             <div class="read-cover read-second"></div>
             <div class="read-inner">
@@ -59,7 +59,7 @@
           <router-link :to="{name:'article',params: {articleid:article.next.articleid,pageNum:1}}" class="readmore">
             <div class="read-cover"></div>
             <div class="read-imgContainer">
-              <div class="read-imgContainer-img"><img :src="article.next.thumbnail" alt=""></div>
+              <div class="read-imgContainer-img"><img v-lazy="article.next.thumbnail" alt=""></div>
             </div>
             <div class="read-cover read-second"></div>
             <div class="read-inner">
@@ -82,13 +82,12 @@
         </h3>
         <div class="media comments" v-for="(comment,index) in article.commentList" :key="comment.commentid"
              :id="'comment-'+comment.commentid">
-
           <div class="media-body">
             <div class="head-info">
               <div class="float-left clearfix">
-                <img src="../../assets/2.jpg">
+                <img v-lazy="comment.commentAvatarMd5">
               </div>
-              <h5><a target="_blank" :href="comment.commentUrl">{{comment.commentName}}</a></h5>
+              <h5><a target="_blank" :href="comment.commentUrl">{{comment.commentName}}</a><span class="blog-owner">博主</span></h5>
               <div class="info">
                 <time datetime="2018-11-22">2018-9-9</time>
                 <span class="useragent-info">
@@ -97,22 +96,22 @@
                 &nbsp;广东省广州市 联通{{comment.commentIp}}
               </div>
             </div>
-            <p v-html="comment.commentContent">
+            <p v-html="comment.commentContent" class="content">
 
             </p>
             <div class="comment-buttons">
               <button href="#" class="btn-sm" @click="reply(index)">Replay</button>
             </div>
 
-            <div class="media replay-comment" v-for="(reply,childIndex) in comment.childComment" :key="childIndex"
+            <div class="media replay-comment" v-for="(reply,childIndex) in comment.childComment" :key="reply.commentid"
                  :id="'reply-'+reply.commentid">
 
               <div class="media-body">
                 <div class="head-info">
                   <div class="float-left clearfix">
-                    <img src="../../assets/5.jpg">
+                    <img v-lazy="reply.commentAvatarMd5">
                   </div>
-                  <h5><a href="#">{{reply.commentName}}</a></h5>
+                  <h5><a href="#">{{reply.commentName}}</a><span class="blog-owner">博主</span></h5>
                   <div class="info">
                     <time datetime="2018-11-22">2018-9-9</time>
                     <span data-v-49843f54="" class="useragent-info">
@@ -121,7 +120,7 @@
                     &nbsp;广东省广州市 联通 {{reply.commentIp}}
                   </div>
                 </div>
-                <p v-html="reply.commentContent">
+                <p v-html="reply.commentContent" class="content">
                 </p>
                 <div class="comment-buttons">
                   <button class="btn-sm" @click="replyIn(index,childIndex)">Replay</button>
@@ -134,16 +133,17 @@
       <!--表单-->
       <div class="comment-form">
         <h3>Your Comment</h3>
+        <div class="yourimg"><img :src="this.imgUrl"/></div>
         <div class="row form-col-wrap">
           <div class="col-lg-4 form-cols">
             <input type="text" v-model="commentName" required="required" class="form-control" placeholder="Name"
                    onfocus="this.placeholder=''"
-                   onblur="this.placeholder='Name*'">
+                   onblur="this.placeholder='Name*'" @blur="getQQInfo">
           </div>
           <div class="col-lg-4 form-cols">
             <input type="email" v-model="commentEmail" required="required" class="form-control" placeholder="Email"
                    onfocus="this.placeholder=''"
-                   onblur="this.placeholder='Email*'">
+                   onblur="this.placeholder='Email*'" @blur="getMd5">
           </div>
           <div class="col-lg-4 form-cols">
             <input type="url" v-model="commentUrl" class="form-control" placeholder="web" onfocus="this.placeholder=''"
@@ -191,7 +191,9 @@
         commentContent: '',
         parentCommentId: 0,
         pageNum: '',
-        father: 0
+        father: 0,
+        imgUrl: '',
+        imgFlag: true
       }
     },
     created() {
@@ -201,6 +203,7 @@
       this.commentUrl = window.localStorage.getItem('Url')
       this.commentEmail = window.localStorage.getItem('Email')
       this.commentName = window.localStorage.getItem('Name')
+      this.imgUrl = window.localStorage.getItem('ImgUrl')
 
       this.$axios('/api/crow/articles/' + this.$route.params.articleid + '/' + this.pageNum).then(res => {
         this.article = res.data.data,
@@ -270,6 +273,7 @@
         formData.append('parentCommentId', this.parentCommentId)
         formData.append('pageNum', this.pageNum)
         formData.append('articleid', this.article.articleid)
+        formData.append('commentAvatarMd5',this.imgUrl)
         this.$axios.post('/api/crow/comments', formData).then(res => {
           if(this.parentCommentId !== 0) {
             $('html, body').animate({scrollTop: $('#comment-'+this.father).offset().top-100}, 1000)
@@ -279,6 +283,7 @@
           window.localStorage.Name = this.commentName
           window.localStorage.Email = this.commentEmail
           window.localStorage.Url = this.commentUrl
+          window.localStorage.ImgUrl = this.imgUrl
           this.longText = ''
           this.parentCommentId = 0
           this.prefix = ''
@@ -305,6 +310,28 @@
           }).catch(err => {
           console.log('error:' + err)
         })
+      },
+      getQQInfo() {
+        var reg = /^[1-9][0-9]{5,}$/
+        if(reg.test(this.commentName)) {
+          this.imgUrl ='https://q2.qlogo.cn/headimg_dl?dst_uin='+this.commentName+'&amp;spec=100'
+          this.$toast('正在获取qq昵称',3000)
+          this.$axios.get('/qq/qqinfo/?type=getqqnickname&qq='+this.commentName).then(res=>{
+            var arr = res.data.split('(')
+            arr = arr[1].split(')')
+            arr = JSON.parse(arr[0])
+            this.commentEmail = this.commentName+'@qq.com'
+            this.commentName = arr[this.commentName][6]
+            this.$toast('获取昵称成功')
+            this.imgflag = false
+          }).catch(err=>{
+            console.log(err)
+            this.$toast('获取昵称失败')
+          })
+        }
+      },
+      getMd5() {
+          this.imgUrl = 'https://cdn.v2ex.com/gravatar/'+md5(this.commentEmail)+'?s=50'
       }
     },
     watch: {

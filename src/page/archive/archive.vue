@@ -1,7 +1,7 @@
 <template>
   <div>
     <header id="topheader">
-      <div class="background">
+      <div v-lazy:background-image="'https://i.loli.net/2018/12/10/5c0e626a0b345.jpeg'" class="background">
       </div>
     </header>
 
@@ -27,7 +27,7 @@
                   </li>
                 </ul>
                 <div class="post-thumb relative">
-                  <img :src="article.thumbnail">
+                  <img v-lazy="article.thumbnail">
                 </div>
                 <p style="margin-top: 5px;margin-bottom: 0;">{{article.summary}}</p>
               </router-link>
@@ -108,8 +108,11 @@
     width: 100%;
     height: 100%;
     position: relative;
-    background: url("https://i.loli.net/2018/12/10/5c0e626a0b345.jpeg") top;
+    background-position: top;
     background-size: cover;
+  }
+  .single-blog-post .post-details:hover {
+    box-shadow: 0 5px 10px 5px rgba(110,110,110,.4);
   }
 
   /*文章列表*/

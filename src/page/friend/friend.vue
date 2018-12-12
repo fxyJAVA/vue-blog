@@ -2,7 +2,7 @@
   <div>
     <!--顶部图片-->
     <header id="topheader">
-      <div class="background"></div>
+      <div v-lazy:background-image="'https://i.loli.net/2018/11/30/5c0137e164c03.jpg'" class="background"></div>
     </header>
 
     <div class="container">
@@ -252,7 +252,6 @@
   }
 
   #topheader .background {
-    background-image: url("https://i.loli.net/2018/11/30/5c0137e164c03.jpg");
     background-position: center;
   }
 

@@ -3,7 +3,7 @@
     <navbar :screenWidth="width"/>
     <transition mode="out-in" enter-active-class="bounceInLeft" leave-active-class="bounceOutLeft">
       <keep-alive>
-        <router-view :screenWidth="width" class="animated fast" :key="new Date()"/>
+        <router-view :screenWidth="width" class="animated fast" :key="new Date().getTime()"/>
       </keep-alive>
     </transition>
     <last/>
@@ -43,6 +43,7 @@
 
 <style>
   @import './font/yahei.css';
+  @import './font/Poppins.css';
   @import './style/style.css';
   @import './style/responsive.css';
   @import "./style/article.css";
@@ -78,7 +79,7 @@
   /*}*/
   body {
     background: rgba(242, 242, 242, 1) !important;
-    font-family: 微软雅黑;
+    font-family: "Poppins","微软雅黑";
   }
 
   a {

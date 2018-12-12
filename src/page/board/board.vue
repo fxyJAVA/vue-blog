@@ -2,7 +2,7 @@
   <div>
     <!--顶部图片-->
     <header id="topheader">
-      <div class="background">
+      <div v-lazy:background-image="'https://i.loli.net/2018/11/30/5c01202809fe7.jpg'" class="background">
       </div>
     </header>
 
@@ -43,9 +43,9 @@
           <div class="media-body">
             <div class="head-info">
               <div class="float-left clearfix">
-                <img src="../../assets/2.jpg">
+                <img v-lazy="board.messageAvatarMd5">
               </div>
-              <h5><a target="_blank" :href="board.messageUrl">{{board.messageName}}</a></h5>
+              <h5><a target="_blank" :href="board.messageUrl">{{board.messageName}}</a><span class="blog-owner">博主</span></h5>
               <div class="info">
                 <time datetime="2018-11-22">2018-9-9</time>
                 <span data-v-49843f54="" class="useragent-info">
@@ -54,7 +54,7 @@
                 &nbsp;广东省广州市 联通{{board.messageIp}}
               </div>
             </div>
-            <p v-html="board.messageContent">
+            <p v-html="board.messageContent" class="content" style="padding-left: 10px;">
 
             </p>
             <div class="comment-buttons">
@@ -62,15 +62,15 @@
             </div>
 
             <!--回复部分-->
-            <div class="media replay-comment" v-for="(reply,childIndex) in board.childList" :key="childIndex"
+            <div class="media replay-comment" v-for="(reply,childIndex) in board.childList" :key="reply.messageid"
                  :id="'Breply-'+reply.messageid">
 
               <div class="media-body">
                 <div class="head-info">
                   <div class="float-left clearfix">
-                    <img src="../../assets/5.jpg">
+                    <img v-lazy="reply.messageAvatarMd5">
                   </div>
-                  <h5><a href="#">{{reply.messageName}}</a></h5>
+                  <h5><a href="#">{{reply.messageName}}</a><span class="blog-owner">博主</span></h5>
                   <div class="info">
                     <time datetime="2018-11-22">2018-9-9</time>
                     <span data-v-49843f54="" class="useragent-info">
@@ -79,7 +79,7 @@
                     &nbsp;广东省广州市 联通 {{reply.messageIp}}
                   </div>
                 </div>
-                <p v-html="reply.messageContent">
+                <p v-html="reply.messageContent" class="content">
                 </p>
                 <div class="comment-buttons">
                   <button class="btn-sm" @click="replyIn(index,childIndex)">Replay</button>
@@ -93,16 +93,18 @@
       <!--表单-->
       <div class="comment-form">
         <h3>Your Comment</h3>
+        <div class="yourimg"><img :src="this.imgUrl"/></div>
         <div class="row form-col-wrap">
           <div class="col-lg-4 form-cols">
             <input v-model="messageName" type="text" class="form-control" placeholder="Name"
                    onfocus="this.placeholder=''"
-                   onblur="this.placeholder='Name*'">
+                   onblur="this.placeholder='Name*'"
+            @blur="getQQInfo">
           </div>
           <div class="col-lg-4 form-cols">
             <input v-model="messageEmail" type="email" class="form-control" placeholder="Email"
                    onfocus="this.placeholder=''"
-                   onblur="this.placeholder='Email*'">
+                   onblur="this.placeholder='Email*'" @blur="getMd5">
           </div>
           <div class="col-lg-4 form-cols">
             <input v-model="messageUrl" type="url" class="form-control" placeholder="web" onfocus="this.placeholder=''"
@@ -160,6 +162,7 @@
       this.messageUrl = window.localStorage.getItem('Url')
       this.messageEmail = window.localStorage.getItem('Email')
       this.messageName = window.localStorage.getItem('Name')
+      this.imgUrl = window.localStorage.getItem('ImgUrl')
       this.$axios.get('/api/crow/boards/' + this.pageNum).then(res => {
         console.log(res.data.data)
         this.boards = res.data.data
@@ -193,7 +196,11 @@
         messageContent: '',
         parentBoard: 0,
         poem: null,
-        father: 0
+        father: 0,
+        emailMd5: '',
+        qq: '',
+        imgUrl:'',
+        imgflag: true
       }
     },
     methods: {
@@ -226,9 +233,12 @@
           console.log('error:' + err)
         })
       },
+      getMd5() {
+          this.imgUrl = 'https://cdn.v2ex.com/gravatar/'+md5(this.messageEmail)+'?s=50'
+      },
       submitBoard() {
         const rexEmail = new RegExp('\\w[-\\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\\.)+[A-Za-z]{2,14}')
-        const rexChar = /^[\u4e00-\u9fa5_a-zA-Z0-9]{2,10}$/;
+        const rexChar = /^[\u4e00-\u9fa5_a-zA-Z0-9]{1,10}$/;
         const rexUrl = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
         if (this.messageName === '') {
           this.$toast('昵称不能为空')
@@ -272,6 +282,7 @@
         formData.append('messageContent', this.messageContent)
         formData.append('parentBoard', this.parentBoard)
         formData.append('pageNum', this.pageNum)
+        formData.append('messageAvatarMd5',this.imgUrl)
         this.$axios.post('/api/crow/boards', formData).then(res => {
           if(this.parentBoard !== 0) {
             $('html, body').animate({scrollTop: $('#board-'+this.father).offset().top - 100}, 1000)
@@ -282,6 +293,7 @@
           window.localStorage.Name = this.messageName
           window.localStorage.Email = this.messageEmail
           window.localStorage.Url = this.messageUrl
+          window.localStorage.ImgUrl = this.imgUrl
           this.longText = ''
           this.current = 1
           this.pagechange(1)
@@ -290,6 +302,26 @@
         }).catch(err => {
           console.log(err)
         })
+      },
+      getQQInfo() {
+        var reg = /^[1-9][0-9]{5,}$/
+        if(reg.test(this.messageName)) {
+          this.imgUrl ='https://q2.qlogo.cn/headimg_dl?dst_uin='+this.messageName+'&amp;spec=100'
+          this.$toast('正在获取qq昵称',3000)
+          this.$axios.get('/qq/qqinfo/?type=getqqnickname&qq='+this.messageName).then(res=>{
+          var arr = res.data.split('(')
+            arr = arr[1].split(')')
+            arr = JSON.parse(arr[0])
+            this.messageEmail = this.messageName+'@qq.com'
+            this.messageName = arr[this.messageName][6]
+            this.$toast('获取昵称成功')
+
+            this.imgflag = false
+          }).catch(err=>{
+            console.log(err)
+            this.$toast('获取昵称失败')
+          })
+        }
       }
     },
     watch: {
@@ -408,7 +440,7 @@
     width: 100%;
     height: 100%;
     position: relative;
-    background: url("https://i.loli.net/2018/11/30/5c01202809fe7.jpg") center;
+    background-position: center;
     background-size: cover;
   }
 

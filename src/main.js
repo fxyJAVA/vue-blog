@@ -11,7 +11,14 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min'
 import Axios from 'axios'
 import toast from './components/toast'
+import VueLazyload from 'vue-lazyload'
 Vue.use(toast)
+Vue.use(VueLazyload,{
+  preLoad: 1.3,
+  error: require('../static/error.jpg'),
+  loading: require('../static/timg.gif'),
+  attempt: 1
+})
 
 Vue.prototype.$axios = Axios
 Vue.component('v-icon', Icon)

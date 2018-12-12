@@ -12,10 +12,18 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {  //使用"/api"来代替"http://f.apiplus.c"
-        target: 'https://www.blacklotus.xin:8443', //源地址
+        // target: 'https://www.blacklotus.xin:8443', //源地址
+        target: 'http://localhost:8443',
         changeOrigin: true, //改变源
         pathRewrite: {
           '^/api': '' //路径重写
+        }
+      },
+      '/qq': {
+        target: 'https://api.mashiro.top',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/qq': ''
         }
       }
     },
