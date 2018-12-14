@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <ul class="pagination">
+    <ul class="pagination justify-content-end">
       <li :class="{'disabled': current == 1}"><a href="javascript:;" @click="setCurrent(current - 1)"> « </a></li>
       <li :class="{'disabled': current == 1}"><a href="javascript:;" @click="setCurrent(1)"> 首页 </a></li>
       <li v-for="p in grouplist" :class="{'active': current == p.val}"><a href="javascript:;"
@@ -90,10 +90,10 @@
 <style scoped>
   .pagination {
     overflow: hidden;
-    display: table;
-    margin: 0 auto;
-    /*width: 100%;*/
-    height: 50px;
+    display: flex;
+    margin-bottom: 10px;
+    width: 100%;
+    font-style: italic;
   }
 
   .pagination li {
@@ -101,15 +101,18 @@
     height: 30px;
     border-radius: 5px;
     margin: 3px;
-    color: #666;
+    color: #000000;
   }
 
   a {
-    color: #fff;
+    color: #000000;
   }
 
   .pagination li:hover {
-    background: #000;
+    background: #1b1e21;
+  }
+  .pagination li:hover a{
+    color: #ffffff;
   }
 
   a {

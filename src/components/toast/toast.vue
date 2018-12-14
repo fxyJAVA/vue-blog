@@ -20,17 +20,23 @@
 <style scoped>
   .toast {
     position: fixed;
-    top: 40%;
+    top: 20%;
     left: 50%;
-    margin-left: -15vw;
-    padding: 2vw;
-    width: 30vw;
-    font-size: 4vw;
+    transform: translateX(-50%);
+    padding: 1vw;
+    max-width: 30vw;
+    font-size: 22px;
     color: #fff;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 5vw;
+    border-radius: 1vw;
     z-index: 999;
+  }
+
+  @media (max-width: 567px) {
+    .toast {
+      font-size: 14px;
+    }
   }
 
   .demo-enter-active,

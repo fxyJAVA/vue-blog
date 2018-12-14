@@ -45,12 +45,12 @@
               <div class="float-left clearfix">
                 <img v-lazy="board.messageAvatarMd5">
               </div>
-              <h5><a target="_blank" :href="board.messageUrl">{{board.messageName}}</a><span class="blog-owner">博主</span></h5>
+              <h5><a target="_blank" :href="board.messageUrl">{{board.messageName}}</a><span v-if="board.isAdmin" class="blog-owner">博主</span></h5>
               <div class="info">
-                <time datetime="2018-11-22">2018-9-9</time>
-                <span data-v-49843f54="" class="useragent-info">
-                  {{board.messageAgent}}
-                </span>
+                <time datetime="2018-11-22">{{board.messageDate|formatDate}}</time>
+                <!--<span data-v-49843f54="" class="useragent-info">-->
+                  <!--{{board.messageAgent}}-->
+                <!--</span>-->
                 &nbsp;广东省广州市 联通{{board.messageIp}}
               </div>
             </div>
@@ -70,12 +70,12 @@
                   <div class="float-left clearfix">
                     <img v-lazy="reply.messageAvatarMd5">
                   </div>
-                  <h5><a href="#">{{reply.messageName}}</a><span class="blog-owner">博主</span></h5>
+                  <h5><a href="#">{{reply.messageName}}</a><span v-if="reply.isAdmin" class="blog-owner">博主</span></h5>
                   <div class="info">
-                    <time datetime="2018-11-22">2018-9-9</time>
-                    <span data-v-49843f54="" class="useragent-info">
-                        {{reply.messageAgent}}
-                    </span>
+                    <time datetime="2018-11-22">{{reply.messageDate|formatDate}}</time>
+                    <!--<span data-v-49843f54="" class="useragent-info">-->
+                        <!--{{reply.messageAgent}}-->
+                    <!--</span>-->
                     &nbsp;广东省广州市 联通 {{reply.messageIp}}
                   </div>
                 </div>
@@ -92,28 +92,31 @@
 
       <!--表单-->
       <div class="comment-form">
-        <h3>Your Comment</h3>
+        <h3>{{formWhat}}</h3>
         <div class="yourimg"><img :src="this.imgUrl"/></div>
         <div class="row form-col-wrap">
           <div class="col-lg-4 form-cols">
             <input v-model="messageName" type="text" class="form-control" placeholder="Name"
                    onfocus="this.placeholder=''"
+                   data-toggle="tooltip" data-placement="top" title="输入QQ号将拉取qq头像和昵称"
                    onblur="this.placeholder='Name*'"
             @blur="getQQInfo">
           </div>
           <div class="col-lg-4 form-cols">
             <input v-model="messageEmail" type="email" class="form-control" placeholder="Email"
                    onfocus="this.placeholder=''"
+                   data-toggle="tooltip" data-placement="top" title="接收回复通知以及获取gravatar头像"
                    onblur="this.placeholder='Email*'" @blur="getMd5">
           </div>
           <div class="col-lg-4 form-cols">
             <input v-model="messageUrl" type="url" class="form-control" placeholder="web" onfocus="this.placeholder=''"
+                   data-toggle="tooltip" data-placement="top" title="请勿填写违法链接"
                    onblur="this.placeholder='web*'">
           </div>
         </div>
         <div class="row">
           <div class="col-lg-12">
-                <textarea @blur="focusState = false" name="comment" class="form-control" placeholder="Comment" cols="30"
+                <textarea @blur="focusState = false,formWhat  = '留言'" name="comment" class="form-control" placeholder="Comment" cols="30"
                           rows="10"
                           v-model="longText" onfocus="this.placeholder=''" onblur="this.placeholder='Comment*'"
                           id="longText"></textarea>
@@ -126,11 +129,14 @@
 </template>
 
 <script>
-  import pagination from '../../components/pagination/pagination'
-
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
   export default {
     name: "board",
-    components: {pagination},
+    components:{
+      pagination:resolve =>{require(['../../components/pagination/pagination'],resolve)},
+    },
     created() {
       if(window.localStorage.getItem('Day') != new Date().getDay()) {
         //如果当前不是今天，更新时间
@@ -200,7 +206,8 @@
         emailMd5: '',
         qq: '',
         imgUrl:'',
-        imgflag: true
+        imgflag: true,
+        formWhat: '留言'
       }
     },
     methods: {
@@ -209,13 +216,14 @@
         this.prefix = '<a href="' + this.boards[key].messageUrl + '">' + '@' + this.boards[key].messageName + '</a>&nbsp;'
         this.parentBoard = this.boards[key].messageid
         this.father = this.boards[key].messageid
+        this.formWhat = '回复'+this.boards[key].messageName
       },
       replyIn(parent, child) {
         this.focusState = true
-        //前缀，回复内容之前一定要包含这个内容,上同
         this.prefix = '<a href="' + this.boards[parent].childList[child].messageUrl + '">' + '@' + this.boards[parent].childList[child].messageName + '</a>&nbsp;'
         this.parentBoard = this.boards[parent].childList[child].messageid
         this.father = this.boards[parent].messageid
+        this.formWhat = '回复'+this.boards[parent].childList[child].messageName
       },
       htmlEncodeJQ(str) {
         return $('<span/>').text(str).html();
@@ -234,7 +242,8 @@
         })
       },
       getMd5() {
-          this.imgUrl = 'https://cdn.v2ex.com/gravatar/'+md5(this.messageEmail)+'?s=50'
+        var MD5 = require('md5.js')
+        this.imgUrl = 'https://cdn.v2ex.com/gravatar/'+new MD5().update(this.messageEmail).digest('hex')+'?s=50'
       },
       submitBoard() {
         const rexEmail = new RegExp('\\w[-\\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\\.)+[A-Za-z]{2,14}')
@@ -306,29 +315,57 @@
       getQQInfo() {
         var reg = /^[1-9][0-9]{5,}$/
         if(reg.test(this.messageName)) {
-          this.imgUrl ='https://q2.qlogo.cn/headimg_dl?dst_uin='+this.messageName+'&amp;spec=100'
-          this.$toast('正在获取qq昵称',3000)
+          this.$toast('正在获取qq头像和昵称',3000)
+
+          this.$axios.get('/qq/qqinfo/?type=getqqavatar&qq='+this.messageName+'&callback=qqavatarCallBack'+'&_='+new Date().getTime()).then(res=>{
+            var arr = res.data.split('(')
+            arr = arr[1].split(')')
+            arr = JSON.parse(arr[0])
+            this.imgUrl = arr[this.messageName]
+            this.$toast('获取头像成功')
+          }).catch(err=>{
+            console.log(err)
+            this.$toast('获取头像失败')
+          })
           this.$axios.get('/qq/qqinfo/?type=getqqnickname&qq='+this.messageName).then(res=>{
-          var arr = res.data.split('(')
+            var arr = res.data.split('(')
             arr = arr[1].split(')')
             arr = JSON.parse(arr[0])
             this.messageEmail = this.messageName+'@qq.com'
             this.messageName = arr[this.messageName][6]
             this.$toast('获取昵称成功')
-
             this.imgflag = false
           }).catch(err=>{
             console.log(err)
             this.$toast('获取昵称失败')
           })
+
+
         }
-      }
+      },
     },
     watch: {
       focusState: function f() {
         if (this.focusState) {
           $("#longText").focus()
         }
+      }
+    },
+    filters: {
+      formatDate: function(time) {
+        let date = new Date(time);
+        let y = date.getFullYear();
+        let MM = date.getMonth() + 1;
+        MM = MM < 10 ? ('0' + MM) : MM;
+        let d = date.getDate();
+        d = d < 10 ? ('0' + d) : d;
+        let h = date.getHours();
+        h = h < 10 ? ('0' + h) : h;
+        let m = date.getMinutes();
+        m = m < 10 ? ('0' + m) : m;
+        let s = date.getSeconds();
+        s = s < 10 ? ('0' + s) : s;
+        return y + '-' + MM + '-' + d + ' ' + h + ':' + m + ':' + s;
       }
     }
   }

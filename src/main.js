@@ -19,7 +19,6 @@ Vue.use(VueLazyload,{
   loading: require('../static/timg.gif'),
   attempt: 1
 })
-
 Vue.prototype.$axios = Axios
 Vue.component('v-icon', Icon)
 Vue.prototype.HOST = '/api'

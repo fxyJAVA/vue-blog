@@ -71,7 +71,11 @@
           </router-link>
         </div>
       </div>
+
+      <div v-if="!showComment"><a @click="letShow" style="display: block;width:100px;height: 36px;line-height: 36px;border: 1px solid #909090;background: #ffffff;color: #9090ad;text-align: center;margin: 0 auto;" href="javascript:;">查看评论</a></div>
+
       <!--评论-->
+      <div class="animated zoomInUp" v-if="showComment">
       <div>
         <pagination :total="total" :current-page="current" :display="display" @pagechange="pagechange"></pagination>
       </div>
@@ -87,12 +91,12 @@
               <div class="float-left clearfix">
                 <img v-lazy="comment.commentAvatarMd5">
               </div>
-              <h5><a target="_blank" :href="comment.commentUrl">{{comment.commentName}}</a><span class="blog-owner">博主</span></h5>
+              <h5><a target="_blank" :href="comment.commentUrl">{{comment.commentName}}</a><span v-if="comment.isAdmin" class="blog-owner">博主</span></h5>
               <div class="info">
-                <time datetime="2018-11-22">2018-9-9</time>
-                <span class="useragent-info">
-                  {{comment.commentAgent}}
-                </span>
+                <time datetime="2018-11-22">{{comment.commentDate|formatDate}}</time>
+                <!--<span class="useragent-info">-->
+                  <!--{{comment.commentAgent}}-->
+                <!--</span>-->
                 &nbsp;广东省广州市 联通{{comment.commentIp}}
               </div>
             </div>
@@ -111,12 +115,12 @@
                   <div class="float-left clearfix">
                     <img v-lazy="reply.commentAvatarMd5">
                   </div>
-                  <h5><a href="#">{{reply.commentName}}</a><span class="blog-owner">博主</span></h5>
+                  <h5><a href="#">{{reply.commentName}}</a><span class="blog-owner" v-if="reply.isAdmin">博主</span></h5>
                   <div class="info">
-                    <time datetime="2018-11-22">2018-9-9</time>
-                    <span data-v-49843f54="" class="useragent-info">
-                        {{reply.commentAgent}}
-                    </span>
+                    <time datetime="2018-11-22">{{reply.commentDate|formatDate}}</time>
+                    <!--<span class="useragent-info">-->
+                        <!--{{reply.commentAgent}}-->
+                    <!--</span>-->
                     &nbsp;广东省广州市 联通 {{reply.commentIp}}
                   </div>
                 </div>
@@ -130,9 +134,10 @@
           </div>
         </div>
       </div>
+      </div>
       <!--表单-->
       <div class="comment-form">
-        <h3>Your Comment</h3>
+        <h3>{{formWhat}}</h3>
         <div class="yourimg"><img :src="this.imgUrl"/></div>
         <div class="row form-col-wrap">
           <div class="col-lg-4 form-cols">
@@ -152,7 +157,7 @@
         </div>
         <div class="row">
           <div class="col-lg-12">
-                <textarea @blur="focusState = false" name="comment" class="form-control"
+                <textarea @blur="focusState = false,formWhat='发表评论'" name="comment" class="form-control"
                           placeholder="Comment" cols="30" rows="10"
                           v-model="longText"
                           onfocus="this.placeholder=''" onblur="this.placeholder='Comment*'" id="longText"></textarea>
@@ -166,11 +171,12 @@
 </template>
 
 <script>
-  import pagination from '../../components/pagination/pagination'
 
   export default {
     name: "articles",
-    components: {pagination},
+    components: {
+      pagination:resolve =>{require(['../../components/pagination/pagination'],resolve)},
+    },
     data() {
       return {
         visit: 0,
@@ -193,7 +199,9 @@
         pageNum: '',
         father: 0,
         imgUrl: '',
-        imgFlag: true
+        imgFlag: true,
+        formWhat: '发表评论',
+        showComment: false
       }
     },
     created() {
@@ -226,6 +234,7 @@
         this.prefix = '<a href="' + this.article.commentList[key].commentUrl + '">' + '@' + this.article.commentList[key].commentName + '</a>&nbsp;'
         this.parentCommentId = this.article.commentList[key].commentid
         this.father = this.article.commentList[key].commentid
+        this.formWhat = '回复'+this.article.commentList[key].commentName
       },
       replyIn(parent, child) {
         this.focusState = true
@@ -233,6 +242,7 @@
         this.prefix = '<a href="' + this.article.commentList[parent].childComment[child].commentUrl + '">' + '@' + this.article.commentList[parent].childComment[child].commentName + '</a>&nbsp;'
         this.parentCommentId = this.article.commentList[parent].childComment[child].commentid
         this.father = this.article.commentList[parent].commentid
+        this.formWhat = '回复'+this.article.commentList[parent].childComment[child].commentName
       },
       submitComment() {
         const rexEmail = new RegExp('\\w[-\\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\\.)+[A-Za-z]{2,14}')
@@ -284,6 +294,7 @@
           window.localStorage.Email = this.commentEmail
           window.localStorage.Url = this.commentUrl
           window.localStorage.ImgUrl = this.imgUrl
+          this.formWhat = '发表评论'
           this.longText = ''
           this.parentCommentId = 0
           this.prefix = ''
@@ -315,7 +326,17 @@
         var reg = /^[1-9][0-9]{5,}$/
         if(reg.test(this.commentName)) {
           this.imgUrl ='https://q2.qlogo.cn/headimg_dl?dst_uin='+this.commentName+'&amp;spec=100'
-          this.$toast('正在获取qq昵称',3000)
+          this.$toast('正在获取qq头像和昵称',3000)
+          this.$axios.get('/qq/qqinfo/?type=getqqavatar&qq='+this.commentName+'&callback=qqavatarCallBack'+'&_='+new Date().getTime()).then(res=>{
+            var arr = res.data.split('(')
+            arr = arr[1].split(')')
+            arr = JSON.parse(arr[0])
+            this.imgUrl = arr[this.commentName]
+            this.$toast('获取头像成功')
+          }).catch(err=>{
+            console.log(err)
+            this.$toast('获取头像失败')
+          })
           this.$axios.get('/qq/qqinfo/?type=getqqnickname&qq='+this.commentName).then(res=>{
             var arr = res.data.split('(')
             arr = arr[1].split(')')
@@ -331,7 +352,11 @@
         }
       },
       getMd5() {
-          this.imgUrl = 'https://cdn.v2ex.com/gravatar/'+md5(this.commentEmail)+'?s=50'
+        var MD5 = require('md5.js')
+        this.imgUrl = 'https://cdn.v2ex.com/gravatar/'+new MD5().update(this.commentEmail).digest('hex')+'?s=50'
+      },
+      letShow() {
+        this.showComment = true
       }
     },
     watch: {
@@ -339,6 +364,23 @@
         if (this.focusState) {
           $("#longText").focus()
         }
+      }
+    },
+    filters: {
+      formatDate: function(time) {
+        let date = new Date(time);
+        let y = date.getFullYear();
+        let MM = date.getMonth() + 1;
+        MM = MM < 10 ? ('0' + MM) : MM;
+        let d = date.getDate();
+        d = d < 10 ? ('0' + d) : d;
+        let h = date.getHours();
+        h = h < 10 ? ('0' + h) : h;
+        let m = date.getMinutes();
+        m = m < 10 ? ('0' + m) : m;
+        let s = date.getSeconds();
+        s = s < 10 ? ('0' + s) : s;
+        return y + '-' + MM + '-' + d + ' ' + h + ':' + m + ':' + s;
       }
     }
   }

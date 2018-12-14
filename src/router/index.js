@@ -1,12 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from '@/page/home/home'
-import board from '@/page/board/board'
-import article from '@/page/article/article'
-import about from '@/page/about/about'
-import friend from '@/page/friend/friend'
-import archive from '@/page/archive/archive'
-import group from '@/page/group/group'
 
 Vue.use(Router)
 
@@ -25,42 +18,37 @@ export default new Router({
     {
       path: '/',
       redirect: '/home',
-      component: home
+      component: resolve => require(['@/page/home/home'],resolve)
     },
     {
       path: '/home',
       name: 'home',
-      component: home,
+      component: resolve => require(['@/page/home/home'],resolve)
     },
     {
       path: '/article/:articleid/:pageNum',
       name: 'article',
-      component: article
+      component: resolve => require(['@/page/article/article'],resolve)
     },
     {
       path: '/board/:pageNum',
       name: 'board',
-      component: board
+      component: resolve => require(['@/page/board/board'],resolve)
     },
     {
       path: '/about',
       name: 'about',
-      component: about
+      component: resolve => require(['@/page/about/about'],resolve)
     },
     {
       path: '/friend',
       name: 'friend',
-      component: friend
+      component: resolve => require(['@/page/friend/friend'],resolve)
     },
     {
       path: '/archive/:cateid',
       name: 'archive',
-      component: archive
-    },
-    {
-      path: '/group',
-      name: 'group',
-      component: group
+      component: resolve => require(['@/page/archive/archive'],resolve)
     }
   ]
 })
