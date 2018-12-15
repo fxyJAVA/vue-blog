@@ -98,7 +98,7 @@
     padding: 70px 0;
   }
   .page-top-banner .overlay-bg {
-    background: url('../../assets/p5.jpg') center top;
+    background: url('https://i.loli.net/2018/12/15/5c13e01ea495b.jpg') center top;
     background-size: cover;
   }
 

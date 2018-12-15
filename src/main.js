@@ -21,7 +21,6 @@ Vue.use(VueLazyload,{
 })
 Vue.prototype.$axios = Axios
 Vue.component('v-icon', Icon)
-Vue.prototype.HOST = '/api'
 
 Axios.defaults.headers.post['Content-Type'] = 'multipart/form-data'
 // 添加请求拦截器

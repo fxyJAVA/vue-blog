@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-lazy="http://www.w3.org/1999/xhtml">
   <div>
     <!--顶部图片-->
     <header id="topheader">

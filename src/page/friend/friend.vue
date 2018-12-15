@@ -19,7 +19,7 @@
             <div class="friend">
               <a href="#">
                 <div class="float-left">
-                  <img src="../../assets/test1.png" alt="">
+                  <img src="https://i.loli.net/2018/12/15/5c13e01ea495b.jpg" alt="">
                 </div>
                 <div class="float-left">
                   <h1>樱花庄的白猫</h1>
@@ -34,7 +34,7 @@
             <div class="friend">
               <a href="#">
                 <div class="float-left">
-                  <img src="../../assets/test1.png" alt="">
+                  <img src="https://i.loli.net/2018/12/15/5c13e01ea495b.jpg" alt="">
                 </div>
                 <div class="float-left">
                   <h1>樱花庄的白猫</h1>
@@ -49,7 +49,7 @@
             <div class="friend">
               <a href="#">
                 <div class="float-left">
-                  <img src="../../assets/test1.png" alt="">
+                  <img src="https://i.loli.net/2018/12/15/5c13e01ea495b.jpg" alt="">
                 </div>
                 <div class="float-left">
                   <h1>樱花庄的白猫</h1>
@@ -64,7 +64,7 @@
             <div class="friend">
               <a href="#">
                 <div class="float-left">
-                  <img src="../../assets/test1.png" alt="">
+                  <img src="https://i.loli.net/2018/12/15/5c13e01ea495b.jpg" alt="">
                 </div>
                 <div class="float-left">
                   <h1>樱花庄的白猫</h1>
@@ -79,7 +79,7 @@
             <div class="friend">
               <a href="#">
                 <div class="float-left">
-                  <img src="../../assets/test1.png" alt="">
+                  <img src="https://i.loli.net/2018/12/15/5c13e01ea495b.jpg" alt="">
                 </div>
                 <div class="float-left">
                   <h1>樱花庄的白猫</h1>
@@ -94,7 +94,7 @@
             <div class="friend">
               <a href="#" title="缘于p站，让我知道博客原来可以写的这么漂亮。">
                 <div class="float-left">
-                  <img src="../../assets/test1.png" alt="">
+                  <img src="https://i.loli.net/2018/12/15/5c13e01ea495b.jpg" alt="">
                 </div>
                 <div class="float-left">
                   <h1>樱花庄的白猫</h1>

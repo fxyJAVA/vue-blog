@@ -80,6 +80,10 @@
   body {
     background: rgba(242, 242, 242, 1) !important;
     font-family: "Poppins","微软雅黑";
+
+    /*上下拉动滚动条卡顿，慢时?*/
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
   }
 
   a {

@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-lazy="http://www.w3.org/1999/xhtml">
   <section class="blog-lists-section">
     <header id="topheader">
       <div v-lazy:background-image="bg" class="background"></div>
@@ -104,7 +104,7 @@
 
             </p>
             <div class="comment-buttons">
-              <button href="#" class="btn-sm" @click="reply(index)">Replay</button>
+              <a href="javascript:;" class="btn-sm" @click="reply(index)">Replay</a>
             </div>
 
             <div class="media replay-comment" v-for="(reply,childIndex) in comment.childComment" :key="reply.commentid"
@@ -127,7 +127,7 @@
                 <p v-html="reply.commentContent" class="content">
                 </p>
                 <div class="comment-buttons">
-                  <button class="btn-sm" @click="replyIn(index,childIndex)">Replay</button>
+                  <a href="javacript:;" class="btn-sm" @click="replyIn(index,childIndex)">Replay</a>
                 </div>
               </div>
             </div>
@@ -143,21 +143,24 @@
           <div class="col-lg-4 form-cols">
             <input type="text" v-model="commentName" required="required" class="form-control" placeholder="Name"
                    onfocus="this.placeholder=''"
+                   data-toggle="tooltip" data-placement="top" title="输入QQ号将拉取qq头像和昵称"
                    onblur="this.placeholder='Name*'" @blur="getQQInfo">
           </div>
           <div class="col-lg-4 form-cols">
             <input type="email" v-model="commentEmail" required="required" class="form-control" placeholder="Email"
                    onfocus="this.placeholder=''"
+                   data-toggle="tooltip" data-placement="top" title="接收回复通知以及获取gravatar头像"
                    onblur="this.placeholder='Email*'" @blur="getMd5">
           </div>
           <div class="col-lg-4 form-cols">
             <input type="url" v-model="commentUrl" class="form-control" placeholder="web" onfocus="this.placeholder=''"
+                   data-toggle="tooltip" data-placement="top" title="请勿填写违法链接"
                    onblur="this.placeholder='web*'">
           </div>
         </div>
         <div class="row">
           <div class="col-lg-12">
-                <textarea @blur="focusState = false,formWhat='发表评论'" name="comment" class="form-control"
+                <textarea @blur="cancelReply" name="comment" class="form-control"
                           placeholder="Comment" cols="30" rows="10"
                           v-model="longText"
                           onfocus="this.placeholder=''" onblur="this.placeholder='Comment*'" id="longText"></textarea>
@@ -171,7 +174,9 @@
 </template>
 
 <script>
-
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
   export default {
     name: "articles",
     components: {
@@ -244,6 +249,13 @@
         this.father = this.article.commentList[parent].commentid
         this.formWhat = '回复'+this.article.commentList[parent].childComment[child].commentName
       },
+      cancelReply() {
+        this.focusState = false
+        this.formWhat  = '发表评论'
+        this.prefix = ''
+        this.parentCommentId = 0
+        this.father = 0
+      },
       submitComment() {
         const rexEmail = new RegExp('\\w[-\\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\\.)+[A-Za-z]{2,14}')
         const rexChar = /^[\u4e00-\u9fa5_a-zA-Z0-9]{2,10}$/;
@@ -285,7 +297,9 @@
         formData.append('articleid', this.article.articleid)
         formData.append('commentAvatarMd5',this.imgUrl)
         this.$axios.post('/api/crow/comments', formData).then(res => {
-          if(this.parentCommentId !== 0) {
+          if(!this.showComment) {
+            this.$toast('回复成功')
+          }else if(this.parentCommentId !== 0) {
             $('html, body').animate({scrollTop: $('#comment-'+this.father).offset().top-100}, 1000)
           }else {
             $('html, body').animate({scrollTop: $('#div-comments').offset().top-100}, 1000)
@@ -325,30 +339,22 @@
       getQQInfo() {
         var reg = /^[1-9][0-9]{5,}$/
         if(reg.test(this.commentName)) {
-          this.imgUrl ='https://q2.qlogo.cn/headimg_dl?dst_uin='+this.commentName+'&amp;spec=100'
-          this.$toast('正在获取qq头像和昵称',3000)
-          this.$axios.get('/qq/qqinfo/?type=getqqavatar&qq='+this.commentName+'&callback=qqavatarCallBack'+'&_='+new Date().getTime()).then(res=>{
-            var arr = res.data.split('(')
-            arr = arr[1].split(')')
-            arr = JSON.parse(arr[0])
-            this.imgUrl = arr[this.commentName]
-            this.$toast('获取头像成功')
-          }).catch(err=>{
-            console.log(err)
-            this.$toast('获取头像失败')
+          $.ajax({
+            url: 'https://api.mashiro.top/qqinfo/?type=getqqnickname&qq='+this.commentName,
+            type: 'get',
+            dataType: 'jsonp',
+            jsonpCallback:'portraitCallBack',
+            success: (data)=> {
+              console.log(data[this.commentName][6])
+              this.imgUrl = 'http://q1.qlogo.cn/g?b=qq&nk='+this.commentName+'&s=100'
+              this.commentEmail = this.commentName+'@qq.com'
+              this.commentName = data[this.commentName][6]
+              this.$toast('获取成功')
+            }
           })
-          this.$axios.get('/qq/qqinfo/?type=getqqnickname&qq='+this.commentName).then(res=>{
-            var arr = res.data.split('(')
-            arr = arr[1].split(')')
-            arr = JSON.parse(arr[0])
-            this.commentEmail = this.commentName+'@qq.com'
-            this.commentName = arr[this.commentName][6]
-            this.$toast('获取昵称成功')
-            this.imgflag = false
-          }).catch(err=>{
-            console.log(err)
-            this.$toast('获取昵称失败')
-          })
+          function portraitCallBack(data){
+            console.log(data[6]);
+          }
         }
       },
       getMd5() {
@@ -357,6 +363,7 @@
       },
       letShow() {
         this.showComment = true
+        this.pagechange(1)
       }
     },
     watch: {

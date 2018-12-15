@@ -1436,7 +1436,6 @@ td, th {
   max-width: 450px;
 }
 .banner-section2 .overlay-bg {
-  background: url("../assets/pp.png") center;
   background-size: cover;
 }
 
@@ -1929,7 +1928,6 @@ td, th {
 }
 .comment-wrap .media {
   border-bottom: 1px solid #eee;
-  padding-bottom: 20px;
 }
 .comment-wrap .media:last-child {
   border-bottom: none;
@@ -2024,17 +2022,17 @@ td, th {
   padding-bottom: 10px;
 }
 
-.comment-buttons button {
+.comment-buttons a {
   transition: all 0.5s ease-out;
   background: #FF9999;
-  color: #ffffff;
+  color: #ffffff!important;
   opacity: 0.6;
   outline: none!important;
   cursor: pointer;
   border: none;
 }
 
-.comment-buttons button:hover {
+.comment-buttons a:hover {
   opacity: 1;
 }
 

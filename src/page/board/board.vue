@@ -58,7 +58,7 @@
 
             </p>
             <div class="comment-buttons">
-              <button class="btn-sm" @click="reply(index)">Replay</button>
+              <a class="btn-sm" @click="reply(index)">Replay</a>
             </div>
 
             <!--回复部分-->
@@ -82,7 +82,7 @@
                 <p v-html="reply.messageContent" class="content">
                 </p>
                 <div class="comment-buttons">
-                  <button class="btn-sm" @click="replyIn(index,childIndex)">Replay</button>
+                  <a class="btn-sm" @click="replyIn(index,childIndex)">Replay</a>
                 </div>
               </div>
             </div>
@@ -116,7 +116,7 @@
         </div>
         <div class="row">
           <div class="col-lg-12">
-                <textarea @blur="focusState = false,formWhat  = '留言'" name="comment" class="form-control" placeholder="Comment" cols="30"
+                <textarea @blur="cancelReply" name="comment" class="form-control" placeholder="Comment" cols="30"
                           rows="10"
                           v-model="longText" onfocus="this.placeholder=''" onblur="this.placeholder='Comment*'"
                           id="longText"></textarea>
@@ -154,14 +154,12 @@
         })
         jinrishici.get('').then(response=>{
           this.poem = response.data.data.origin
-          console.log(this.poem)
           window.localStorage.setItem('Poem',JSON.stringify( this.poem))
         })
       } else {
         //本地缓存有诗词，且没有过期
         var logg = JSON.parse(window.localStorage.getItem('Poem'))
         this.poem = logg
-        console.log(this.poem)
       }
       this.pageNum = this.$route.params.pageNum
       this.pageNum = this.$route.params.pageNum
@@ -170,7 +168,6 @@
       this.messageName = window.localStorage.getItem('Name')
       this.imgUrl = window.localStorage.getItem('ImgUrl')
       this.$axios.get('/api/crow/boards/' + this.pageNum).then(res => {
-        console.log(res.data.data)
         this.boards = res.data.data
       }).catch(err => {
         console.log(err)
@@ -224,6 +221,13 @@
         this.parentBoard = this.boards[parent].childList[child].messageid
         this.father = this.boards[parent].messageid
         this.formWhat = '回复'+this.boards[parent].childList[child].messageName
+      },
+      cancelReply() {
+        this.focusState = false
+        this.formWhat  = '留言'
+        this.prefix = ''
+        this.parentBoard = 0
+        this.father = 0
       },
       htmlEncodeJQ(str) {
         return $('<span/>').text(str).html();
@@ -316,31 +320,22 @@
         var reg = /^[1-9][0-9]{5,}$/
         if(reg.test(this.messageName)) {
           this.$toast('正在获取qq头像和昵称',3000)
-
-          this.$axios.get('/qq/qqinfo/?type=getqqavatar&qq='+this.messageName+'&callback=qqavatarCallBack'+'&_='+new Date().getTime()).then(res=>{
-            var arr = res.data.split('(')
-            arr = arr[1].split(')')
-            arr = JSON.parse(arr[0])
-            this.imgUrl = arr[this.messageName]
-            this.$toast('获取头像成功')
-          }).catch(err=>{
-            console.log(err)
-            this.$toast('获取头像失败')
+          $.ajax({
+            url: 'https://api.mashiro.top/qqinfo/?type=getqqnickname&qq='+this.messageName,
+            type: 'get',
+            dataType: 'jsonp',
+            jsonpCallback:'portraitCallBack',
+            success: (data)=> {
+              console.log(data[this.messageName][6])
+              this.imgUrl = 'http://q1.qlogo.cn/g?b=qq&nk='+this.messageName+'&s=100'
+              this.messageEmail = this.messageName+'@qq.com'
+              this.messageName = data[this.messageName][6]
+              this.$toast('获取成功')
+            }
           })
-          this.$axios.get('/qq/qqinfo/?type=getqqnickname&qq='+this.messageName).then(res=>{
-            var arr = res.data.split('(')
-            arr = arr[1].split(')')
-            arr = JSON.parse(arr[0])
-            this.messageEmail = this.messageName+'@qq.com'
-            this.messageName = arr[this.messageName][6]
-            this.$toast('获取昵称成功')
-            this.imgflag = false
-          }).catch(err=>{
-            console.log(err)
-            this.$toast('获取昵称失败')
-          })
-
-
+          function portraitCallBack(data){
+            console.log(data[6]);
+          }
         }
       },
     },
