@@ -49,6 +49,11 @@ export default new Router({
       path: '/archive/:cateid',
       name: 'archive',
       component: resolve => require(['@/page/archive/archive'],resolve)
+    },
+    {
+      path: '/group/:groupid',
+      name: 'group',
+      component: resolve => require(['@/page/group/group'],resolve)
     }
   ]
 })

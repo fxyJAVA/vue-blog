@@ -46,21 +46,21 @@
 
                     <a href="#"><v-icon name="cannabis" scale="1.2"/>&nbsp;归档</a>
                     <ul class="dropdown" style="display: block;">
-                        <li><router-link :to="{name:'archive',params:{cateid: 211}}">技术</router-link></li>
-                      <li><a href="#">日常</a></li>
-                      <li><a href="#">杂谈</a></li>
-                      <span class="dd-trigger"></span>
+                      <li><router-link :to="{name:'archive',params:{cateid: 211}}">学习</router-link></li>
+                      <li><router-link :to="{name:'archive',params:{cateid: 985}}">日常</router-link></li>
+                      <li><router-link :to="{name:'archive',params:{cateid: 11}}">杂谈</router-link></li>
                     </ul>
                   </li>
-                  <li class="cn-dropdown-item has-down" :class="flag32?'active':''">
-                    <a href="#"><v-icon name="regular/list-alt" scale="1.2"></v-icon>&nbsp;清单</a>
-                    <ul class="dropdown" style="display: block;">
-                      <li><router-link to="/group" href="#">Blog List</router-link></li>
-                      <li><a href="#">Single Blog</a></li>
-                      <span class="dd-trigger"></span>
-                    </ul>
+                  <!--<li class="cn-dropdown-item has-down" :class="flag32?'active':''">-->
+                    <!--<a href="#"><v-icon name="regular/list-alt" scale="1.2"></v-icon>&nbsp;安利</a>-->
+                    <!--<ul class="dropdown" style="display: block;">-->
+                      <!--<li><router-link :to="{name:'group',params:{groupid:1}}" href="#">番剧</router-link></li>-->
+                      <!--<li><router-link :to="{name:'group',params:{groupid:2}}">影视</router-link></li>-->
+                      <!--<li><router-link :to="{name:'group',params:{groupid:3}}">书籍</router-link></li>-->
+                      <!--<span class="dd-trigger"></span>-->
+                    <!--</ul>-->
 
-                  </li>
+                  <!--</li>-->
                   <li>
                     <router-link :to="{name:'board',params:{pageNum:1}}" @click.native="navbarToggler()"><v-icon name="edit" scale="1.2"></v-icon>&nbsp;留言板</router-link>
                   </li>

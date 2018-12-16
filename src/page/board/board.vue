@@ -116,13 +116,14 @@
         </div>
         <div class="row">
           <div class="col-lg-12">
-                <textarea @blur="cancelReply" name="comment" class="form-control" placeholder="Comment" cols="30"
+                <textarea :onblur="focusState=false" name="comment" class="form-control" placeholder="Comment" cols="30"
                           rows="10"
                           v-model="longText" onfocus="this.placeholder=''" onblur="this.placeholder='Comment*'"
                           id="longText"></textarea>
           </div>
         </div>
         <input type="submit" class="primary-btn" style="outline: none!important;border: none" @click="submitBoard"/>
+        <input type="button" class="primary-btn" style="outline: none!important;border: none" @click="cancelReply" v-show="this.parentBoard" value="取消回复"/>
       </div>
     </div>
   </div>
@@ -210,22 +211,18 @@
     methods: {
       reply(key) {
         this.focusState = true
-        this.prefix = '<a href="' + this.boards[key].messageUrl + '">' + '@' + this.boards[key].messageName + '</a>&nbsp;'
         this.parentBoard = this.boards[key].messageid
         this.father = this.boards[key].messageid
         this.formWhat = '回复'+this.boards[key].messageName
       },
       replyIn(parent, child) {
         this.focusState = true
-        this.prefix = '<a href="' + this.boards[parent].childList[child].messageUrl + '">' + '@' + this.boards[parent].childList[child].messageName + '</a>&nbsp;'
         this.parentBoard = this.boards[parent].childList[child].messageid
         this.father = this.boards[parent].messageid
         this.formWhat = '回复'+this.boards[parent].childList[child].messageName
       },
       cancelReply() {
-        this.focusState = false
         this.formWhat  = '留言'
-        this.prefix = ''
         this.parentBoard = 0
         this.father = 0
       },
@@ -281,11 +278,7 @@
           return false
         }
         this.longText = this.htmlEncodeJQ(this.longText)
-        if(this.prefix) {
-          this.messageContent = this.prefix + this.longText
-        }else {
-          this.messageContent = this.longText
-        }
+        this.messageContent = this.longText
 
 
         var formData = new FormData()
@@ -302,7 +295,6 @@
           }else {
             $('html, body').animate({scrollTop: $('#div-board').offset().top - 100}, 1000)
           }
-
           window.localStorage.Name = this.messageName
           window.localStorage.Email = this.messageEmail
           window.localStorage.Url = this.messageUrl
@@ -311,7 +303,6 @@
           this.current = 1
           this.pagechange(1)
           this.parentBoard = 0
-          this.prefix = ''
         }).catch(err => {
           console.log(err)
         })

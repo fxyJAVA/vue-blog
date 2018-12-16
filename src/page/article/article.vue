@@ -160,7 +160,7 @@
         </div>
         <div class="row">
           <div class="col-lg-12">
-                <textarea @blur="cancelReply" name="comment" class="form-control"
+                <textarea :onblur="focusState = false" name="comment" class="form-control"
                           placeholder="Comment" cols="30" rows="10"
                           v-model="longText"
                           onfocus="this.placeholder=''" onblur="this.placeholder='Comment*'" id="longText"></textarea>
@@ -168,6 +168,7 @@
         </div>
         <input type="submit" class="primary-btn" style="outline: none!important;border: none" @click="submitComment"
                value="Submit"/>
+        <input v-show="this.parentCommentId" type="button" class="primary-btn" style="outline: none!important;border: none" @click="cancelReply" value="取消回复"/>
       </div>
     </div>
   </section>
@@ -190,7 +191,6 @@
         article: '',
         focusState: false,
         longText: '',
-        prefix: '',
         bg: '',
         total: 0,
         display: 10,
@@ -212,7 +212,6 @@
     created() {
       this.change = true
       this.pageNum = this.$route.params.pageNum
-
       this.commentUrl = window.localStorage.getItem('Url')
       this.commentEmail = window.localStorage.getItem('Email')
       this.commentName = window.localStorage.getItem('Name')
@@ -236,25 +235,20 @@
     methods: {
       reply(key) {
         this.focusState = true
-        this.prefix = '<a href="' + this.article.commentList[key].commentUrl + '">' + '@' + this.article.commentList[key].commentName + '</a>&nbsp;'
         this.parentCommentId = this.article.commentList[key].commentid
         this.father = this.article.commentList[key].commentid
         this.formWhat = '回复'+this.article.commentList[key].commentName
       },
       replyIn(parent, child) {
         this.focusState = true
-        //前缀，回复内容之前一定要包含这个内容
-        this.prefix = '<a href="' + this.article.commentList[parent].childComment[child].commentUrl + '">' + '@' + this.article.commentList[parent].childComment[child].commentName + '</a>&nbsp;'
         this.parentCommentId = this.article.commentList[parent].childComment[child].commentid
         this.father = this.article.commentList[parent].commentid
         this.formWhat = '回复'+this.article.commentList[parent].childComment[child].commentName
       },
       cancelReply() {
-        this.focusState = false
-        this.formWhat  = '发表评论'
-        this.prefix = ''
         this.parentCommentId = 0
         this.father = 0
+        this.formWhat = '发表评论'
       },
       submitComment() {
         const rexEmail = new RegExp('\\w[-\\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\\.)+[A-Za-z]{2,14}')
@@ -282,7 +276,7 @@
         }
 
         this.longText = this.htmlEncodeJQ(this.longText)
-        this.commentContent = this.prefix + this.longText
+        this.commentContent =  this.longText
         if (this.commentContent === '') {
           this.$toast('文本不能为空')
           return false
@@ -309,9 +303,9 @@
           window.localStorage.Url = this.commentUrl
           window.localStorage.ImgUrl = this.imgUrl
           this.formWhat = '发表评论'
+          this.focusState = false
           this.longText = ''
           this.parentCommentId = 0
-          this.prefix = ''
           this.current = 1
           this.pagechange(1)
         }).catch(err => {

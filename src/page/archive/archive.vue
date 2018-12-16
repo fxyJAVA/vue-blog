@@ -1,15 +1,15 @@
 <template>
   <div>
     <header id="topheader">
-      <div v-lazy:background-image="'https://i.loli.net/2018/12/10/5c0e626a0b345.jpeg'" class="background">
+      <div v-lazy:background-image="bg" class="background">
       </div>
     </header>
 
     <!--文章列表-->
     <section class="blog-lists-section section-gap-full">
       <div class="container">
-        <h1 style="font-size: 1.5rem;text-align: center">技术类文章归档</h1>
-        <p style="text-align: center;">笔记,思考,总结</p>
+        <h1 style="font-size: 1.5rem;text-align: center">{{title}}</h1>
+        <p style="text-align: center;">{{p}}</p>
         <div class="blog-lists">
           <div class="single-blog-post" v-for="article in articleList">
             <div class="post-details">
@@ -67,6 +67,15 @@
   export default {
     name: "archive",
     created() {
+      if(this.$route.params.cateid === 985) {
+        this.title = '男子大学生的日常'
+        this.p = '感想,随笔,记录'
+        this.bg = 'https://i.loli.net/2018/12/16/5c15dfb8b44dd.jpg'
+      } else if(this.$route.params.cateid === 11) {
+        this.title = '第三方收容站'
+        this.p = '无处可归之归处',
+        this.bg = 'https://i.loli.net/2018/12/16/5c15d9259e4c9.jpg'
+      }
       this.$axios('/api/crow/categories/'+this.$route.params.cateid).then(res => {
         this.articleList = res.data.data
       }).catch(error => {
@@ -75,7 +84,10 @@
     },
     data() {
       return {
-        articleList: []
+        articleList: [],
+        title: 'Geek文章归档',
+        p: '笔记,思考,总结',
+        bg: 'https://i.loli.net/2018/12/10/5c0e626a0b345.jpeg'
       }
     },
     filters: {
@@ -108,7 +120,7 @@
     width: 100%;
     height: 100%;
     position: relative;
-    background-position: top;
+    background-position: center;
     background-size: cover;
   }
   .single-blog-post .post-details:hover {
