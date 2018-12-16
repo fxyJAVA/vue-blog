@@ -166,8 +166,7 @@
                           onfocus="this.placeholder=''" onblur="this.placeholder='Comment*'" id="longText"></textarea>
           </div>
         </div>
-        <input type="submit" class="primary-btn" style="outline: none!important;border: none" @click="submitComment"
-               value="Submit"/>
+        <input type="submit" class="primary-btn" style="outline: none!important;border: none" @click="submitComment" value="Submit"/>
         <input v-show="this.parentCommentId" type="button" class="primary-btn" style="outline: none!important;border: none" @click="cancelReply" value="取消回复"/>
       </div>
     </div>
@@ -175,9 +174,6 @@
 </template>
 
 <script>
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
   export default {
     name: "articles",
     components: {
@@ -201,36 +197,52 @@
         commentUrl: '',
         commentContent: '',
         parentCommentId: 0,
-        pageNum: '',
+        pageNum: 0,
         father: 0,
         imgUrl: '',
         imgFlag: true,
         formWhat: '发表评论',
-        showComment: false
+        showComment: false,
+        articleid: 0
       }
     },
     created() {
       this.change = true
+      this.articleid = this.$route.params.articleid
       this.pageNum = this.$route.params.pageNum
+      this.current = parseInt(this.pageNum)
       this.commentUrl = window.localStorage.getItem('Url')
       this.commentEmail = window.localStorage.getItem('Email')
       this.commentName = window.localStorage.getItem('Name')
       this.imgUrl = window.localStorage.getItem('ImgUrl')
+      var arr = window.location.href.split('#')
+      //锚点跳转
 
-      this.$axios('/api/crow/articles/' + this.$route.params.articleid + '/' + this.pageNum).then(res => {
+      this.$axios('/api/crow/articles/' + this.articleid  + '/' + this.pageNum).then(res => {
         this.article = res.data.data,
         console.log(res.data.data)
         this.bg = this.article.thumbnail
         this.total = this.article.comments
+        if(arr.length === 2) {
+          this.pagechange(this.pageNum)
+          this.showComment = true
+        }
       }).catch(error => {
         console.log(error)
       })
-      var arr = window.location.href.split('#')
-      setTimeout(function () {
-        if (arr.length === 2) {
-          $('html, body').animate({scrollTop: $('#' + arr[1]).offset().top}, 1000)
+    },
+    mounted() {
+        var arr = window.location.href.split('#')
+        var options = {
+          animation: true,
+          trigger: 'focus'
         }
-      }, 500)
+        setTimeout(function () {
+          if (arr.length === 2) {
+            $('html, body').animate({scrollTop: $('#' + arr[1]).offset().top-100}, 1000)
+          }
+        },1000)
+        $('[data-toggle="tooltip"]').tooltip(options)
     },
     methods: {
       reply(key) {
@@ -307,7 +319,7 @@
           this.longText = ''
           this.parentCommentId = 0
           this.current = 1
-          this.pagechange(1)
+          this.pagechange(this.pageNum)
         }).catch(err => {
           console.log(err)
         })
@@ -319,11 +331,12 @@
         return $('<span/>').html(str).text();
       },
       pagechange(currentPage) {
+        this.pageNum = currentPage
         $('#div-comments').addClass('bounceInUp')
         setTimeout(function () {
           $('#div-comments').removeClass('bounceInUp')
         }, 500)
-        this.$axios.get('/api/crow/comments', {params: {articleid: this.article.articleid, pageNum: currentPage}})
+        this.$axios.get('/api/crow/comments', {params: {articleid: this.articleid, pageNum: currentPage}})
           .then(res => {
             this.article.commentList = res.data.data
           }).catch(err => {

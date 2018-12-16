@@ -45,11 +45,13 @@
               <div class="float-left clearfix">
                 <img v-lazy="board.messageAvatarMd5">
               </div>
-              <h5><a target="_blank" :href="board.messageUrl">{{board.messageName}}</a><span v-if="board.isAdmin" class="blog-owner">博主</span></h5>
+              <h5><a target="_blank" :href="board.messageUrl">{{board.messageName}}</a><span v-if="board.isAdmin"
+                                                                                             class="blog-owner">博主</span>
+              </h5>
               <div class="info">
                 <time datetime="2018-11-22">{{board.messageDate|formatDate}}</time>
                 <!--<span data-v-49843f54="" class="useragent-info">-->
-                  <!--{{board.messageAgent}}-->
+                <!--{{board.messageAgent}}-->
                 <!--</span>-->
                 &nbsp;广东省广州市 联通{{board.messageIp}}
               </div>
@@ -74,7 +76,7 @@
                   <div class="info">
                     <time datetime="2018-11-22">{{reply.messageDate|formatDate}}</time>
                     <!--<span data-v-49843f54="" class="useragent-info">-->
-                        <!--{{reply.messageAgent}}-->
+                    <!--{{reply.messageAgent}}-->
                     <!--</span>-->
                     &nbsp;广东省广州市 联通 {{reply.messageIp}}
                   </div>
@@ -100,7 +102,7 @@
                    onfocus="this.placeholder=''"
                    data-toggle="tooltip" data-placement="top" title="输入QQ号将拉取qq头像和昵称"
                    onblur="this.placeholder='Name*'"
-            @blur="getQQInfo">
+                   @blur="getQQInfo">
           </div>
           <div class="col-lg-4 form-cols">
             <input v-model="messageEmail" type="email" class="form-control" placeholder="Email"
@@ -109,8 +111,8 @@
                    onblur="this.placeholder='Email*'" @blur="getMd5">
           </div>
           <div class="col-lg-4 form-cols">
-            <input v-model="messageUrl" type="url" class="form-control" placeholder="web" onfocus="this.placeholder=''"
-                   data-toggle="tooltip" data-placement="top" title="请勿填写违法链接"
+            <input data-toggle="tooltip" data-placement="top" title="请勿填写违法链接"
+                   v-model="messageUrl" type="url" class="form-control" placeholder="web" onfocus="this.placeholder=''"
                    onblur="this.placeholder='web*'">
           </div>
         </div>
@@ -123,39 +125,38 @@
           </div>
         </div>
         <input type="submit" class="primary-btn" style="outline: none!important;border: none" @click="submitBoard"/>
-        <input type="button" class="primary-btn" style="outline: none!important;border: none" @click="cancelReply" v-show="this.parentBoard" value="取消回复"/>
+        <input type="button" class="primary-btn" style="outline: none!important;border: none" @click="cancelReply"
+               v-show="this.parentBoard" value="取消回复"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
   export default {
     name: "board",
-    components:{
-      pagination:resolve =>{require(['../../components/pagination/pagination'],resolve)},
+    components: {
+      pagination: resolve => {
+        require(['../../components/pagination/pagination'], resolve)
+      },
     },
     created() {
-      if(window.localStorage.getItem('Day') != new Date().getDay()) {
+      if (window.localStorage.getItem('Day') != new Date().getDay()) {
         //如果当前不是今天，更新时间
         window.localStorage.Day = new Date().getDay()
         //诗词清空
         window.localStorage.Poem = null
       }
-
-      if(window.localStorage.getItem('Poem') == 'null' || window.localStorage.getItem('Poem') == '') {
+      if (window.localStorage.getItem('Poem') == 'null' || window.localStorage.getItem('Poem') == '') {
         //诗词过期,重新载入诗词
         window.localStorage.Day = new Date().getDay()
-        const jinrishici=this.$axios.create({
+        const jinrishici = this.$axios.create({
           baseURL: "https://v2.jinrishici.com/one.json",
           withCredentials: true
         })
-        jinrishici.get('').then(response=>{
+        jinrishici.get('').then(response => {
           this.poem = response.data.data.origin
-          window.localStorage.setItem('Poem',JSON.stringify( this.poem))
+          window.localStorage.setItem('Poem', JSON.stringify(this.poem))
         })
       } else {
         //本地缓存有诗词，且没有过期
@@ -163,7 +164,7 @@
         this.poem = logg
       }
       this.pageNum = this.$route.params.pageNum
-      this.pageNum = this.$route.params.pageNum
+      this.current = parseInt(this.pageNum)
       this.messageUrl = window.localStorage.getItem('Url')
       this.messageEmail = window.localStorage.getItem('Email')
       this.messageName = window.localStorage.getItem('Name')
@@ -173,17 +174,24 @@
       }).catch(err => {
         console.log(err)
       })
-      var arr = window.location.href.split('#')
-      setTimeout(function () {
-        if (arr.length === 2) {
-          $('html, body').animate({scrollTop: $('#' + arr[1]).offset().top}, 1000)
-        }
-      }, 500)
       this.$axios.get('/api/crow/boards/nums').then(res => {
         this.total = res.data
       }).catch(err => {
         console.log(err)
       })
+    },
+    mounted() {
+      var arr = window.location.href.split('#')
+      var options = {
+        animation: true,
+        trigger: 'focus'
+      }
+      setTimeout(function () {
+        if (arr.length === 2) {
+          $('html, body').animate({scrollTop: $('#' + arr[1]).offset().top}, 1000)
+        }
+      },1000)
+      $('[data-toggle="tooltip"]').tooltip(options)
     },
     data() {
       return {
@@ -203,7 +211,7 @@
         father: 0,
         emailMd5: '',
         qq: '',
-        imgUrl:'',
+        imgUrl: '',
         imgflag: true,
         formWhat: '留言'
       }
@@ -213,16 +221,16 @@
         this.focusState = true
         this.parentBoard = this.boards[key].messageid
         this.father = this.boards[key].messageid
-        this.formWhat = '回复'+this.boards[key].messageName
+        this.formWhat = '回复' + this.boards[key].messageName
       },
       replyIn(parent, child) {
         this.focusState = true
         this.parentBoard = this.boards[parent].childList[child].messageid
         this.father = this.boards[parent].messageid
-        this.formWhat = '回复'+this.boards[parent].childList[child].messageName
+        this.formWhat = '回复' + this.boards[parent].childList[child].messageName
       },
       cancelReply() {
-        this.formWhat  = '留言'
+        this.formWhat = '留言'
         this.parentBoard = 0
         this.father = 0
       },
@@ -244,7 +252,7 @@
       },
       getMd5() {
         var MD5 = require('md5.js')
-        this.imgUrl = 'https://cdn.v2ex.com/gravatar/'+new MD5().update(this.messageEmail).digest('hex')+'?s=50'
+        this.imgUrl = 'https://cdn.v2ex.com/gravatar/' + new MD5().update(this.messageEmail).digest('hex') + '?s=50'
       },
       submitBoard() {
         const rexEmail = new RegExp('\\w[-\\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\\.)+[A-Za-z]{2,14}')
@@ -288,11 +296,11 @@
         formData.append('messageContent', this.messageContent)
         formData.append('parentBoard', this.parentBoard)
         formData.append('pageNum', this.pageNum)
-        formData.append('messageAvatarMd5',this.imgUrl)
+        formData.append('messageAvatarMd5', this.imgUrl)
         this.$axios.post('/api/crow/boards', formData).then(res => {
-          if(this.parentBoard !== 0) {
-            $('html, body').animate({scrollTop: $('#board-'+this.father).offset().top - 100}, 1000)
-          }else {
+          if (this.parentBoard !== 0) {
+            $('html, body').animate({scrollTop: $('#board-' + this.father).offset().top - 100}, 1000)
+          } else {
             $('html, body').animate({scrollTop: $('#div-board').offset().top - 100}, 1000)
           }
           window.localStorage.Name = this.messageName
@@ -301,7 +309,7 @@
           window.localStorage.ImgUrl = this.imgUrl
           this.longText = ''
           this.current = 1
-          this.pagechange(1)
+          this.pagechange(this.pageNum)
           this.parentBoard = 0
         }).catch(err => {
           console.log(err)
@@ -309,22 +317,23 @@
       },
       getQQInfo() {
         var reg = /^[1-9][0-9]{5,}$/
-        if(reg.test(this.messageName)) {
-          this.$toast('正在获取qq头像和昵称',3000)
+        if (reg.test(this.messageName)) {
+          this.$toast('正在获取qq头像和昵称', 3000)
           $.ajax({
-            url: 'https://api.mashiro.top/qqinfo/?type=getqqnickname&qq='+this.messageName,
+            url: 'https://api.mashiro.top/qqinfo/?type=getqqnickname&qq=' + this.messageName,
             type: 'get',
             dataType: 'jsonp',
-            jsonpCallback:'portraitCallBack',
-            success: (data)=> {
+            jsonpCallback: 'portraitCallBack',
+            success: (data) => {
               console.log(data[this.messageName][6])
-              this.imgUrl = 'http://q1.qlogo.cn/g?b=qq&nk='+this.messageName+'&s=100'
-              this.messageEmail = this.messageName+'@qq.com'
+              this.imgUrl = 'http://q1.qlogo.cn/g?b=qq&nk=' + this.messageName + '&s=100'
+              this.messageEmail = this.messageName + '@qq.com'
               this.messageName = data[this.messageName][6]
               this.$toast('获取成功')
             }
           })
-          function portraitCallBack(data){
+
+          function portraitCallBack(data) {
             console.log(data[6]);
           }
         }
@@ -338,7 +347,7 @@
       }
     },
     filters: {
-      formatDate: function(time) {
+      formatDate: function (time) {
         let date = new Date(time);
         let y = date.getFullYear();
         let MM = date.getMonth() + 1;
