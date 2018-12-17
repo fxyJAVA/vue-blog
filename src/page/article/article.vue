@@ -7,7 +7,7 @@
 
       <div class="blog-details">
         <div class="blog-info">
-          <h1 style="">{{article.title}}</h1>
+          <h1 class="title">{{article.title}}</h1>
           <ul class="tags">
             <li>
               <v-icon name="regular/eye" scale="1.1"/>
@@ -26,6 +26,7 @@
             发布于{{publish}}
           </h2>
         </div>
+        <hr style="margin: 20px auto;width: 80%;">
         <div class="post-details">
           <div v-html="article.contentHtml"></div>
           <center>
@@ -103,16 +104,14 @@
                   &nbsp;广东省广州市 联通{{comment.commentIp}}
                 </div>
               </div>
-              <p v-html="comment.commentContent" class="content">
-
-              </p>
-              <div class="comment-buttons">
+              <p v-html="comment.commentContent" class="content"></p>
+              <div class="onlyMyMain comment-buttons">
                 <a href="javascript:;" class="btn-sm" @click="reply(index)">Replay</a>
               </div>
 
               <div class="media replay-comment" v-for="(reply,childIndex) in comment.childComment"
                    :key="reply.commentid"
-                   :id="'reply-'+reply.commentid">
+                   :id="'reply-'+reply.commentid" @mouseover="delYou" @mouseleave="addYou">
 
                 <div class="media-body">
                   <div class="head-info">
@@ -131,7 +130,7 @@
                   </div>
                   <p v-html="reply.commentContent" class="content">
                   </p>
-                  <div class="comment-buttons">
+                  <div class="onlyMyReplyIn comment-buttons">
                     <a href="javacript:;" class="btn-sm" @click="replyIn(index,childIndex)">Replay</a>
                   </div>
                 </div>
@@ -256,6 +255,12 @@
       $('[data-toggle="tooltip"]').tooltip(options)
     },
     methods: {
+      delYou() {
+        $('.onlyMyMain>a').css('opacity', '0')
+      },
+      addYou() {
+        $('.onlyMyMain>a').css('opacity', '')
+      },
       reply(key) {
         this.focusState = true
         this.parentCommentId = this.article.commentList[key].commentid

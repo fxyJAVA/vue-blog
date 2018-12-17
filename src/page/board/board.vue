@@ -44,9 +44,7 @@
               <div class="float-left clearfix">
                 <img v-lazy="board.messageAvatarMd5">
               </div>
-              <h5><a target="_blank" :href="board.messageUrl">{{board.messageName}}</a><span v-if="board.isAdmin"
-                                                                                             class="blog-owner">博主</span>
-              </h5>
+              <h5><a target="_blank" :href="board.messageUrl">{{board.messageName}}</a><span v-if="board.isAdmin" class="blog-owner">博主</span></h5>
               <div class="info">
                 <time datetime="2018-11-22">{{board.messageDate|formatDate}}</time>
                 <!--<span data-v-49843f54="" class="useragent-info">-->
@@ -55,16 +53,14 @@
                 &nbsp;广东省广州市 联通{{board.messageIp}}
               </div>
             </div>
-            <p v-html="board.messageContent" class="content" style="padding-left: 10px;">
-
-            </p>
-            <div class="comment-buttons">
+            <p v-html="board.messageContent" class="content" style="padding-left: 10px;"></p>
+            <div class="onlyMyMain comment-buttons">
               <a class="btn-sm" @click="reply(index)">Replay</a>
             </div>
 
             <!--回复部分-->
             <div class="media replay-comment" v-for="(reply,childIndex) in board.childList" :key="reply.messageid"
-                 :id="'Breply-'+reply.messageid">
+                 :id="'Breply-'+reply.messageid" @mouseover="delYou" @mouseleave="addYou">
 
               <div class="media-body">
                 <div class="head-info">
@@ -82,7 +78,7 @@
                 </div>
                 <p v-html="reply.messageContent" class="content">
                 </p>
-                <div class="comment-buttons">
+                <div class="onlyMyReplyIn comment-buttons">
                   <a class="btn-sm" @click="replyIn(index,childIndex)">Replay</a>
                 </div>
               </div>
@@ -217,6 +213,12 @@
       }
     },
     methods: {
+      delYou() {
+        $('.onlyMyMain>a').css('opacity','0')
+      },
+      addYou(){
+        $('.onlyMyMain>a').css('opacity','')
+      },
       reply(key) {
         this.focusState = true
         this.parentBoard = this.boards[key].messageid

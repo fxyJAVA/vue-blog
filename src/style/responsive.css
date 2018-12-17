@@ -401,6 +401,18 @@
   .head-info div > img:hover {
     transform: rotate(360deg);
   }
+  .media-body:hover .onlyMyMain.comment-buttons {
+    opacity: 1;
+  }
+
+  .replay-comment:hover .onlyMyReplyIn.comment-buttons {
+    opacity: 1;
+  }
+  .comment-buttons {
+    opacity: 0;
+    transition: all .7s;
+  }
+
 }
 
 
