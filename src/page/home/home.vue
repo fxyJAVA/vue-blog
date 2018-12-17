@@ -276,6 +276,7 @@
     height: 100vh;
   }
   .background {
+    background-attachment: fixed;
   }
   .post-details>a {
     color: #000;

@@ -2,27 +2,29 @@
   <div>
     <!--顶部图片-->
     <header id="topheader">
-      <div v-lazy:background-image="'https://i.loli.net/2018/11/30/5c0137e164c03.jpg'" class="background"></div>
+      <div v-lazy:background-image="'https://i.loli.net/2018/12/17/5c173737cabed.jpg'" class="background">
+        <div class="nothome">
+          <h1 class="h1-title animated fadeIn delay-1s">刚好遇见你</h1>
+        </div>
+      </div>
     </header>
     <div class="container">
-      <div class="nothome">
-        <h1 class="h1-title animated fadeIn delay-1s">刚好遇见你</h1>
-      </div>
+
       <div class="friends">
-        <h1>友情链接</h1>
-        <p><em>ps:目前推荐的是让我很受用或者有一定意义的链接，可以去那边看看(✿◡‿◡)s</em></p>
+        <h1 style="text-align: center">友情链接</h1>
+        <!--<p><em>ps:目前推荐的是让我很受用或者有一定意义的链接，可以去那边看看</em></p>-->
         <hr>
         <ul class="clearfix row friends">
           <li class="col-md-4 col-sm-6">
             <div class="friend">
               <a href="#">
                 <div class="float-left">
-                  <img src="https://i.loli.net/2018/12/15/5c13e01ea495b.jpg" alt="">
+                  <img v-lazy="'https://static.mashiro.top/avatar.jpg'" alt="">
                 </div>
                 <div class="float-left">
                   <h1>樱花庄的白猫</h1>
                   <p>
-                    缘于p站，让我知道博客原来可以写的这么漂亮。
+                    博客页面写的非常漂亮，我也学到了很多
                   </p>
                 </div>
               </a>
@@ -32,12 +34,12 @@
             <div class="friend">
               <a href="#">
                 <div class="float-left">
-                  <img src="https://i.loli.net/2018/12/15/5c13e01ea495b.jpg" alt="">
+                  <img src="../../assets/yangzicong.jpg" alt="">
                 </div>
                 <div class="float-left">
-                  <h1>樱花庄的白猫</h1>
+                  <h1>TWOPOINTHOLE</h1>
                   <p>
-                    缘于p站，让我知道博客原来可以写的这么漂亮。
+                    已毕业的师兄，算是我有做博客想法的契机
                   </p>
                 </div>
               </a>
@@ -47,72 +49,12 @@
             <div class="friend">
               <a href="#">
                 <div class="float-left">
-                  <img src="https://i.loli.net/2018/12/15/5c13e01ea495b.jpg" alt="">
+                  <img src="../../assets/peipei.png" alt="">
                 </div>
                 <div class="float-left">
-                  <h1>樱花庄的白猫</h1>
+                  <h1>peipeiq</h1>
                   <p>
-                    缘于p站，让我知道博客原来可以写的这么漂亮。
-                  </p>
-                </div>
-              </a>
-            </div>
-          </li>
-          <li class="col-md-4 col-sm-6">
-            <div class="friend">
-              <a href="#">
-                <div class="float-left">
-                  <img src="https://i.loli.net/2018/12/15/5c13e01ea495b.jpg" alt="">
-                </div>
-                <div class="float-left">
-                  <h1>樱花庄的白猫</h1>
-                  <p>
-                    缘于p站，让我知道博客原来可以写的这么漂亮。
-                  </p>
-                </div>
-              </a>
-            </div>
-          </li>
-          <li class="col-md-4 col-sm-6">
-            <div class="friend">
-              <a href="#">
-                <div class="float-left">
-                  <img src="https://i.loli.net/2018/12/15/5c13e01ea495b.jpg" alt="">
-                </div>
-                <div class="float-left">
-                  <h1>樱花庄的白猫</h1>
-                  <p>
-                    缘于p站，让我知道博客原来可以写的这么漂亮。
-                  </p>
-                </div>
-              </a>
-            </div>
-          </li>
-          <li class="col-md-4 col-sm-6">
-            <div class="friend">
-              <a href="#" title="缘于p站，让我知道博客原来可以写的这么漂亮。">
-                <div class="float-left">
-                  <img src="https://i.loli.net/2018/12/15/5c13e01ea495b.jpg" alt="">
-                </div>
-                <div class="float-left">
-                  <h1>樱花庄的白猫</h1>
-                  <p>
-                    缘于p站，让我知道博客原来可以写的这么漂亮。
-                  </p>
-                </div>
-              </a>
-            </div>
-          </li>
-          <li class="col-md-4 col-sm-6">
-            <div class="friend">
-              <a href="#" title="缘于p站，让我知道博客原来可以写的这么漂亮。">
-                <div class="float-left">
-                  <img src="https://i.loli.net/2018/12/15/5c13e01ea495b.jpg" alt="">
-                </div>
-                <div class="float-left">
-                  <h1>樱花庄的白猫</h1>
-                  <p>
-                    缘于p站，让我知道博客原来可以写的这么漂亮。
+                    同校ios开发师兄
                   </p>
                 </div>
               </a>
@@ -121,7 +63,7 @@
         </ul>
       </div>
       <hr>
-      <div class="youknow">
+      <div class="youknow" style="display: none;">
         <h2 style="font-size: 20px;padding-bottom: 10px">申请链接须知</h2>
         <p>*1.xxxxxxxxxxxxxxxxxxxxxxxx</p>
         <p>*2.xxxxxxxxxxxxxxxxxxxxxx</p>
@@ -142,9 +84,11 @@
   .container {
     padding: 70px 0;
     max-width: 900px;
-    background-image: url("https://view.moezx.cc/images/2018/01/24/kyotoanimation.png");
+    background: #ffffff;
+    margin-top: 70px;
+    border-radius: 10px;
+    /*background-image: url("https://view.moezx.cc/images/2018/01/24/kyotoanimation.png");*/
   }
-
 
   .friend a {
     display: block;
@@ -155,11 +99,13 @@
     color: #000;
     background: rgba(255, 255, 255, 0.9);
     margin: 0 auto 10px;
+    overflow: hidden;
+    position: relative;
   }
 
-  .friend a:hover {
-    background: rgba(200, 201, 200, .3);
-  }
+  /*.friend a:hover {*/
+  /*background: rgba(200, 201, 200, .3);*/
+  /*}*/
 
   .friend a img {
     width: 3rem;
@@ -168,11 +114,39 @@
     margin-left: 3px;
     border-radius: 50%;
     object-fit: cover;
+    transition: all .5s;
   }
 
   .friends ul {
     min-height: 285px;
     margin: 20px 0 0;
+  }
+
+  @media (min-width: 576px ) {
+    .friend a:before {
+      content: "";
+      background-color: orange;
+      opacity: 0.2;
+      -webkit-transform: skew(45deg, 0);
+      transform: skew(45deg, 0);
+      width: 0;
+      height: 5rem;
+      position: absolute;
+      top: 0;
+      left: -40px;
+      z-index: -1;
+      -webkit-transition: all .5s;
+      transition: all .5s;
+      z-index: 99;
+    }
+
+    .friend a:hover:before {
+      width: 140%;
+    }
+
+    .friend a:hover div > img {
+      transform: rotate(360deg);
+    }
   }
 
   .friend a h1 {
@@ -294,5 +268,14 @@
 
   .youknow p {
     font-size: 16px;
+  }
+
+  hr {
+    width: 80%;
+    margin: 40px auto;
+    height: 3px;
+    border: none;
+    background-color: #ddd;
+    background-image: repeating-linear-gradient(-45deg, #fff, #fff 4px, transparent 4px, transparent 8px);
   }
 </style>

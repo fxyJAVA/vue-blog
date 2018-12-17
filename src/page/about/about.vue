@@ -2,16 +2,17 @@
   <div>
     <!-- 顶部 -->
     <header id="topheader">
-      <div v-lazy:background-image="'https://i.loli.net/2018/11/30/5c013820a9e78.jpg'" class="background">
+      <div v-lazy:background-image="'https://i.loli.net/2018/12/17/5c1738fb83f98.jpg'" class="background">
+        <div class="nothome">
+          <h1 class="h1-title animated fadeIn delay-1s">/我我我</h1>
+        </div>
       </div>
     </header>
 
     <!--描述-->
     <section class="product-detials-section">
       <div class="container">
-        <div class="nothome">
-          <h1 class="h1-title animated fadeIn delay-1s">天空既在我们的头上又在我们的脚下</h1>
-        </div>
+
         <div class="row">
           <div class="col-lg-4 details-left aboutme">
             <img v-lazy="'https://i.loli.net/2018/12/12/5c10cd6859af9.jpg'" alt="学姐"  whisper="“你不用刻意的去改变，因为无论你变成什么样子，我都会一直喜欢你，也会一直陪在你的身边的。”">

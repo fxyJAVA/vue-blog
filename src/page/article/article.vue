@@ -72,69 +72,76 @@
         </div>
       </div>
 
-      <div v-if="!showComment"><a @click="letShow" style="display: block;width:100px;height: 36px;line-height: 36px;border: 1px solid #909090;background: #ffffff;color: #9090ad;text-align: center;margin: 0 auto;" href="javascript:;">查看评论</a></div>
+      <div v-if="!showComment"><a @click="letShow"
+                                  style="display: block;width:100px;height: 36px;line-height: 36px;border: 1px solid #909090;background: #ffffff;color: #9090ad;text-align: center;margin: 0 auto;"
+                                  href="javascript:;">查看评论</a></div>
 
       <!--评论-->
       <div class="animated zoomInUp" v-if="showComment">
-      <div>
-        <pagination :total="total" :current-page="current" :display="display" @pagechange="pagechange"></pagination>
-      </div>
-      <div class="comment-wrap animated" id="div-comments">
-        <h3>
-          <v-icon name="regular/comment" scale="1.1"/>
-          评论&nbsp;{{article.comments}}
-        </h3>
-        <div class="media comments" v-for="(comment,index) in article.commentList" :key="comment.commentid"
-             :id="'comment-'+comment.commentid">
-          <div class="media-body">
-            <div class="head-info">
-              <div class="float-left clearfix">
-                <img v-lazy="comment.commentAvatarMd5">
-              </div>
-              <h5><a target="_blank" :href="comment.commentUrl">{{comment.commentName}}</a><span v-if="comment.isAdmin" class="blog-owner">博主</span></h5>
-              <div class="info">
-                <time datetime="2018-11-22">{{comment.commentDate|formatDate}}</time>
-                <!--<span class="useragent-info">-->
+        <div>
+          <pagination :total="total" :current-page="current" :display="display" @pagechange="pagechange"></pagination>
+        </div>
+        <div class="comment-wrap animated" id="div-comments">
+          <h3>
+            <v-icon name="regular/comment" scale="1.1"/>
+            评论&nbsp;{{article.comments}}
+          </h3>
+          <div class="media comments" v-for="(comment,index) in article.commentList" :key="comment.commentid"
+               :id="'comment-'+comment.commentid">
+            <div class="media-body">
+              <div class="head-info">
+                <div class="float-left clearfix">
+                  <img v-lazy="comment.commentAvatarMd5">
+                </div>
+                <h5><a target="_blank" :href="comment.commentUrl">{{comment.commentName}}</a><span
+                  v-if="comment.isAdmin" class="blog-owner">博主</span></h5>
+                <div class="info">
+                  <time datetime="2018-11-22">{{comment.commentDate|formatDate}}</time>
+                  <!--<span class="useragent-info">-->
                   <!--{{comment.commentAgent}}-->
-                <!--</span>-->
-                &nbsp;广东省广州市 联通{{comment.commentIp}}
-              </div>
-            </div>
-            <p v-html="comment.commentContent" class="content">
-
-            </p>
-            <div class="comment-buttons">
-              <a href="javascript:;" class="btn-sm" @click="reply(index)">Replay</a>
-            </div>
-
-            <div class="media replay-comment" v-for="(reply,childIndex) in comment.childComment" :key="reply.commentid"
-                 :id="'reply-'+reply.commentid">
-
-              <div class="media-body">
-                <div class="head-info">
-                  <div class="float-left clearfix">
-                    <img v-lazy="reply.commentAvatarMd5">
-                  </div>
-                  <h5><a href="#">{{reply.commentName}}</a><span class="blog-owner" v-if="reply.isAdmin">博主</span></h5>
-                  <div class="info">
-                    <time datetime="2018-11-22">{{reply.commentDate|formatDate}}</time>
-                    <!--<span class="useragent-info">-->
-                        <!--{{reply.commentAgent}}-->
-                    <!--</span>-->
-                    &nbsp;广东省广州市 联通 {{reply.commentIp}}
-                  </div>
-                </div>
-                <p v-html="reply.commentContent" class="content">
-                </p>
-                <div class="comment-buttons">
-                  <a href="javacript:;" class="btn-sm" @click="replyIn(index,childIndex)">Replay</a>
+                  <!--</span>-->
+                  &nbsp;广东省广州市 联通{{comment.commentIp}}
                 </div>
               </div>
+              <p v-html="comment.commentContent" class="content">
+
+              </p>
+              <div class="comment-buttons">
+                <a href="javascript:;" class="btn-sm" @click="reply(index)">Replay</a>
+              </div>
+
+              <div class="media replay-comment" v-for="(reply,childIndex) in comment.childComment"
+                   :key="reply.commentid"
+                   :id="'reply-'+reply.commentid">
+
+                <div class="media-body">
+                  <div class="head-info">
+                    <div class="float-left clearfix">
+                      <img v-lazy="reply.commentAvatarMd5">
+                    </div>
+                    <h5><a href="#">{{reply.commentName}}</a><span class="blog-owner" v-if="reply.isAdmin">博主</span>
+                    </h5>
+                    <div class="info">
+                      <time datetime="2018-11-22">{{reply.commentDate|formatDate}}</time>
+                      <!--<span class="useragent-info">-->
+                      <!--{{reply.commentAgent}}-->
+                      <!--</span>-->
+                      &nbsp;广东省广州市 联通 {{reply.commentIp}}
+                    </div>
+                  </div>
+                  <p v-html="reply.commentContent" class="content">
+                  </p>
+                  <div class="comment-buttons">
+                    <a href="javacript:;" class="btn-sm" @click="replyIn(index,childIndex)">Replay</a>
+                  </div>
+                </div>
+              </div>
+              <hr>
             </div>
           </div>
         </div>
       </div>
-      </div>
+
       <!--表单-->
       <div class="comment-form">
         <h3>{{formWhat}}</h3>
@@ -166,8 +173,10 @@
                           onfocus="this.placeholder=''" onblur="this.placeholder='Comment*'" id="longText"></textarea>
           </div>
         </div>
-        <input type="submit" class="primary-btn" style="outline: none!important;border: none" @click="submitComment" value="Submit"/>
-        <input v-show="this.parentCommentId" type="button" class="primary-btn" style="outline: none!important;border: none" @click="cancelReply" value="取消回复"/>
+        <input type="submit" class="primary-btn" style="outline: none!important;border: none" @click="submitComment"
+               value="Submit"/>
+        <input v-show="this.parentCommentId" type="button" class="primary-btn"
+               style="outline: none!important;border: none" @click="cancelReply" value="取消回复"/>
       </div>
     </div>
   </section>
@@ -177,7 +186,9 @@
   export default {
     name: "articles",
     components: {
-      pagination:resolve =>{require(['../../components/pagination/pagination'],resolve)},
+      pagination: resolve => {
+        require(['../../components/pagination/pagination'], resolve)
+      },
     },
     data() {
       return {
@@ -218,12 +229,12 @@
       var arr = window.location.href.split('#')
       //锚点跳转
 
-      this.$axios('/api/crow/articles/' + this.articleid  + '/' + this.pageNum).then(res => {
+      this.$axios('/api/crow/articles/' + this.articleid + '/' + this.pageNum).then(res => {
         this.article = res.data.data,
-        console.log(res.data.data)
+          console.log(res.data.data)
         this.bg = this.article.thumbnail
         this.total = this.article.comments
-        if(arr.length === 2) {
+        if (arr.length === 2) {
           this.pagechange(this.pageNum)
           this.showComment = true
         }
@@ -232,30 +243,30 @@
       })
     },
     mounted() {
-        var arr = window.location.href.split('#')
-        var options = {
-          animation: true,
-          trigger: 'focus'
+      var arr = window.location.href.split('#')
+      var options = {
+        animation: true,
+        trigger: 'focus'
+      }
+      setTimeout(function () {
+        if (arr.length === 2) {
+          $('html, body').animate({scrollTop: $('#' + arr[1]).offset().top - 100}, 1000)
         }
-        setTimeout(function () {
-          if (arr.length === 2) {
-            $('html, body').animate({scrollTop: $('#' + arr[1]).offset().top-100}, 1000)
-          }
-        },1000)
-        $('[data-toggle="tooltip"]').tooltip(options)
+      }, 1000)
+      $('[data-toggle="tooltip"]').tooltip(options)
     },
     methods: {
       reply(key) {
         this.focusState = true
         this.parentCommentId = this.article.commentList[key].commentid
         this.father = this.article.commentList[key].commentid
-        this.formWhat = '回复'+this.article.commentList[key].commentName
+        this.formWhat = '回复' + this.article.commentList[key].commentName
       },
       replyIn(parent, child) {
         this.focusState = true
         this.parentCommentId = this.article.commentList[parent].childComment[child].commentid
         this.father = this.article.commentList[parent].commentid
-        this.formWhat = '回复'+this.article.commentList[parent].childComment[child].commentName
+        this.formWhat = '回复' + this.article.commentList[parent].childComment[child].commentName
       },
       cancelReply() {
         this.parentCommentId = 0
@@ -287,8 +298,8 @@
           return false
         }
 
-        this.longText = this.htmlEncodeJQ(this.longText)
-        this.commentContent =  this.longText
+        // this.longText = this.htmlEncodeJQ(this.longText)
+        this.commentContent = this.longText
         if (this.commentContent === '') {
           this.$toast('文本不能为空')
           return false
@@ -301,14 +312,14 @@
         formData.append('parentCommentId', this.parentCommentId)
         formData.append('pageNum', this.pageNum)
         formData.append('articleid', this.article.articleid)
-        formData.append('commentAvatarMd5',this.imgUrl)
+        formData.append('commentAvatarMd5', this.imgUrl)
         this.$axios.post('/api/crow/comments', formData).then(res => {
-          if(!this.showComment) {
+          if (!this.showComment) {
             this.$toast('回复成功')
-          }else if(this.parentCommentId !== 0) {
-            $('html, body').animate({scrollTop: $('#comment-'+this.father).offset().top-100}, 1000)
-          }else {
-            $('html, body').animate({scrollTop: $('#div-comments').offset().top-100}, 1000)
+          } else if (this.parentCommentId !== 0) {
+            $('html, body').animate({scrollTop: $('#comment-' + this.father).offset().top - 100}, 1000)
+          } else {
+            $('html, body').animate({scrollTop: $('#div-comments').offset().top - 100}, 1000)
           }
           window.localStorage.Name = this.commentName
           window.localStorage.Email = this.commentEmail
@@ -321,7 +332,8 @@
           this.current = 1
           this.pagechange(this.pageNum)
         }).catch(err => {
-          console.log(err)
+          alert(1)
+          console.log(111)
         })
       },
       htmlEncodeJQ(str) {
@@ -345,28 +357,29 @@
       },
       getQQInfo() {
         var reg = /^[1-9][0-9]{5,}$/
-        if(reg.test(this.commentName)) {
+        if (reg.test(this.commentName)) {
           $.ajax({
-            url: 'https://api.mashiro.top/qqinfo/?type=getqqnickname&qq='+this.commentName,
+            url: 'https://api.mashiro.top/qqinfo/?type=getqqnickname&qq=' + this.commentName,
             type: 'get',
             dataType: 'jsonp',
-            jsonpCallback:'portraitCallBack',
-            success: (data)=> {
+            jsonpCallback: 'portraitCallBack',
+            success: (data) => {
               console.log(data[this.commentName][6])
-              this.imgUrl = 'http://q1.qlogo.cn/g?b=qq&nk='+this.commentName+'&s=100'
-              this.commentEmail = this.commentName+'@qq.com'
+              this.imgUrl = 'http://q1.qlogo.cn/g?b=qq&nk=' + this.commentName + '&s=100'
+              this.commentEmail = this.commentName + '@qq.com'
               this.commentName = data[this.commentName][6]
               this.$toast('获取成功')
             }
           })
-          function portraitCallBack(data){
+
+          function portraitCallBack(data) {
             console.log(data[6]);
           }
         }
       },
       getMd5() {
         var MD5 = require('md5.js')
-        this.imgUrl = 'https://cdn.v2ex.com/gravatar/'+new MD5().update(this.commentEmail).digest('hex')+'?s=50'
+        this.imgUrl = 'https://cdn.v2ex.com/gravatar/' + new MD5().update(this.commentEmail).digest('hex') + '?s=50'
       },
       letShow() {
         this.showComment = true
@@ -381,7 +394,7 @@
       }
     },
     filters: {
-      formatDate: function(time) {
+      formatDate: function (time) {
         let date = new Date(time);
         let y = date.getFullYear();
         let MM = date.getMonth() + 1;
@@ -401,5 +414,12 @@
 </script>
 
 <style scoped>
-
+  hr {
+    width: 100%;
+    margin: 0 auto;
+    height: 2px;
+    border: none;
+    background-color: #ddd;
+    background-image: repeating-linear-gradient(-45deg, #fff, #fff 4px, transparent 4px, transparent 8px);
+  }
 </style>

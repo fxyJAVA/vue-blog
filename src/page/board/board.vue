@@ -3,15 +3,15 @@
     <!--顶部图片-->
     <header id="topheader">
       <div v-lazy:background-image="'https://i.loli.net/2018/11/30/5c01202809fe7.jpg'" class="background">
+        <div class="nothome">
+          <h1 class="h1-title animated fadeIn delay-1s">正因为有了词汇，最重要的东西才能留在我们心中。</h1>
+        </div>
       </div>
     </header>
 
 
     <div class="container">
       <!--诗歌-->
-      <div class="nothome">
-        <h1 class="h1-title animated fadeIn delay-1s">正因为有了词汇，最重要的东西才能留在我们心中。</h1>
-      </div>
       <div class="relative poem">
         <h1 style="padding: 20px 10px 10px 25px;font-size: 20px;">
           <v-icon name="book-open" scale="1.6"/>
@@ -39,7 +39,6 @@
         </h3>
         <div class="media comments" v-for="(board,index) in boards" :key="board.messageid"
              :id="'board-'+board.messageid">
-
           <div class="media-body">
             <div class="head-info">
               <div class="float-left clearfix">
@@ -88,6 +87,7 @@
                 </div>
               </div>
             </div>
+            <hr>
           </div>
         </div>
       </div>
@@ -190,7 +190,7 @@
         if (arr.length === 2) {
           $('html, body').animate({scrollTop: $('#' + arr[1]).offset().top}, 1000)
         }
-      },1000)
+      }, 1000)
       $('[data-toggle="tooltip"]').tooltip(options)
     },
     data() {
@@ -374,6 +374,8 @@
     margin-top: 95px;
     overflow: hidden;
     background: none;
+    background: #ffffff;
+    border-radius: 10px;
   }
 
   /*图片部分样式*/
@@ -415,10 +417,10 @@
   /*诗歌部分样式*/
   .poem {
     border-radius: 20px;
-    background: url(../../assets/huawen1.jpg);
+    /*background: url(../../assets/huawen1.jpg);*/
     -webkit-background-size: cover;
     background-size: cover;
-    margin-bottom: 120px;
+    margin: 40px auto 120px;
   }
 
   .poem-wrap {
@@ -429,17 +431,6 @@
     text-align: center;
     margin: 0 auto;
     padding: 20px 0;
-  }
-
-  .poem-border {
-    position: absolute;
-    height: 2px;
-    width: 27%;
-    background-color: #777777;
-  }
-
-  .poem-left {
-    left: 0;
   }
 
   #info {
@@ -460,10 +451,6 @@
     font-weight: 600;
   }
 
-  .poem-right {
-    right: 0;
-  }
-
   .comment-wrap {
     background: none;
   }
@@ -476,15 +463,12 @@
     background-size: cover;
   }
 
-  .background h1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    text-align: center;
-    transform: translate(-50%, -50%);
-  }
-
-  .comment-wrap {
-    background: url(../../assets/huawen5.jpg);
+  hr {
+    width: 100%;
+    margin: 0 auto;
+    height: 2px;
+    border: none;
+    background-color: #ddd;
+    background-image: repeating-linear-gradient(-45deg, #fff, #fff 4px, transparent 4px, transparent 8px);
   }
 </style>

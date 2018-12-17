@@ -1926,9 +1926,9 @@ td, th {
 .comment-wrap h3 {
   margin-bottom: 30px;
 }
-.comment-wrap .media {
-  border-bottom: 1px solid #eee;
-}
+/*.comment-wrap .media {*/
+  /*border-bottom: 1px dashed #eee;*/
+/*}*/
 .comment-wrap .media:last-child {
   border-bottom: none;
   padding-bottom: 0px;
@@ -2080,9 +2080,12 @@ td, th {
   transform: translate(-50%,-50%);
 }
 .nothome {
-  width: 100%;
-  padding: 30px 0;
-  margin-bottom: 60px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  max-width: 980px;
+  padding: 22px 0;
   background: rgba(100,100,100,.6);
   -webkit-border-radius: 40px;
   border-radius: 40px;
@@ -2136,4 +2139,12 @@ td, th {
   padding: 0 2px;
   font-size: 14px;
   text-align: center;
+}
+
+.media-body:hover .comment-buttons {
+  opacity: 1;
+}
+.comment-buttons {
+  opacity: 0;
+  transition: all .7s;
 }
