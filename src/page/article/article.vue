@@ -11,7 +11,7 @@
           <ul class="tags">
             <li>
               <v-icon name="regular/eye" scale="1.1"/>
-              浏览&nbsp;{{article.view}}
+              <!--浏览&nbsp;{{article.view}}-->
             </li>
             <li v-for="tag in article.tagList">
               <v-icon name="regular/bookmark" scale="1.1"/>
@@ -23,7 +23,7 @@
             </li>
           </ul>
           <h2>
-            发布于{{publish}}
+            发布于{{article.postDate | formatDate}}
           </h2>
         </div>
         <hr style="margin: 20px auto;width: 80%;">
@@ -33,7 +33,7 @@
             <v-icon name="pencil-alt" scale="1.4"/>
             <strong>由
               <router-link to="/about">黑鸦</router-link>
-              最后编辑于2018-10-10</strong></center>
+              最后编辑于{{article.postUpdate | formatDate}}</strong></center>
         </div>
       </div>
 
@@ -83,7 +83,7 @@
           <pagination :total="total" :current-page="current" :display="display" @pagechange="pagechange"></pagination>
         </div>
         <div class="comment-wrap animated" id="div-comments">
-          <h3>
+          <h3 style="font-size: 18px;color: #222222;">
             <v-icon name="regular/comment" scale="1.1"/>
             评论&nbsp;{{article.comments}}
           </h3>
@@ -222,6 +222,9 @@
       this.pageNum = this.$route.params.pageNum
       this.current = parseInt(this.pageNum)
       this.commentUrl = window.localStorage.getItem('Url')
+      if(this.commentUrl == 'null') {
+        this.commentUrl = '';
+      }
       this.commentEmail = window.localStorage.getItem('Email')
       this.commentName = window.localStorage.getItem('Name')
       this.imgUrl = window.localStorage.getItem('ImgUrl')
@@ -240,6 +243,7 @@
       }).catch(error => {
         console.log(error)
       })
+      _hmt.push(['_trackPageview', "/article/"+this.articleid]);
     },
     mounted() {
       var arr = window.location.href.split('#')
@@ -298,7 +302,8 @@
           this.commentEmail = ''
           return false
         }
-        if (!rexUrl.test(this.commentUrl) && this.commentUrl !== '') {
+        if (this.commentUrl!=''&&this.commentUrl!= null && !rexUrl.test(this.commentUrl)) {
+          this.commentUrl = ''
           this.$toast('url不合法')
           return false
         }
@@ -419,12 +424,4 @@
 </script>
 
 <style scoped>
-  hr {
-    width: 100%;
-    margin: 0 auto;
-    height: 2px;
-    border: none;
-    background-color: #ddd;
-    background-image: repeating-linear-gradient(-45deg, #fff, #fff 4px, transparent 4px, transparent 8px);
-  }
 </style>

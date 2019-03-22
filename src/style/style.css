@@ -55,12 +55,16 @@ Author:    F4H3M
 }
 
 body {
-  color: #8c8d9e;
-  font-family: "Poppins", sans-serif;
+  color: #8c8d9e !important;
   font-size: 14px;
-  font-weight: 300;
-  line-height: 1.625em;
-  position: relative;
+  font-weight: 300 !important;
+  line-height: 1.625em !important;
+  position: relative !important;
+
+
+  /*上下拉动滚动条卡顿，慢时?*/
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
 }
 
 ol, ul {
@@ -111,7 +115,7 @@ a, a:focus, a:hover {
   font-size: 12px;
 }
 .media-body .content {
-  font-size: 17px;
+  font-size: 18px;
 }
 /**
  *  Typography
@@ -124,47 +128,12 @@ a, a:focus, a:hover {
 
 h1, h2, h3,
 h4, h5, h6 {
-  font-family: "Poppins", sans-serif;
   color: #222222;
   line-height: 1.2em !important;
-  margin-bottom: 0;
-  margin-top: 0;
-  font-weight: 600;
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  font-weight: 600 !important;
 }
-
-.h1, .h2, .h3,
-.h4, .h5, .h6 {
-  margin-bottom: 0;
-  margin-top: 0;
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  color: #222222;
-}
-
-h1, .h1 {
-  font-size: 36px;
-}
-
-h2, .h2 {
-  font-size: 30px;
-}
-
-h3, .h3 {
-  font-size: 24px;
-}
-
-h4, .h4 {
-  font-size: 18px;
-}
-
-h5, .h5 {
-  font-size: 16px;
-}
-
-h6, .h6 {
-  font-size: 14px;
-}
-
 td, th {
   border-radius: 0px;
 }
@@ -735,8 +704,8 @@ td, th {
   padding: 0 12px;
   display: block;
   height: 35px;
-  font-size: 18px;
-  line-height: 34px;
+  font-size: 19px;
+  line-height: 68px;
   vertical-align: bottom;
 }
 
@@ -751,7 +720,6 @@ td, th {
 
 /* Down Arrow Icon for Megamenu */
 .icon-dope-nav-down-arrow {
-  font-family: 'FontAwesome';
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -764,18 +732,6 @@ td, th {
 .icon-dope-nav-down-arrow:before {
   content: "\f107";
 }
-
-/*.dopenav ul li.megamenu-item > a:after,*/
-/*.dopenav ul li.has-down > a:after {*/
-  /*font-family: 'FontAwesome';*/
-  /*content: "\f107";*/
-  /*font-size: 12px;*/
-  /*color: #000000;*/
-  /*padding-left: 5px;*/
-  /*-webkit-transition-duration: 500ms;*/
-  /*-o-transition-duration: 500ms;*/
-  /*transition-duration: 500ms;*/
-/*}*/
 
 .breakpoint-on .dopenav ul li.megamenu-item > a:after,
 .breakpoint-on .dopenav ul li.has-down > a:after {
@@ -1049,7 +1005,7 @@ td, th {
 }
 
 .breakpoint-off .dopenav ul li .dropdown {
-  width: 180px;
+  width: 160px;
   position: absolute;
   background-color: #ffffff;
   top: 120%;
@@ -1090,7 +1046,7 @@ td, th {
 .breakpoint-off .dopenav ul li:hover .dropdown {
   opacity: 1;
   visibility: visible;
-  top: 100%;
+  top: 130%;
 }
 
 .breakpoint-off .dopenav ul li .dropdown li:hover .dropdown,
@@ -1856,6 +1812,7 @@ td, th {
   box-shadow: 0px 30px 90px rgba(0, 0, 0, 0.14) !important;
   overflow: hidden;
   margin-bottom: 30px;
+  padding-top: 20px;
 }
 .blog-details:hover .post-thumb img {
   -webkit-transform: scale(1.1);
@@ -1942,7 +1899,7 @@ td, th {
 .comment-wrap .replay-comment {
   border-bottom: none;
   border-top: 1px solid #eee;
-  padding: 20px 20px 15px 26px;
+  padding: 20px 20px 15px 41px;
   margin-bottom: 0px !important;
 }
 .comment-wrap .comments {

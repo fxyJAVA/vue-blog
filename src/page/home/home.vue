@@ -24,7 +24,7 @@
                     <ul class="tags">
                       <li>
                         <v-icon name="eye"></v-icon>
-                        &nbsp{{article.view}}
+                        <!--&nbsp{{article.view}}-->
                       </li>
                       <li>
                         <v-icon name="regular/comment"></v-icon>
@@ -77,64 +77,18 @@
                 </div>
               </div>
               <div class="single-widget recent-post-widget">
-                <h4 class="widget-title">近期</h4>
+                <h4 class="widget-title;" style="color: #222222;font-size: 18px;">唠一唠</h4>
                 <ul>
-                  <li class="d-flex flex-row align-items-center">
-                    <div class="thumbs">
-                      <img class="img-fluid" src="img/blog/small-t1.jpg" alt="">
-                    </div>
+                  <li class="d-flex flex-row align-items-center" v-for="item of say">
                     <div class="details">
-                      <a href="single-blog.html">
-                        <h5>To shewing another demand to Received shutters expenses.</h5>
-                      </a>
-                      <p class="text-uppercase">
-                        DECEMBER 10, 2016
-                      </p>
-                    </div>
-                  </li>
-                  <li class="d-flex flex-row align-items-center">
-                    <div class="thumbs">
-                      <img class="img-fluid" srcsrc="img/blog/small-t2.jpg" alt="">
-                    </div>
-                    <div class="details">
-                      <a href="single-blog.html">
-                        <h5>To shewing another demand to Received shutters expenses.</h5>
-                      </a>
-                      <p class="text-uppercase">
-                        March 10, 2016
-                      </p>
-                    </div>
-                  </li>
-                  <li class="d-flex flex-row align-items-center">
-                    <div class="thumbs">
-                      <img class="img-fluid" src="img/blog/small-t3.jpg" alt="">
-                    </div>
-                    <div class="details">
-                      <a href="single-blog.html">
-                        <h5>To shewing another demand to Received shutters expenses.</h5>
-                      </a>
-                      <p class="text-uppercase">
-                        July 10, 2016
-                      </p>
-                    </div>
-                  </li>
-                  <li class="d-flex flex-row align-items-center">
-                    <div class="thumbs">
-                      <img class="img-fluid" src="img/blog/small-t4.jpg" alt="">
-                    </div>
-                    <div class="details">
-                      <a href="single-blog.html">
-                        <h5>To shewing another demand to Received shutters expenses.</h5>
-                      </a>
-                      <p class="text-uppercase">
-                        January 10, 2016
-                      </p>
+                        <h5>{{item.p}}</h5>
+                        <p>{{item.h}}</p>
                     </div>
                   </li>
                 </ul>
               </div>
-              <div class="single-widget social-widget" v-if="!heightFlag">
-                <h4 class="widget-title">互动</h4>
+              <div class="single-widget social-widget">
+                <h4 class="widget-title" style="color: #222222;">互动</h4>
                 <ul>
                   <li>
                     <a href="https://github.com/fxyJAVA" @mouseenter="addClass($event)"
@@ -164,18 +118,9 @@
               </div>
 
               <div class="single-widget tags-widget">
-                <h4 class="widget-title">Tags</h4>
+                <h4 class="widget-title" style="color: #222222;">Tags</h4>
                 <ul>
                   <li><a href="#">时尚</a></li>
-                  <li><a href="#">Tech</a></li>
-                  <li><a href="#">旅行</a></li>
-                  <li><a href="#">回顾</a></li>
-                  <li><a href="#">News</a></li>
-                  <li><a href="#">Music</a></li>
-                  <li><a href="#">Lifestyle</a></li>
-                  <li><a href="#">Gadget</a></li>
-                  <li><a href="#">Food</a></li>
-                  <li><a href="#">Gaming</a></li>
                 </ul>
               </div>
             </div>
@@ -200,14 +145,14 @@
         randomBg: ['https://i.loli.net/2018/12/05/5c072c8e6b8d5.png',
         'https://i.loli.net/2018/12/12/5c1094c86de85.jpg',
         'https://i.loli.net/2018/12/11/5c0fd7d4c9ec4.jpg',
-        'https://i.loli.net/2018/12/12/5c1094ccc65a6.jpg',
         'https://i.loli.net/2018/12/11/5c0fd7fa1d4db.png',
         'https://i.loli.net/2018/12/11/5c0fd822a20fe.png',
         'https://i.loli.net/2018/12/11/5c0fd82a2885e.jpg',
         'https://i.loli.net/2018/12/05/5c072c8e6b8d5.png'],
         heightFlag: document.body.clientHeight,
         articleList: [],
-        hitokoto: ''
+        hitokoto: '',
+        say: []
       }
     },
     created() {
@@ -223,6 +168,10 @@
         this.articleList = res.data.data
       }).catch(error=>{
         console.log(error)
+      })
+      this.$axios.get('https://blacklotus.fun/says.json').then(res=>{
+        this.say = res.data
+        console.log(this.say[0])
       })
     },
     watch: {

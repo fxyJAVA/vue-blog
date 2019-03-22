@@ -2,7 +2,6 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './router'
 import $ from 'jquery/dist/jquery.min'
 import jquery from 'jquery/dist/jquery.min'
 import 'vue-awesome/icons/index.js'
@@ -12,7 +11,9 @@ import 'bootstrap/dist/js/bootstrap.min'
 import Axios from 'axios'
 import toast from './components/toast'
 import VueLazyload from 'vue-lazyload'
+import router from './router'
 Vue.use(toast)
+
 Vue.use(VueLazyload,{
   preLoad: 1.3,
   error: require('../static/error.jpg'),

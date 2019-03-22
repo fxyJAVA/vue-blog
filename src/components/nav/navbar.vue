@@ -46,9 +46,9 @@
 
                     <a href="#"><v-icon name="cannabis" scale="1.2"/>&nbsp;归档</a>
                     <ul class="dropdown" style="display: block;">
-                      <li><router-link :to="{name:'archive',params:{cateid: 211}}">学习</router-link></li>
-                      <li><router-link :to="{name:'archive',params:{cateid: 985}}">日常</router-link></li>
-                      <li><router-link :to="{name:'archive',params:{cateid: 11}}">杂谈</router-link></li>
+                      <li style="line-height: 35px"><router-link :to="{name:'archive',params:{cateid: 220}}">学习</router-link></li>
+                      <li style="line-height: 35px"><router-link :to="{name:'archive',params:{cateid: 985}}">日常</router-link></li>
+                      <li style="line-height: 35px"><router-link :to="{name:'archive',params:{cateid: 222}}">杂谈</router-link></li>
                     </ul>
                   </li>
                   <!--<li class="cn-dropdown-item has-down" :class="flag32?'active':''">-->
@@ -240,7 +240,6 @@
 </script>
 
 <style scoped>
-  @import '../../style/style.css';
   .nav-brand>img {
     width: 120px;
     height: 33px;

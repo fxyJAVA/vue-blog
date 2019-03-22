@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-lazy="http://www.w3.org/1999/xhtml">
   <div>
     <!--顶部图片-->
     <header id="topheader">
@@ -34,7 +34,7 @@
             <div class="friend">
               <a href="#">
                 <div class="float-left">
-                  <img src="../../assets/yangzicong.jpg" alt="">
+                  <img v-lazy="'https://blacklotus.fun/yangzicong.jpg'" alt="">
                 </div>
                 <div class="float-left">
                   <h1>TWOPOINTHOLE</h1>
@@ -49,7 +49,7 @@
             <div class="friend">
               <a href="#">
                 <div class="float-left">
-                  <img src="../../assets/peipei.png" alt="">
+                  <img v-lazy="'https://blacklotus.fun/peipei.png'" alt="">
                 </div>
                 <div class="float-left">
                   <h1>peipeiq</h1>

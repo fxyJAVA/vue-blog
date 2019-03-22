@@ -8,13 +8,13 @@
     <!--文章列表-->
     <section class="blog-lists-section section-gap-full">
       <div class="container">
-        <h1 style="font-size: 1.5rem;text-align: center">{{title}}</h1>
+        <h1 style="font-size: 1.5rem;text-align: center;color: #222222;">{{title}}</h1>
         <p style="text-align: center;">{{p}}</p>
         <div class="blog-lists">
           <div class="single-blog-post" v-for="article in articleList">
             <div class="post-details">
               <router-link :to="{name:'article',params:{articleid: article.articleid,pageNum:1}}">
-                <h1 style="margin-bottom: 8px;">{{article.title}} </h1>
+                <h1 style="margin-bottom: 8px;color: #222222;">{{article.title}} </h1>
                 <ul class="tags">
                   <li v-for="tag in article.tagList">
                     <v-icon name="regular/bookmark"></v-icon>
@@ -29,7 +29,7 @@
                 <div class="post-thumb relative">
                   <img v-lazy="article.thumbnail">
                 </div>
-                <p style="margin-top: 5px;margin-bottom: 0;">{{article.summary}}</p>
+                <p style="margin-top: 5px;margin-bottom: 0;color: #222222;">{{article.summary}}</p>
               </router-link>
               <hr>
               <div class="user-details d-flex align-items-center">
@@ -71,7 +71,7 @@
         this.title = '男子大学生的日常'
         this.p = '感想,随笔,记录'
         this.bg = 'https://i.loli.net/2018/12/16/5c15dfb8b44dd.jpg'
-      } else if(this.$route.params.cateid === 11) {
+      } else if(this.$route.params.cateid === 222) {
         this.title = '第三方收容站'
         this.p = '无处可归之归处',
         this.bg = 'https://i.loli.net/2018/12/16/5c15d9259e4c9.jpg'

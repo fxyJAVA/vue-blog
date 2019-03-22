@@ -31,6 +31,4 @@
 </script>
 
 <style scoped>
-  @import '../../style/style.css';
-  @import '../../style/responsive.css';
 </style>

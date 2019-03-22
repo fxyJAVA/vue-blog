@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-lazy="http://www.w3.org/1999/xhtml">
   <div>
     <!--顶部图片-->
     <header id="topheader">
@@ -13,7 +13,7 @@
     <div class="container">
       <!--诗歌-->
       <div class="relative poem">
-        <h1 style="padding: 20px 10px 10px 25px;font-size: 20px;">
+        <h1 style="padding: 20px 10px 10px 25px;font-size: 20px;color:#222222">
           <v-icon name="book-open" scale="1.6"/>
           今日诗词
         </h1>
@@ -33,7 +33,7 @@
         <pagination :total="total" :current-page="current" :display="display" @pagechange="pagechange"></pagination>
       </div>
       <div class="comment-wrap animated" id="div-board">
-        <h3>
+        <h3 style="font-size: 24px;color: #222222;">
           <v-icon name="regular/comment" scale="1.1"/>
           留言&nbsp;{{total}}
         </h3>
@@ -276,10 +276,9 @@
           this.messageEmail = ''
           return false
         }
-
-        if (!rexUrl.test(this.messageUrl) && this.messageUrl !== '') {
+        if (this.messageUrl != '' && this.messageUrl != null  && !rexUrl.test(this.messageUrl)) {
           this.$toast('url不合法')
-          this.commentUrl = ''
+          this.messageUrl = ''
           return false
         }
 
@@ -419,6 +418,7 @@
   /*诗歌部分样式*/
   .poem {
     border-radius: 20px;
+
     /*background: url(../../assets/huawen1.jpg);*/
     -webkit-background-size: cover;
     background-size: cover;
@@ -436,12 +436,12 @@
   }
 
   #info {
-    color: #000;
+    color: #797979;
   }
 
   .poem-wrap p {
     font-size: 20px;
-    color: #111111;
+    color: #797979;
   }
 
   .poem-wrap #info {
@@ -465,12 +465,4 @@
     background-size: cover;
   }
 
-  hr {
-    width: 100%;
-    margin: 0 auto;
-    height: 2px;
-    border: none;
-    background-color: #ddd;
-    background-image: repeating-linear-gradient(-45deg, #fff, #fff 4px, transparent 4px, transparent 8px);
-  }
 </style>
