@@ -19,7 +19,7 @@
             </li>
             <li>
               <v-icon name="regular/folder" scale="1.1"/>
-              <a href="#">{{article.category.cateName}}</a>
+              <a :href="'https://blacklotus.xin/archive/'+article.category.cateid" target="_blank">{{article.category.cateName}}</a>
             </li>
           </ul>
           <h2>
@@ -29,7 +29,7 @@
         <hr style="margin: 20px auto;width: 80%;">
         <div class="post-details">
           <div v-html="article.contentHtml"></div>
-          <center>
+          <center v-if="article.postUpdate != null && article.postUpdate !=''">
             <v-icon name="pencil-alt" scale="1.4"/>
             <strong>由
               <router-link to="/about">黑鸦</router-link>

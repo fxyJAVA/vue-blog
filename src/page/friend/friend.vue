@@ -17,7 +17,7 @@
         <ul class="clearfix row friends">
           <li class="col-md-4 col-sm-6">
             <div class="friend">
-              <a href="#">
+              <a href="https://2heng.xin">
                 <div class="float-left">
                   <img v-lazy="'https://static.mashiro.top/avatar.jpg'" alt="">
                 </div>
@@ -32,9 +32,9 @@
           </li>
           <li class="col-md-4 col-sm-6">
             <div class="friend">
-              <a href="#">
+              <a href="http://yangzicong.com">
                 <div class="float-left">
-                  <img v-lazy="'https://blacklotus.fun/yangzicong.jpg'" alt="">
+                  <img v-lazy="'https://www.blacklotus.fun/friend/yangzicong.jpg'" alt="">
                 </div>
                 <div class="float-left">
                   <h1>TWOPOINTHOLE</h1>
@@ -47,9 +47,9 @@
           </li>
           <li class="col-md-4 col-sm-6">
             <div class="friend">
-              <a href="#">
+              <a href="http://www.peipeiq.cn/">
                 <div class="float-left">
-                  <img v-lazy="'https://blacklotus.fun/peipei.png'" alt="">
+                  <img v-lazy="'https://www.blacklotus.fun/friend/peipei.png'" alt="">
                 </div>
                 <div class="float-left">
                   <h1>peipeiq</h1>

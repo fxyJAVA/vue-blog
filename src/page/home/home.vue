@@ -2,7 +2,7 @@
   <div>
     <!--顶部图片-->
     <header id="topheader">
-      <div  v-lazy:background-image="randomBg[Math.floor(Math.random()*randomBg.length)]" class="background">
+      <div v-lazy:background-image="randomBg[Math.floor(Math.random()*randomBg.length)]" class="background">
         <div class="text">
           <h1 id="hometitle">Nega Nebulus</h1>
           <p id="homep">{{hitokoto}}</p>
@@ -10,11 +10,13 @@
       </div>
     </header>
 
-    <!--文章-->
     <section class="blog-lists-section section-gap-full">
       <div class="container">
+        <div class="row"
+             style="margin-bottom: 40px;background: rgba(232, 232, 232);padding-left: 15px;margin-left: -2px;">
+          <!--<h5><v-icon name="tag"></v-icon><em>公告: 静态资源从七牛云迁移至又拍云</em></h5>-->
+        </div>
         <div class="row">
-
           <div class="col-lg-8">
             <div class="blog-lists">
               <div class="single-blog-post" v-for="(article,index) in articleList" :key="index">
@@ -37,7 +39,7 @@
                       </li>
 
                       <li>
-                        <v-icon name="regular/bookmark"></v-icon>
+                        <v-icon name="regular/folder"></v-icon>
                         <a href="#">{{article.category.cateName}}</a>
                       </li>
                     </ul>
@@ -47,18 +49,15 @@
                     </div>
                   </router-link>
                   <hr>
-                    <div class="user-details d-flex align-items-center">
-                      <div class="details">
-                        <h4 style="text-align: right">黑鸦 {{article.postDate|formatDate}}</h4>
-                      </div>
+                  <div class="user-details d-flex align-items-center">
+                    <div class="details">
+                      <h4 style="text-align: right">黑鸦 {{article.postDate|formatDate}}</h4>
                     </div>
+                  </div>
                 </div>
               </div>
 
-              <nav>
-                <!--TODO 分页-->
-                <ul class="pagination"></ul>
-              </nav>
+              <div>页面加载中...</div>
             </div>
           </div>
 
@@ -81,8 +80,8 @@
                 <ul>
                   <li class="d-flex flex-row align-items-center" v-for="item of say">
                     <div class="details">
-                        <h5>{{item.p}}</h5>
-                        <p>{{item.h}}</p>
+                      <h5>{{item.p}}</h5>
+                      <p>{{item.h}}</p>
                     </div>
                   </li>
                 </ul>
@@ -120,7 +119,8 @@
               <div class="single-widget tags-widget">
                 <h4 class="widget-title" style="color: #222222;">Tags</h4>
                 <ul>
-                  <li><a href="#">时尚</a></li>
+                  <li style="margin-left: 10px;margin-top: 10px;" v-for="item in tags"><a href="#">{{item.tagName}}</a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -128,7 +128,6 @@
         </div>
       </div>
     </section>
-
 
   </div>
 </template>
@@ -143,36 +142,50 @@
         visit: 100,
         comment: 100,
         randomBg: ['https://i.loli.net/2018/12/05/5c072c8e6b8d5.png',
-        'https://i.loli.net/2018/12/12/5c1094c86de85.jpg',
-        'https://i.loli.net/2018/12/11/5c0fd7d4c9ec4.jpg',
-        'https://i.loli.net/2018/12/11/5c0fd7fa1d4db.png',
-        'https://i.loli.net/2018/12/11/5c0fd822a20fe.png',
-        'https://i.loli.net/2018/12/11/5c0fd82a2885e.jpg',
-        'https://i.loli.net/2018/12/05/5c072c8e6b8d5.png'],
+          'https://i.loli.net/2018/12/12/5c1094c86de85.jpg',
+          'https://i.loli.net/2018/12/11/5c0fd7d4c9ec4.jpg',
+          'https://i.loli.net/2018/12/11/5c0fd7fa1d4db.png',
+          'https://i.loli.net/2018/12/11/5c0fd822a20fe.png',
+          'https://i.loli.net/2018/12/11/5c0fd82a2885e.jpg',
+          'https://i.loli.net/2018/12/05/5c072c8e6b8d5.png'],
         heightFlag: document.body.clientHeight,
+        pageIndex: 2,
         articleList: [],
         hitokoto: '',
-        say: []
+        isLoading: false,
+        say: [],
+        tags: []
       }
     },
+    beforeMount() {
+      this.$axios('/api/crow/articles?pageNum=1').then(res => {
+        this.articleList = res.data.data
+        console.log(this.articleList)
+      }).catch(error => {
+        console.log(error)
+      })
+      this.$axios('/api/crow/tags').then(res => {
+        this.tags = res.data.data
+      }).catch(error => {
+        console.log(error)
+      })
+      this.$axios.get('https://www.blacklotus.fun/json/say.json').then(res => {
+        this.say = res.data
+        console.log(this.say[0])
+      })
+    },
+    mounted() {
+      this.scroll()
+    },
     created() {
-      this.$axios.get('https://v1.hitokoto.cn/').then(res=>{
-        this.hitokoto =  res.data.hitokoto
-      }).catch(err=>{
+      this.$axios.get('https://v1.hitokoto.cn/').then(res => {
+        this.hitokoto = res.data.hitokoto
+      }).catch(err => {
         console.log(err)
       })
       if (this.screenWidth < 991) {
         this.heightFlag = true
       }
-      this.$axios('/api/crow/articles?pageNum=1').then(res=>{
-        this.articleList = res.data.data
-      }).catch(error=>{
-        console.log(error)
-      })
-      this.$axios.get('https://blacklotus.fun/says.json').then(res=>{
-        this.say = res.data
-        console.log(this.say[0])
-      })
     },
     watch: {
       screenWidth: function () {
@@ -191,10 +204,27 @@
       removeClass(e) {
         var tar = e.currentTarget
         $(tar).removeClass('animated tada')
+      },
+      scroll(list) {
+        let isLoading = false
+        window.onscroll = () => {
+          // 距离底部200px时加载一次
+          let bottomOfWindow = document.documentElement.offsetHeight - document.documentElement.scrollTop - window.innerHeight <= 200
+          if (bottomOfWindow && isLoading == false && this.pageIndex <= 2) {
+            isLoading = true
+            this.$axios.get(`/api/crow/articles?pageNum=` + this.pageIndex).then(response => {
+              console.log(this.articleList)
+              this.articleList.push(response.data.data[0])
+              console.log(this.articleList)
+              this.pageIndex++
+              isLoading = false
+            })
+          }
+        }
       }
     },
     filters: {
-      formatDate: function(time) {
+      formatDate: function (time) {
         let date = new Date(time);
         let y = date.getFullYear();
         let MM = date.getMonth() + 1;
@@ -220,19 +250,22 @@
     padding-right: 7px;
     padding-left: 7px;
   }
+
   #topheader {
     color: #ffffff !important;
     height: 100vh;
   }
+
   .background {
     background-attachment: fixed;
   }
-  .post-details>a {
+
+  .post-details > a {
     color: #000;
   }
 
   .single-blog-post .post-details:hover {
-    box-shadow: 0 5px 10px 5px rgba(110,110,110,.4);
+    box-shadow: 0 5px 10px 5px rgba(110, 110, 110, .4);
   }
 
   @media (max-width: 768px) {
@@ -241,15 +274,17 @@
     }
   }
 
-  #hometitle,#homep {
-    color: rgba(255,255,255,.8);
+  #hometitle, #homep {
+    color: rgba(255, 255, 255, .8);
     text-shadow: 0 0 5px #c3c3c3;
   }
+
   #hometitle {
     font-size: 5rem;
     width: 100%;
     font-weight: 300;
   }
+
   #homep {
     font-size: 1.5rem;
     margin-block-start: 0.83em;

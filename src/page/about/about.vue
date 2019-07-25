@@ -2,7 +2,7 @@
   <div>
     <!-- 顶部 -->
     <header id="topheader">
-      <div v-lazy:background-image="'https://blacklotus.fun/2018010906194.jpg'" class="background">
+      <div v-lazy:background-image="'https://www.blacklotus.fun/head/2018010906194.jpg'" class="background">
         <div class="nothome">
           <h1 class="h1-title animated fadeIn delay-1s">我我我</h1>
         </div>
@@ -26,8 +26,8 @@
           </div>
           <div class="col-lg-4 details-right aboutinfo">
             <h2 style="margin-bottom: 15px;margin-top: 10px;color: #222;"><em>时间轴</em></h2>
-            <p>2016年9月入学</p>
-            <p>2017年3月开始学习java后台开发</p>
+            <p>2016年9月入学GDUT</p>
+            <p>2017年4月开始学习java后台开发</p>
             <p>2017年11月租了第一台服务器</p>
             <p>2018年5，6月学习前端</p>
             <p>2018年11月底开始筹备</p>
@@ -107,20 +107,20 @@
           title: 'Beautiful World',
           artist: '宇多田ヒカル',
           theme: '#41b883',
-          src: 'https://blacklotus.fun/beautifulworld.mp3',
+          src: 'https://www.blacklotus.fun/music/beautifulworld.mp3',
           pic: 'http://p2.music.126.net/0dD1op9wHdWIdO6gk1OQlQ==/18298072510006687.jpg?param=130y130'
         },{
           title: '誓い',
           artist: '宇多田ヒカル',
           theme: '#41b883',
-          src: 'https://blacklotus.fun/%E8%AA%93%E3%81%84.mp3',
+          src: 'https://www.blacklotus.fun/music/誓い.mp3',
           pic: 'http://p1.music.126.net/vmdlo92xK3dSbkyjWQ7pKA==/109951163798447008.jpg?param=130y130'
         },
           {
             title: '光',
             artist: '宇多田ヒカル',
             theme: '#41b883',
-            src: 'https://blacklotus.fun/%E5%85%89.mp3',
+            src: 'https://www.blacklotus.fun/music/光.mp3',
             pic: 'http://p1.music.126.net/nhLBRqY-DgzbUPWcxO3FeQ==/18365142719545516.jpg?param=130y130'
           }]
       }
