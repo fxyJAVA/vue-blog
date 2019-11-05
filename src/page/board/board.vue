@@ -50,7 +50,7 @@
                 <!--<span data-v-49843f54="" class="useragent-info">-->
                 <!--{{board.messageAgent}}-->
                 <!--</span>-->
-                &nbsp;广东省广州市 联通{{board.messageIp}}
+                &nbsp;***
               </div>
             </div>
             <p v-html="board.messageContent" class="content" style="padding-left: 10px;"></p>
@@ -73,7 +73,7 @@
                     <!--<span data-v-49843f54="" class="useragent-info">-->
                     <!--{{reply.messageAgent}}-->
                     <!--</span>-->
-                    &nbsp;广东省广州市 联通 {{reply.messageIp}}
+                     ***
                   </div>
                 </div>
                 <p v-html="reply.messageContent" class="content">
@@ -178,15 +178,15 @@
     },
     mounted() {
       var arr = window.location.href.split('#')
+      setTimeout(function () {
+        if (arr.length === 2) {
+          $('html, body').animate({scrollTop: $('#' + arr[1]).offset().top - 100}, 1000)
+        }
+      }, 1000)
       var options = {
         animation: true,
         trigger: 'focus'
       }
-      setTimeout(function () {
-        if (arr.length === 2) {
-          $('html, body').animate({scrollTop: $('#' + arr[1]).offset().top}, 1000)
-        }
-      }, 1000)
       $('[data-toggle="tooltip"]').tooltip(options)
     },
     data() {
@@ -320,23 +320,14 @@
         var reg = /^[1-9][0-9]{5,}$/
         if (reg.test(this.messageName)) {
           this.$toast('正在获取qq头像和昵称', 3000)
-          $.ajax({
-            url: 'https://api.mashiro.top/qqinfo/?type=getqqnickname&qq=' + this.messageName,
-            type: 'get',
-            dataType: 'jsonp',
-            jsonpCallback: 'portraitCallBack',
-            success: (data) => {
-              console.log(data[this.messageName][6])
-              this.imgUrl = 'http://q1.qlogo.cn/g?b=qq&nk=' + this.messageName + '&s=100'
-              this.messageEmail = this.messageName + '@qq.com'
-              this.messageName = data[this.messageName][6]
-              this.$toast('获取成功')
-            }
+          this.$axios.get('/api/crow/qq?qq='+this.messageName ).then(res=>{
+            this.imgUrl = res.data.imgurl
+            this.messageEmail = this.messageName+'@qq.com'
+            this.messageName = res.data.name
+            this.$toast('获取成功')
+          }).catch(error=>{console.log(error)
+            this.$toast('获取失败')
           })
-
-          function portraitCallBack(data) {
-            console.log(data[6]);
-          }
         }
       },
     },

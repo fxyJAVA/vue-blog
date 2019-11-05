@@ -27,7 +27,7 @@
           <div class="col-lg-4 details-right aboutinfo">
             <h2 style="margin-bottom: 15px;margin-top: 10px;color: #222;"><em>时间轴</em></h2>
             <p>2016年9月入学GDUT</p>
-            <p>2017年4月开始学习java后台开发</p>
+            <p>2017年4月开始学习java</p>
             <p>2017年11月租了第一台服务器</p>
             <p>2018年5，6月学习前端</p>
             <p>2018年11月底开始筹备</p>
@@ -36,10 +36,10 @@
           </div>
           <div class="col-lg-4 aboutlast">
             <h2 style="margin-bottom: 15px;margin-top: 10px;color: #222;"><em>最近</em></h2>
-            <p>在看：《剑指offer》</p>
-            <p>在玩：任天堂全明星大乱斗</p>
+            <p>在看：《知行合一王阳明》</p>
+            <p>在玩：<a href="http://game.granbluefantasy.jp/" alt="骑空士的陷阱！">GBF</a></p>
             <p>在做：后台开发相关</p>
-            <p>在听：宇多田光</p>
+            <p>在听：8bit(FC)音乐</p>
             <aplayer
                      :music="music[0]"
                      :float="true"
@@ -104,25 +104,32 @@
         note: 100,
         article: 100,
         music:[{
-          title: 'Beautiful World',
-          artist: '宇多田ヒカル',
+          title: 'GOOD MORNING',
+          artist: '影山雅司',
           theme: '#41b883',
-          src: 'https://www.blacklotus.fun/music/beautifulworld.mp3',
-          pic: 'http://p2.music.126.net/0dD1op9wHdWIdO6gk1OQlQ==/18298072510006687.jpg?param=130y130'
+          src: 'https://www.blacklotus.fun/music/影山雅司 - オープニング (GOOD MORNING).mp3',
+          pic: 'https://p1.music.126.net/I8LkeIpevTxhh8I8NaT-4A==/109951164276518535.jpg?param=130y130'
         },{
-          title: '誓い',
-          artist: '宇多田ヒカル',
+          title: 'CUTMAN STAGE',
+          artist: '松前真奈美',
           theme: '#41b883',
-          src: 'https://www.blacklotus.fun/music/誓い.mp3',
-          pic: 'http://p1.music.126.net/vmdlo92xK3dSbkyjWQ7pKA==/109951163798447008.jpg?param=130y130'
+          src: 'https://www.blacklotus.fun/music/松前真奈美 - CUTMAN STAGE.mp3',
+          pic: 'https://p1.music.126.net/mtkTfZQAxFy5MUVHv1v3-A==/7798835975923131.jpg?param=130y130'
         },
           {
-            title: '光',
-            artist: '宇多田ヒカル',
+            title: '熱血格闘伝説::タイトル',
+            artist: '澤和雄 / 平沢道也',
             theme: '#41b883',
-            src: 'https://www.blacklotus.fun/music/光.mp3',
-            pic: 'http://p1.music.126.net/nhLBRqY-DgzbUPWcxO3FeQ==/18365142719545516.jpg?param=130y130'
-          }]
+            src: 'https://www.blacklotus.fun/music/澤和雄,平沢道也 - 熱血格闘伝説：：タイトル.mp3',
+            pic: 'https://p4.music.126.net/O6F5tc8BLpyFvcbGR5p7sA==/18994063370401024.jpg?param=200y200'
+          },{
+            title: '荒野大镖客Remix',
+            artile: 'unknow',
+            theme: '#41b883',
+            src: 'https://www.blacklotus.fun/music/烂兔子 - FC-荒野大镖客Remix.mp3',
+            pic: 'https://p1.music.126.net/mtkTfZQAxFy5MUVHv1v3-A==/7798835975923131.jpg?param=130y130'
+          },
+        ]
       }
     }
   }

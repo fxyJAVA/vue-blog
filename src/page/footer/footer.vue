@@ -4,8 +4,7 @@
     <v-icon name="angle-up" scale="2"></v-icon>
   </span>
     <div style="text-align: center;">
-      © 2019&nbsp;<a href="http://www.miibeian.gov.cn">粤ICP备17149317号</a>
-      <a  href="https://www.upyun.com/" style="display: block;" target="_blank"><img style="height: 2em;max-height: 2em;" src="https://i.bmp.ovh/imgs/2019/05/db95808e6d8d196d.png"/></a>
+      © 2019&nbsp;<a href="http://beian.miit.gov.cn">粤ICP备17149317号</a>
     </div>
   </div>
 </template>

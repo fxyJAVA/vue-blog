@@ -18,13 +18,6 @@ module.exports = {
         pathRewrite: {
           '^/api': '' //路径重写
         }
-      },
-      '/qq': {
-        target: 'https://api.mashiro.top',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/qq': ''
-        }
       }
     },
 

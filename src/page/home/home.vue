@@ -14,7 +14,7 @@
       <div class="container">
         <div class="row"
              style="margin-bottom: 40px;background: rgba(232, 232, 232);padding-left: 15px;margin-left: -2px;">
-          <!--<h5><v-icon name="tag"></v-icon><em>公告: 静态资源从七牛云迁移至又拍云</em></h5>-->
+          <!--<h5><v-icon name="tag"></v-icon><em>公告: 秋招之后重构下前端页面代码，遗留的一些问题比较棘手,短时间应该是没法搞定的</em></h5>-->
         </div>
         <div class="row">
           <div class="col-lg-8">
@@ -56,8 +56,9 @@
                   </div>
                 </div>
               </div>
-
-              <div>页面加载中...</div>
+              <audio src="https://www.blacklotus.fun/home/burstlink.mp3" autoplay="autoplay">
+              </audio>
+              <div v-show="showBottomContent">{{bottomContent}}</div>
             </div>
           </div>
 
@@ -139,8 +140,12 @@
     props: ['screenWidth'],
     data() {
       return {
+        articleTotal: 0,
+        pageNum: -1,
         visit: 100,
         comment: 100,
+        bottomContent: "正在加载更多文章",
+        showBottomContent: false,
         randomBg: ['https://i.loli.net/2018/12/05/5c072c8e6b8d5.png',
           'https://i.loli.net/2018/12/12/5c1094c86de85.jpg',
           'https://i.loli.net/2018/12/11/5c0fd7d4c9ec4.jpg',
@@ -149,7 +154,8 @@
           'https://i.loli.net/2018/12/11/5c0fd82a2885e.jpg',
           'https://i.loli.net/2018/12/05/5c072c8e6b8d5.png'],
         heightFlag: document.body.clientHeight,
-        pageIndex: 2,
+        pageIndex: 1,
+        pageSize: 4,
         articleList: [],
         hitokoto: '',
         isLoading: false,
@@ -157,9 +163,11 @@
         tags: []
       }
     },
-    beforeMount() {
+    beforeCreate() {
       this.$axios('/api/crow/articles?pageNum=1').then(res => {
         this.articleList = res.data.data
+        this.articleTotal = res.data.total
+        this.pageNum = Math.ceil(this.articleTotal/this.pageSize)
         console.log(this.articleList)
       }).catch(error => {
         console.log(error)
@@ -171,11 +179,7 @@
       })
       this.$axios.get('https://www.blacklotus.fun/json/say.json').then(res => {
         this.say = res.data
-        console.log(this.say[0])
       })
-    },
-    mounted() {
-      this.scroll()
     },
     created() {
       this.$axios.get('https://v1.hitokoto.cn/').then(res => {
@@ -205,23 +209,43 @@
         var tar = e.currentTarget
         $(tar).removeClass('animated tada')
       },
-      scroll(list) {
+      scroll() {
         let isLoading = false
-        window.onscroll = () => {
-          // 距离底部200px时加载一次
-          let bottomOfWindow = document.documentElement.offsetHeight - document.documentElement.scrollTop - window.innerHeight <= 200
-          if (bottomOfWindow && isLoading == false && this.pageIndex <= 2) {
+        let _that = this
+        this.showBottomContent = true
+        window.onscroll = function() {
+          //变量scrollTop是滚动条滚动时，距离顶部的距离
+          let scrollTop = document.documentElement.scrollTop||document.body.scrollTop;
+          //变量windowHeight是可视区的高度
+          let windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+          //变量scrollHeight是滚动条的总高度
+          let scrollHeight = document.documentElement.scrollHeight||document.body.scrollHeight;
+          //滚动条到底部的条件
+          if(_that.pageIndex == _that.pageNum) {
             isLoading = true
-            this.$axios.get(`/api/crow/articles?pageNum=` + this.pageIndex).then(response => {
-              console.log(this.articleList)
-              this.articleList.push(response.data.data[0])
-              console.log(this.articleList)
-              this.pageIndex++
+            _that.bottomContent = "到底部啦，暂无更多文章..."
+          }
+          if(Math.ceil(scrollTop)+windowHeight>=scrollHeight && !isLoading && _that.pageIndex<_that.pageNum) {
+            _that.pageIndex++
+            _that.showBottomContent = false
+            isLoading = true
+            _that.$axios.get('/api/crow/articles?pageNum='+_that.pageIndex).then(response => {
+              isLoading = true
+              let newArr = response.data.data
+              for(let i =0;i<newArr.length;i++) {
+                _that.articleList.push(response.data.data[i])
+              }
               isLoading = false
+              setTimeout(function () {
+                console.log("防止刷新速度过快")
+              },1000)
             })
           }
         }
       }
+    },
+    mounted() {
+      window.addEventListener('scroll',this.scroll,true)
     },
     filters: {
       formatDate: function (time) {

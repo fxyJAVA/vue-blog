@@ -4,8 +4,7 @@
       <div v-lazy:background-image="bg" class="background"></div>
     </header>
     <div class="onlyarticle container">
-
-      <div class="blog-details">
+      <div v-if="article!=null" class="blog-details">
         <div class="blog-info">
           <h1 class="title">{{article.title}}</h1>
           <ul class="tags">
@@ -17,9 +16,9 @@
               <v-icon name="regular/bookmark" scale="1.1"/>
               <a href="#">{{tag.tagName}}</a>
             </li>
-            <li>
+            <li v-if="article.category.cateName!=null">
               <v-icon name="regular/folder" scale="1.1"/>
-              <a :href="'https://blacklotus.xin/archive/'+article.category.cateid" target="_blank">{{article.category.cateName}}</a>
+              <router-link  to="/about">{{article.category.cateName}}</router-link>
             </li>
           </ul>
           <h2>
@@ -39,32 +38,33 @@
 
       <!--前一篇，后一篇,v-if="this.article.previd !== 0 && this.article.nextid !== 0"-->
       <div class="row" style="margin:20px auto 120px auto;">
-        <div class="col-md-6 prev-next" v-if="this.article.previd !== 0"
+        <div class="col-md-6 prev-next" v-if="this.article!=null && this.article.previd != 0"
              :class="this.article.nextid===0?'col-md-12':'col-md-6'">
-          <router-link :to="{name:'article',params:{articleid:article.prev.articleid,pageNum:1}}" class="readmore">
+          <router-link v-if="article.prev!=null" :to="{name:'article',params:{articleid:article.prev.articleid,pageNum:1}}" class="readmore">
             <div class="read-cover"></div>
             <div class="read-imgContainer">
               <div class="read-imgContainer-img"><img v-lazy="article.prev.thumbnail" alt=""></div>
             </div>
             <div class="read-cover read-second"></div>
             <div class="read-inner">
-              <div class="read-text" :style="{textAlign: this.article.nextid ===0 ?'center' :'left'}">
+              <div class="read-text" :style="{textAlign: this.article.nextid ==0 ?'center' :'left'}">
                 <p>previous</p>
                 <h2 class="read-title">{{article.prev.title}}</h2>
               </div>
             </div>
           </router-link>
         </div>
-        <div class="prev-next" v-if="this.article.nextid !== 0"
+
+        <div class="prev-next" v-if="this.article != null && this.article.nextid != 0"
              :class="this.article.previd ===0?'col-md-12':'col-md-6'">
-          <router-link :to="{name:'article',params: {articleid:article.next.articleid,pageNum:1}}" class="readmore">
+          <router-link v-if="article.next!=null" :to="{name:'article',params: {articleid:article.next.articleid,pageNum:1}}" class="readmore">
             <div class="read-cover"></div>
             <div class="read-imgContainer">
               <div class="read-imgContainer-img"><img v-lazy="article.next.thumbnail" alt=""></div>
             </div>
             <div class="read-cover read-second"></div>
             <div class="read-inner">
-              <div class="read-text" :style="{textAlign: this.article.previd ===0 ?'center' :'right'}">
+              <div class="read-text" :style="{textAlign: this.article.previd == 0 ?'center' :'right'}">
                 <p>next</p>
                 <h2 class="read-title">{{article.next.title}}</h2>
               </div>
@@ -101,7 +101,7 @@
                   <!--<span class="useragent-info">-->
                   <!--{{comment.commentAgent}}-->
                   <!--</span>-->
-                  &nbsp;广东省广州市 联通{{comment.commentIp}}
+                  &nbsp;***
                 </div>
               </div>
               <p v-html="comment.commentContent" class="content"></p>
@@ -125,7 +125,7 @@
                       <!--<span class="useragent-info">-->
                       <!--{{reply.commentAgent}}-->
                       <!--</span>-->
-                      &nbsp;广东省广州市 联通 {{reply.commentIp}}
+                      ***
                     </div>
                   </div>
                   <p v-html="reply.commentContent" class="content">
@@ -141,42 +141,42 @@
         </div>
       </div>
 
-      <!--表单-->
       <div class="comment-form">
         <h3>{{formWhat}}</h3>
         <div class="yourimg"><img :src="this.imgUrl"/></div>
         <div class="row form-col-wrap">
           <div class="col-lg-4 form-cols">
-            <input type="text" v-model="commentName" required="required" class="form-control" placeholder="Name"
+            <input v-model="commentName" type="text" class="form-control" placeholder="Name"
                    onfocus="this.placeholder=''"
-                   data-toggle="tooltip" data-placement="top" title="输入QQ号将拉取qq头像和昵称"
-                   onblur="this.placeholder='Name*'" @blur="getQQInfo">
+                   data-toggle='tooltip' data-placement="top" title="输入QQ号将拉取qq头像和昵称"
+                   onblur="this.placeholder='Name*'"
+                   @blur="getQQInfo">
           </div>
           <div class="col-lg-4 form-cols">
-            <input type="email" v-model="commentEmail" required="required" class="form-control" placeholder="Email"
+            <input v-model="commentEmail" type="email" class="form-control" placeholder="Email"
                    onfocus="this.placeholder=''"
-                   data-toggle="tooltip" data-placement="top" title="接收回复通知以及获取gravatar头像"
+                   data-toggle='tooltip' data-placement="top" title="接收回复通知以及获取gravatar头像"
                    onblur="this.placeholder='Email*'" @blur="getMd5">
           </div>
           <div class="col-lg-4 form-cols">
-            <input type="url" v-model="commentUrl" class="form-control" placeholder="web" onfocus="this.placeholder=''"
-                   data-toggle="tooltip" data-placement="top" title="请勿填写违法链接"
+            <input data-toggle='tooltip' data-placement="top" title="请勿填写违法链接"
+                   v-model="commentUrl" type="url" class="form-control" placeholder="web" onfocus="this.placeholder=''"
                    onblur="this.placeholder='web*'">
           </div>
         </div>
         <div class="row">
           <div class="col-lg-12">
-                <textarea :onblur="focusState = false" name="comment" class="form-control"
-                          placeholder="Comment" cols="30" rows="10"
-                          v-model="longText"
-                          onfocus="this.placeholder=''" onblur="this.placeholder='Comment*'" id="longText"></textarea>
+                <textarea :onblur="focusState=false" name="comment" class="form-control" placeholder="Comment" cols="30"
+                          rows="10"
+                          v-model="longText" onfocus="this.placeholder=''" onblur="this.placeholder='Comment*'"
+                          id="longText"></textarea>
           </div>
         </div>
-        <input type="submit" class="primary-btn" style="outline: none!important;border: none" @click="submitComment"
-               value="Submit"/>
-        <input v-show="this.parentCommentId" type="button" class="primary-btn"
-               style="outline: none!important;border: none" @click="cancelReply" value="取消回复"/>
+        <input type="submit" class="primary-btn" style="outline: none!important;border: none" @click="submitComment"/>
+        <input type="button" class="primary-btn" style="outline: none!important;border: none" @click="cancelReply"
+               v-show="this.parentCommentId" value="取消回复"/>
       </div>
+      <!--表单-->
     </div>
   </section>
 </template>
@@ -194,7 +194,7 @@
         visit: 0,
         comment: 0,
         publish: '2018-10-10',
-        article: '',
+        article: null,
         focusState: false,
         longText: '',
         bg: '',
@@ -216,21 +216,10 @@
         articleid: 0
       }
     },
-    created() {
-      this.change = true
+    beforeCreate () {
       this.articleid = this.$route.params.articleid
       this.pageNum = this.$route.params.pageNum
-      this.current = parseInt(this.pageNum)
-      this.commentUrl = window.localStorage.getItem('Url')
-      if(this.commentUrl == 'null') {
-        this.commentUrl = '';
-      }
-      this.commentEmail = window.localStorage.getItem('Email')
-      this.commentName = window.localStorage.getItem('Name')
-      this.imgUrl = window.localStorage.getItem('ImgUrl')
       var arr = window.location.href.split('#')
-      //锚点跳转
-
       this.$axios('/api/crow/articles/' + this.articleid + '/' + this.pageNum).then(res => {
         this.article = res.data.data,
           console.log(res.data.data)
@@ -243,19 +232,30 @@
       }).catch(error => {
         console.log(error)
       })
-      _hmt.push(['_trackPageview', "/article/"+this.articleid]);
+    },
+    created() {
+      this.change = true
+      this.current = parseInt(this.pageNum)
+      this.commentUrl = window.localStorage.getItem('Url')
+      if(this.commentUrl == 'null') {
+        this.commentUrl = '';
+      }
+      this.commentEmail = window.localStorage.getItem('Email')
+      this.commentName = window.localStorage.getItem('Name')
+      this.imgUrl = window.localStorage.getItem('ImgUrl')
+
     },
     mounted() {
       var arr = window.location.href.split('#')
-      var options = {
-        animation: true,
-        trigger: 'focus'
-      }
       setTimeout(function () {
         if (arr.length === 2) {
           $('html, body').animate({scrollTop: $('#' + arr[1]).offset().top - 100}, 1000)
         }
       }, 1000)
+      var options = {
+        animation: true,
+        trigger: 'focus'
+      }
       $('[data-toggle="tooltip"]').tooltip(options)
     },
     methods: {
@@ -342,8 +342,8 @@
           this.current = 1
           this.pagechange(this.pageNum)
         }).catch(err => {
-          alert(1)
-          console.log(111)
+          alert("抱歉,后台出现异常,请稍户重新尝试Σ( ° △ °|||)︴")
+          console.log(err)
         })
       },
       htmlEncodeJQ(str) {
@@ -358,7 +358,7 @@
         setTimeout(function () {
           $('#div-comments').removeClass('bounceInUp')
         }, 500)
-        this.$axios.get('/api/crow/comments', {params: {articleid: this.articleid, pageNum: currentPage}})
+        this.$axios.get('/api/crow/comments', {params: {articleid: this.article.articleid, pageNum: currentPage}})
           .then(res => {
             this.article.commentList = res.data.data
           }).catch(err => {
@@ -368,23 +368,15 @@
       getQQInfo() {
         var reg = /^[1-9][0-9]{5,}$/
         if (reg.test(this.commentName)) {
-          $.ajax({
-            url: 'https://api.mashiro.top/qqinfo/?type=getqqnickname&qq=' + this.commentName,
-            type: 'get',
-            dataType: 'jsonp',
-            jsonpCallback: 'portraitCallBack',
-            success: (data) => {
-              console.log(data[this.commentName][6])
-              this.imgUrl = 'http://q1.qlogo.cn/g?b=qq&nk=' + this.commentName + '&s=100'
-              this.commentEmail = this.commentName + '@qq.com'
-              this.commentName = data[this.commentName][6]
-              this.$toast('获取成功')
-            }
+          this.$toast('正在获取qq头像和昵称', 3000)
+          this.$axios.get('/api/crow/qq?qq='+this.commentName ).then(res=>{
+            this.imgUrl = res.data.imgurl
+            this.commentEmail = this.commentName+'@qq.com'
+            this.commentName = res.data.name
+            this.$toast('获取成功')
+          }).catch(error=>{console.log(error)
+            this.$toast('获取失败')
           })
-
-          function portraitCallBack(data) {
-            console.log(data[6]);
-          }
         }
       },
       getMd5() {

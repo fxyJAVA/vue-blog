@@ -32,7 +32,7 @@
           </li>
           <li class="col-md-4 col-sm-6">
             <div class="friend">
-              <a href="http://yangzicong.com">
+              <a href="https://yangzicong.com">
                 <div class="float-left">
                   <img v-lazy="'https://www.blacklotus.fun/friend/yangzicong.jpg'" alt="">
                 </div>
@@ -47,7 +47,7 @@
           </li>
           <li class="col-md-4 col-sm-6">
             <div class="friend">
-              <a href="http://www.peipeiq.cn/">
+              <a href="https://www.peipeiq.cn/">
                 <div class="float-left">
                   <img v-lazy="'https://www.blacklotus.fun/friend/peipei.png'" alt="">
                 </div>
